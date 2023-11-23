@@ -21,7 +21,6 @@
 - kuugatool-system 系统工具
 - kuugatool-thirdparty 第三方鉴权工具
 - kuugatool-xml XML工具
--
 - kuugatool-all 所有工具聚合
 
 #### 安装教程
