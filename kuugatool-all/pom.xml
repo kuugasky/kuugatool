@@ -10,7 +10,7 @@
     <description>kuugatool-工具类库</description>
 
     <parent>
-        <groupId>io.github.kuugasky.kuugatool</groupId>
+        <groupId>io.github.kuugasky</groupId>
         <artifactId>kuugatool-parent</artifactId>
         <version>1.0.0</version>
         <relativePath>../pom.xml</relativePath>
@@ -47,91 +47,91 @@
             <version>4.3.0</version>
         </dependency>
         <dependency>
-            <groupId>io.github.kuugasky.kuugatool</groupId>
+            <groupId>io.github.kuugasky</groupId>
             <artifactId>kuugatool-core</artifactId>
             <version>${kuugatool.version}</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
-            <groupId>io.github.kuugasky.kuugatool</groupId>
+            <groupId>io.github.kuugasky</groupId>
             <artifactId>kuugatool-crypto</artifactId>
             <version>${kuugatool.version}</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
-            <groupId>io.github.kuugasky.kuugatool</groupId>
+            <groupId>io.github.kuugasky</groupId>
             <artifactId>kuugatool-http</artifactId>
             <version>${kuugatool.version}</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
-            <groupId>io.github.kuugasky.kuugatool</groupId>
+            <groupId>io.github.kuugasky</groupId>
             <artifactId>kuugatool-json</artifactId>
             <version>${kuugatool.version}</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
-            <groupId>io.github.kuugasky.kuugatool</groupId>
+            <groupId>io.github.kuugasky</groupId>
             <artifactId>kuugatool-extra</artifactId>
             <version>${kuugatool.version}</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
-            <groupId>io.github.kuugasky.kuugatool</groupId>
+            <groupId>io.github.kuugasky</groupId>
             <artifactId>kuugatool-captcha</artifactId>
             <version>${kuugatool.version}</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
-            <groupId>io.github.kuugasky.kuugatool</groupId>
+            <groupId>io.github.kuugasky</groupId>
             <artifactId>kuugatool-qrcode</artifactId>
             <version>${kuugatool.version}</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
-            <groupId>io.github.kuugasky.kuugatool</groupId>
+            <groupId>io.github.kuugasky</groupId>
             <artifactId>kuugatool-system</artifactId>
             <version>${kuugatool.version}</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
-            <groupId>io.github.kuugasky.kuugatool</groupId>
+            <groupId>io.github.kuugasky</groupId>
             <artifactId>kuugatool-bean</artifactId>
             <version>${kuugatool.version}</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
-            <groupId>io.github.kuugasky.kuugatool</groupId>
+            <groupId>io.github.kuugasky</groupId>
             <artifactId>kuugatool-aop</artifactId>
             <version>${kuugatool.version}</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
-            <groupId>io.github.kuugasky.kuugatool</groupId>
+            <groupId>io.github.kuugasky</groupId>
             <artifactId>kuugatool-sql</artifactId>
             <version>${kuugatool.version}</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
-            <groupId>io.github.kuugasky.kuugatool</groupId>
+            <groupId>io.github.kuugasky</groupId>
             <artifactId>kuugatool-thirdparty</artifactId>
             <version>${kuugatool.version}</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
-            <groupId>io.github.kuugasky.kuugatool</groupId>
+            <groupId>io.github.kuugasky</groupId>
             <artifactId>kuugatool-operation-log</artifactId>
             <version>${kuugatool.version}</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
-            <groupId>io.github.kuugasky.kuugatool</groupId>
+            <groupId>io.github.kuugasky</groupId>
             <artifactId>kuugatool-nacos-parse</artifactId>
             <version>${kuugatool.version}</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
-            <groupId>io.github.kuugasky.kuugatool</groupId>
+            <groupId>io.github.kuugasky</groupId>
             <artifactId>kuugatool-cache</artifactId>
             <version>${kuugatool.version}</version>
             <scope>compile</scope>

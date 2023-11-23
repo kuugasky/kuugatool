@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 
     <parent>
-        <groupId>io.github.kuugasky.kuugatool</groupId>
+        <groupId>io.github.kuugasky</groupId>
         <artifactId>kuugatool-parent</artifactId>
         <version>1.0.0</version>
     </parent>
@@ -18,13 +18,13 @@
 
     <dependencies>
         <dependency>
-            <groupId>io.github.kuugasky.kuugatool</groupId>
+            <groupId>io.github.kuugasky</groupId>
             <artifactId>kuugatool-core</artifactId>
             <version>${kuugatool.version}</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
-            <groupId>io.github.kuugasky.kuugatool</groupId>
+            <groupId>io.github.kuugasky</groupId>
             <artifactId>kuugatool-http</artifactId>
             <version>${kuugatool.version}</version>
             <scope>compile</scope>

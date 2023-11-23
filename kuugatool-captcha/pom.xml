@@ -10,14 +10,14 @@
     <description>kuugatool 验证码工具</description>
 
     <parent>
-        <groupId>io.github.kuugasky.kuugatool</groupId>
+        <groupId>io.github.kuugasky</groupId>
         <artifactId>kuugatool-parent</artifactId>
         <version>1.0.0</version>
     </parent>
 
     <dependencies>
         <dependency>
-            <groupId>io.github.kuugasky.kuugatool</groupId>
+            <groupId>io.github.kuugasky</groupId>
             <artifactId>kuugatool-core</artifactId>
             <version>${kuugatool.version}</version>
             <scope>compile</scope>
