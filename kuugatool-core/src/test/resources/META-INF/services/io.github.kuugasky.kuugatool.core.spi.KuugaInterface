@@ -1,0 +1,4 @@
+# JDK SPI
+# 取第一个
+io.github.kuugasky.kuugatool.core.spi.KuugaSpi2
+io.github.kuugasky.kuugatool.core.spi.KuugaSpi

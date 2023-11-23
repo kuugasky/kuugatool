@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <parent>
+        <groupId>io.github.kuugasky.kuugatool</groupId>
+        <artifactId>kuugatool-parent</artifactId>
+        <version>1.0.0</version>
+    </parent>
+
+    <packaging>jar</packaging>
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>kuugatool-bean</artifactId>
+    <version>${kuugatool.version}</version>
+    <name>${project.artifactId}</name>
+    <description>kuugatool 常用bean</description>
+
+    <dependencies>
+        <dependency>
+            <groupId>io.github.kuugasky.kuugatool</groupId>
+            <artifactId>kuugatool-core</artifactId>
+            <version>${kuugatool.version}</version>
+            <scope>compile</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>${servlet.api.version}</version>
+            <scope>compile</scope>
+        </dependency>
+    </dependencies>
+
+</project>

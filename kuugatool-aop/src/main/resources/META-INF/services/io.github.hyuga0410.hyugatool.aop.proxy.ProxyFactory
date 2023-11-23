@@ -1,0 +1,7 @@
+# 取第一个
+# 会报预警
+io.github.kuugasky.kuugatool.aop.proxy.CglibProxyFactory
+# 建议使用SpringCglibProxy
+#io.github.kuugasky.kuugatool.aop.proxy.SpringCglibProxyFactory
+# jdk只能用接口接收代理对象
+#io.github.kuugasky.kuugatool.aop.proxy.JdkProxyFactory

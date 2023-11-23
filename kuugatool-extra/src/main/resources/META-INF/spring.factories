@@ -1,0 +1,3 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+io.github.kuugasky.kuugatool.extra.spring.KuugaSpringBeanPicker,\
+io.github.kuugasky.kuugatool.extra.concurrent.config.SleuthThreadPoolConfig

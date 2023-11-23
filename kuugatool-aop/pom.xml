@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='utf-8'?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <parent>
+        <groupId>io.github.kuugasky.kuugatool</groupId>
+        <artifactId>kuugatool-parent</artifactId>
+        <version>1.0.0</version>
+    </parent>
+
+    <packaging>jar</packaging>
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>kuugatool-aop</artifactId>
+    <name>${project.artifactId}</name>
+    <description>kuugatool 动态代理（AOP）</description>
+
+    <dependencies>
+        <dependency>
+            <groupId>io.github.kuugasky.kuugatool</groupId>
+            <artifactId>kuugatool-core</artifactId>
+            <version>${kuugatool.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <!-- cglib -->
+        <dependency>
+            <groupId>cglib</groupId>
+            <artifactId>cglib</artifactId>
+            <version>${cglib.version}</version>
+            <scope>compile</scope>
+            <optional>true</optional>
+        </dependency>
+        <!-- spring -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+            <version>${spring.version}</version>
+            <scope>compile</scope>
+            <optional>true</optional>
+        </dependency>
+        <!-- aspectj -->
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjrt</artifactId>
+            <version>${aspectjrt.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <!-- aop -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-aop</artifactId>
+            <version>${spring-aop.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <!-- test -->
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <version>${junit-jupiter.version}</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+</project>

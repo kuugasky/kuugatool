@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <parent>
+        <artifactId>kuugatool-parent</artifactId>
+        <groupId>io.github.kuugasky.kuugatool</groupId>
+        <version>1.0.0</version>
+    </parent>
+
+    <packaging>jar</packaging>
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>kuugatool-spider</artifactId>
+    <version>${kuugatool.version}</version>
+    <name>${project.artifactId}</name>
+    <description>kuugatool 爬虫工具</description>
+
+    <dependencies>
+        <dependency>
+            <groupId>io.github.kuugasky.kuugatool</groupId>
+            <artifactId>kuugatool-core</artifactId>
+            <version>${kuugatool.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.github.kuugasky.kuugatool</groupId>
+            <artifactId>kuugatool-json</artifactId>
+            <version>${kuugatool.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.github.kuugasky.kuugatool</groupId>
+            <artifactId>kuugatool-http</artifactId>
+            <version>${kuugatool.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.dom4j</groupId>
+            <artifactId>dom4j</artifactId>
+            <version>${dom4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <version>${junit-jupiter.version}</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+</project>

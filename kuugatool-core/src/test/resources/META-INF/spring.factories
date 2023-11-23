@@ -1,0 +1,3 @@
+# SpringBoot SPI
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+kfang.agent.feature.saas.feign.FeignBeanPostProcessor
