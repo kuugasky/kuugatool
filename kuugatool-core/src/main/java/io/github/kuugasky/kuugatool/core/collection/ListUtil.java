@@ -1320,7 +1320,7 @@ public final class ListUtil {
         if (listA.size() != listB.size()) {
             return false;
         }
-        if (listA.size() == 0) {
+        if (listA.isEmpty()) {
             return true;
         }
         Collection<E> intersection = intersection(listA, listB);
