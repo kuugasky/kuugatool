@@ -19,7 +19,7 @@
         <dependency>
             <groupId>io.github.kuugasky</groupId>
             <artifactId>kuugatool-core</artifactId>
-            <version>${kuugatool.version}</version>
+            <version>1.0.0</version>
             <scope>compile</scope>
         </dependency>
         <!-- cglib -->

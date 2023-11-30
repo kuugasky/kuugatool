@@ -12,7 +12,7 @@
     <packaging>jar</packaging>
     <modelVersion>4.0.0</modelVersion>
     <artifactId>kuugatool-json</artifactId>
-    <version>${kuugatool.version}</version>
+    <version>1.0.0</version>
     <name>${project.artifactId}</name>
     <description>kuugatool Json工具</description>
 
@@ -20,7 +20,7 @@
         <dependency>
             <groupId>io.github.kuugasky</groupId>
             <artifactId>kuugatool-core</artifactId>
-            <version>${kuugatool.version}</version>
+            <version>1.0.0</version>
             <scope>compile</scope>
         </dependency>
         <!-- https://mvnrepository.com/artifact/com.alibaba.fastjson2/fastjson2 -->
