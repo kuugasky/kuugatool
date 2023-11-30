@@ -80,6 +80,7 @@ public final class ClassInfoUtil {
     /**
      * 获取当前执行文件所在的/target/class路径
      *
+     * @param clazz 对象class类
      * @return String
      */
     public static String getCurrentClassFilePath(Class<?> clazz) {

@@ -1,9 +1,14 @@
 package io.github.kuugasky.kuugatool.system.core;
 
+import lombok.Getter;
+
 /**
+ * 系统环境参数枚举
+ *
  * @author kuuga
- * @date 2021-01-21 下午3:13
+ * @since 2021-01-21 下午3:13
  */
+@Getter
 public enum SystemEnvParam {
 
     /**
@@ -49,16 +54,8 @@ public enum SystemEnvParam {
         this.desc = desc;
     }
 
-    public String getCode() {
-        return this.code;
-    }
-
     public void setCode(String code) {
         this.code = code;
-    }
-
-    public String getDesc() {
-        return this.desc;
     }
 
     public void setDesc(String desc) {

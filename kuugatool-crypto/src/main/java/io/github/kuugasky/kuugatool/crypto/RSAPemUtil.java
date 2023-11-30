@@ -21,7 +21,7 @@ import java.util.Base64;
  * 当accessToken出现大范围泄露时， 直接修改类目录下的key文件可以让之前颁发的token失效.
  *
  * @author kuuga
- * @date 2019-12-20 17:48
+ * @since 2019-12-20 17:48
  */
 @Slf4j
 public class RSAPemUtil {

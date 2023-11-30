@@ -41,6 +41,7 @@ public class OperationDefaultHandle extends OperationHandle {
      * @param wrapper        包装总类
      * @param definitionList 类字段定义集合
      * @param entity         数据对象 优先使用此数据对象获取数据 如果此对象为空 则从wrapper对象中的fieldEntityMapping中拿取数据
+     * @throws Exception 异常
      */
     protected String joinContent(OperationLogDefinitionWrapper wrapper, List<OperationLogDefinition> definitionList, OperationLogEntity entity) throws Exception {
         StringBuilder content = new StringBuilder();
@@ -126,6 +127,15 @@ public class OperationDefaultHandle extends OperationHandle {
         return content.toString();
     }
 
+    /**
+     * 处理加入其他文件
+     *
+     * @param definitionList 操作日志定义集合
+     * @param definition     操作日志定义
+     * @param tempEntity     操作日志实体
+     * @param fieldContent   字段内容
+     * @return 拼接后的内容
+     */
     protected String handleJoinOtherFiled(List<OperationLogDefinition> definitionList, OperationLogDefinition definition, OperationLogEntity tempEntity, String fieldContent) {
         if (definition.isJoinOtherFiled()) {
             List<OperationLogDefinition> collect = definitionList.stream()
@@ -149,6 +159,11 @@ public class OperationDefaultHandle extends OperationHandle {
     /**
      * 处理leader
      * leader不为空 并且没有拼接上模块名 在这里重新拼接
+     *
+     * @param contentBuild 内容构建器
+     * @param leader       操作日志定义
+     * @param content      内容
+     * @return 操作日志定义
      */
     protected OperationLogDefinition handleLeader(StringBuilder contentBuild, OperationLogDefinition leader, String content) {
         boolean nonNull = Objects.nonNull(leader);
@@ -358,6 +373,7 @@ public class OperationDefaultHandle extends OperationHandle {
      * @param nowValue     新的值
      * @param historyValue 历史值
      * @return String
+     * @throws Exception 异常
      */
     protected String joinContent(OperationLogDefinition definition, boolean addOrEdit, Object nowValue, Object historyValue) throws Exception {
 

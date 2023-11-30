@@ -21,7 +21,7 @@ import java.util.stream.Collectors;
  * FtpUtil
  *
  * @author kuuga
- * @date 2020-08-23 11:38
+ * @since 2020-08-23 11:38
  */
 @Slf4j
 public class FtpUtil {

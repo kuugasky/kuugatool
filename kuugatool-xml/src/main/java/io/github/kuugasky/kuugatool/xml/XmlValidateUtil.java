@@ -17,7 +17,7 @@ import java.nio.charset.Charset;
  * xml格式验证工具类
  *
  * @author kuuga
- * @date 2017-11-28
+ * @since 2017-11-28
  */
 public final class XmlValidateUtil {
 

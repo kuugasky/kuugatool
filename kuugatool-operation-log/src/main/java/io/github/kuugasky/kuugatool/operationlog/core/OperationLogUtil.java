@@ -37,6 +37,9 @@ public class OperationLogUtil {
 
     /**
      * 处理content后插入记录
+     *
+     * @param content 内容
+     * @return 处理后的内容
      */
     public static String getContentPretty(String content) {
         String regex = "\r\n";

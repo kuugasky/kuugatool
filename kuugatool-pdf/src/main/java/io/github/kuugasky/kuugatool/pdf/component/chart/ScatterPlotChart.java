@@ -30,6 +30,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Created by fgm on 2017/7/4.
@@ -49,10 +50,29 @@ public class ScatterPlotChart extends ChartFactory {
     private static double turnTop = 4.712389;
 
 
+    /**
+     * 画图
+     *
+     * @param list   数据集
+     * @param picId  图片ID
+     * @param xLabel X标签
+     * @param yLabel Y标签
+     * @return 图片地址
+     */
     public static String draw(List<XYScatter> list, int picId, String xLabel, String yLabel) {
         return draw(list, picId, "", xLabel, yLabel);
     }
 
+    /**
+     * 画图
+     *
+     * @param list   数据集
+     * @param picId  图片ID
+     * @param title  标题
+     * @param xLabel X标签
+     * @param yLabel Y标签
+     * @return 图片地址
+     */
     public static String draw(List<XYScatter> list, int picId, String title, String xLabel, String yLabel) {
 
         XYDataset xyDataset = ScatterPlotChart.createXYDataSet(list, "");
@@ -73,10 +93,22 @@ public class ScatterPlotChart extends ChartFactory {
         return scatterChartFile.getAbsolutePath();
     }
 
-
+    /**
+     * 创建散点图
+     *
+     * @param title       标题
+     * @param xAxisLabel  X轴标签
+     * @param yAxisLabel  Y轴标签
+     * @param dataset     数据集
+     * @param orientation 方向
+     * @param legend      铭文
+     * @param tooltips    工具提示
+     * @param urls        是否图片地址
+     * @return J免费图表
+     */
     public static JFreeChart createScatterPlot(String title, String xAxisLabel, String yAxisLabel, XYDataset dataset, PlotOrientation orientation, boolean legend, boolean tooltips, boolean urls) {
         if (orientation == null) {
-            throw new IllegalArgumentException("Null \'orientation\' argument.");
+            throw new IllegalArgumentException("Null 'orientation' argument.");
         } else {
             NumberAxis xAxis = new NumberAxis(xAxisLabel);
             xAxis.setAutoRangeIncludesZero(false);
@@ -103,16 +135,21 @@ public class ScatterPlotChart extends ChartFactory {
             renderer.setURLGenerator(urlGenerator);
             plot.setRenderer(renderer);
             plot.setOrientation(orientation);
-            JFreeChart chart = new JFreeChart(title, FontUtil.getFont(Font.PLAIN, 18), plot, legend);
-            return chart;
+            return new JFreeChart(title, FontUtil.getFont(Font.PLAIN, 18), plot, legend);
         }
     }
 
-
+    /**
+     * 创建XY数据集
+     *
+     * @param dataList XY散射集合
+     * @param dataName 数据名
+     * @return XY数据集
+     */
     public static XYDataset createXYDataSet(List<XYScatter> dataList,
                                             String dataName) {
         DefaultXYDataset dataSet = new DefaultXYDataset();
-        if (dataList == null || dataList.size() == 0) {
+        if (dataList == null || dataList.isEmpty()) {
             return dataSet;
         }
         int size = dataList.size();
@@ -161,12 +198,15 @@ public class ScatterPlotChart extends ChartFactory {
     }
 
     /**
-     * @description 初始化数据标签
+     * 初始化数据标签
+     *
+     * @param dataList   数据集
+     * @param jfreechart J免费图表
      */
     private static void initDataLabels(JFreeChart jfreechart, List<XYScatter> dataList) {
         // 数据录入
 
-        if (dataList == null || dataList.size() == 0) {
+        if (dataList == null || dataList.isEmpty()) {
             return;
         }
         XYPlot xyplot = (XYPlot) jfreechart.getPlot();
@@ -186,7 +226,9 @@ public class ScatterPlotChart extends ChartFactory {
 
 
     /**
-     * @description 初始化背景色
+     * 初始化背景色
+     *
+     * @param jfreechart J免费图表
      */
     private static void initBackGroundAndAxis(JFreeChart jfreechart) throws IOException {
         jfreechart.setBackgroundPaint(Color.white);
@@ -198,7 +240,7 @@ public class ScatterPlotChart extends ChartFactory {
         xyplot.setNoDataMessageFont(FontUtil.getFont(Font.PLAIN, 18));
         // 背景色
         if (backgroundImage == null) {
-            String classpath = ScatterPlotChart.class.getClassLoader().getResource("").getPath();
+            String classpath = Objects.requireNonNull(ScatterPlotChart.class.getClassLoader().getResource("")).getPath();
             String backgroundImg = classpath + "/background/back.png";
             backgroundImage = ImageIO.read(new FileInputStream(backgroundImg));
 
@@ -257,10 +299,13 @@ public class ScatterPlotChart extends ChartFactory {
 
 
     /**
-     * @description 初始化区域划分
-     * | 00 | 10  | 20 |
-     * | 01 | 11  | 21 |
-     * | 02 | 21  | 22 |
+     * 初始化区域划分
+     *
+     * @param jfreechart J免费图表
+     *                   <p>
+     *                   | 00 | 10  | 20 |
+     *                   | 01 | 11  | 21 |
+     *                   | 02 | 21  | 22 |
      */
     private static void initRegionPartition(JFreeChart jfreechart) {
         Stroke stroke = new BasicStroke(0.5F);

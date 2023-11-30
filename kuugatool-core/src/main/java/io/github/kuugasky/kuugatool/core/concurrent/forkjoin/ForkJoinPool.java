@@ -74,7 +74,7 @@ public final class ForkJoinPool {
     /**
      * 获取结果
      *
-     * @return List<T>
+     * @return List
      */
     public <U> List<U> getResult() {
         List<U> result = Lists.newArrayList();

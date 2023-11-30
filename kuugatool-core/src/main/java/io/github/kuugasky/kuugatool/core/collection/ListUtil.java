@@ -1436,9 +1436,11 @@ public final class ListUtil {
     /**
      * 返回由此流的元素组成的流，其长度被截断为不超过maxSize。
      * <p>
-     * - list.size() > maxSize >= 0 : 有序截取
-     * - maxSize > list.size() : 截取最大位数list.size()
-     * - maxSize < 0 : 异常java.lang.IllegalArgumentException
+     * {@code
+     * list.size() > maxSize >= 0 : 有序截取
+     * maxSize > list.size() : 截取最大位数list.size()
+     * maxSize < 0 : 异常java.lang.IllegalArgumentException
+     * }
      *
      * @param list    集合
      * @param maxSize 最大截取位数

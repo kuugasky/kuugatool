@@ -49,6 +49,12 @@ public abstract class OperationHandle {
 
     /**
      * 处理新旧对象之间的字段
+     *
+     * @param nowEntity 新对象
+     * @param history   旧对象
+     * @param clazz     类型
+     * @return 拼接好的操作记录
+     * @throws Exception 异常
      */
     public final String handle(Object nowEntity, Object history, Class<?> clazz) throws Exception {
 

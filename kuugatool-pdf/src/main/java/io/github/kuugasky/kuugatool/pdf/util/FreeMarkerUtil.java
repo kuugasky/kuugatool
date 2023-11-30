@@ -118,6 +118,7 @@ public class FreeMarkerUtil {
      *
      * @param templateFile 模板文件
      * @param data         数据对象
+     * @return 模版文件内容组装
      */
     public static String packTemplateData(File templateFile, Object data) {
         if (ObjectUtil.isNull(data)) {

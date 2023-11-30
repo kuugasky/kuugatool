@@ -16,7 +16,7 @@ import java.util.regex.Pattern;
  * 数据类型判断工具类
  *
  * @author kuuga
- * @date 2021-01-21 上午11:13
+ * @since 2021-01-21 上午11:13
  */
 public class DataTypeUtil {
 

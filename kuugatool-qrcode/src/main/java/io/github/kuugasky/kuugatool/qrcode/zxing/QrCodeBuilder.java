@@ -92,7 +92,7 @@ public class QrCodeBuilder {
      * @param qrCodeColor              二维码 码的颜色
      * @param qrCodeBackgroundColor    二维码 背景的颜色
      * @param fillColor                图片缩小后，对那些"空"下的区域补色
-     * @date 2019/9/9 22:47
+     * @since 2019/9/9 22:47
      */
     public static void modifyBasicParamsValues(Integer embeddedImgDefaultWidth, Integer embeddedImgDefaultHeight,
                                                Integer frameWidth, Color frameWidthColor, Color qrCodeColor, Color qrCodeBackgroundColor,
@@ -130,7 +130,7 @@ public class QrCodeBuilder {
      * @return 生成的二维码文件path
      * @throws IOException     IOException
      * @throws WriterException WriterException
-     * @date 2019/9/9 16:43
+     * @since 2019/9/9 16:43
      */
     public static String encodeQrCode(String content, int width, int height, String destImagePath)
             throws IOException, WriterException {
@@ -157,7 +157,7 @@ public class QrCodeBuilder {
      * @param height  二维码的高度(px)
      * @return 生成的二维码文件path
      * @throws WriterException WriterException
-     * @date 2019/9/9 16:43
+     * @since 2019/9/9 16:43
      */
     public static BitMatrix encodeQrCode(String content, int width, int height) throws WriterException {
         BitMatrix bitMatrix;
@@ -180,7 +180,7 @@ public class QrCodeBuilder {
      * @return 生成的二维码文件path
      * @throws IOException     IOException
      * @throws WriterException WriterException
-     * @date 2019/9/9 16:43
+     * @since 2019/9/9 16:43
      */
     public static String encodeQrCodeAnotherWay(String content, int width, int height, String destImagePath)
             throws IOException, WriterException {
@@ -200,7 +200,7 @@ public class QrCodeBuilder {
      * @return 生成的二维码文件path
      * @throws IOException     IOException
      * @throws WriterException WriterException
-     * @date 2019/9/9 15:13
+     * @since 2019/9/9 15:13
      */
     public static String encodeQrCodeWithEmbeddedImg(String content, int width, int height, File embeddedImgFile,
                                                      String destImagePath) throws IOException, WriterException {
@@ -219,7 +219,7 @@ public class QrCodeBuilder {
      * @param embeddedImgFile 被镶嵌的图片的地址 注:被镶嵌的图片,如果尺寸
      * @throws IOException     IOException
      * @throws WriterException WriterException
-     * @date 2019/9/9 16:43
+     * @since 2019/9/9 16:43
      */
     public static void encodeQrCodeWithEmbeddedImg(String content, int width, int height, File embeddedImgFile,
                                                    OutputStream outputStream) throws IOException, WriterException {
@@ -236,7 +236,7 @@ public class QrCodeBuilder {
      * @return 生成的二维码文件path
      * @throws IOException     IOException
      * @throws WriterException WriterException
-     * @date 2019/9/10 0:11
+     * @since 2019/9/10 0:11
      */
     public static String encodeQrCodeWithEmbeddedImgAndFonts(QrImage param) throws IOException, WriterException {
         BufferedImage newBufferedImage = encodeQrCodeWithEmbeddedImgAndFontsForBufferedImage(param);
@@ -257,7 +257,7 @@ public class QrCodeBuilder {
      * @return 生成的二维码文件path
      * @throws IOException     IOException
      * @throws WriterException WriterException
-     * @date 2019/9/10 0:11
+     * @since 2019/9/10 0:11
      */
     public static BufferedImage encodeQrCodeWithEmbeddedImgAndFontsForBufferedImage(QrImage param) throws IOException, WriterException {
         // 首先生成二维码图片
@@ -335,7 +335,7 @@ public class QrCodeBuilder {
      * @return 二维码内容
      * @throws NotFoundException NotFoundException
      * @throws IOException       IOException
-     * @date 2019/9/10 1:59
+     * @since 2019/9/10 1:59
      */
     public static String decodeQrCode(File file) throws NotFoundException, IOException {
         BufferedImage image;
@@ -355,7 +355,7 @@ public class QrCodeBuilder {
      * @return 二维码内容
      * @throws NotFoundException NotFoundException
      * @throws IOException       IOException
-     * @date 2019/9/10 1:59
+     * @since 2019/9/10 1:59
      */
     public static String decodeQrCode(InputStream is) throws NotFoundException, IOException {
         BufferedImage image;
@@ -375,7 +375,7 @@ public class QrCodeBuilder {
      *
      * @param filePath 文件path
      * @return 文件对象
-     * @date 2019/9/10 10:48
+     * @since 2019/9/10 10:48
      */
     private static File getFile(String filePath) {
         File file = new File(filePath);
@@ -392,7 +392,7 @@ public class QrCodeBuilder {
      * @param image 二维码图片信息BufferedImage
      * @return 二维码内容
      * @throws NotFoundException NotFoundException
-     * @date 2019/9/10 1:59
+     * @since 2019/9/10 1:59
      */
     private static String decodeQrCode(BufferedImage image) throws NotFoundException {
         BufferedImageLuminanceSource source = new BufferedImageLuminanceSource(image);
@@ -414,7 +414,7 @@ public class QrCodeBuilder {
      * @param height  二维码的高(px)
      * @return 二维码图片信息BufferedImage
      * @throws WriterException WriterException
-     * @date 2019/9/9 16:39
+     * @since 2019/9/9 16:39
      */
     public static BufferedImage genBufferedImage(String content, int width, int height) throws WriterException {
         Map<EncodeHintType, Object> hints = getHints();
@@ -445,7 +445,7 @@ public class QrCodeBuilder {
      * @return 二维码图片信息BufferedImage
      * @throws IOException     IOException
      * @throws WriterException WriterException
-     * @date 2019/9/9 16:39
+     * @since 2019/9/9 16:39
      */
     public static BufferedImage genBufferedImageWithEmbeddedImg(String content, int width, int height,
                                                                 File embeddedImageFile) throws WriterException, IOException {
@@ -533,7 +533,7 @@ public class QrCodeBuilder {
      * 获取hint信息
      *
      * @return hint
-     * @date 2019/9/10 1:14
+     * @since 2019/9/10 1:14
      */
     private static Map<EncodeHintType, Object> getHints() {
         Map<EncodeHintType, Object> hint = new HashMap<>(8);
@@ -563,7 +563,7 @@ public class QrCodeBuilder {
      *                     注:建议为false。
      * @return 图片的BufferedImage信息
      * @throws IOException IOException
-     * @date 2019/9/10 1:59
+     * @since 2019/9/10 1:59
      */
     private static BufferedImage scale(File srcImageFile, int width, int height, boolean autoFill)
             throws IOException {

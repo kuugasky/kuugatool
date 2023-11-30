@@ -13,7 +13,7 @@
 //  * 可用，但是建议使用kuugatool-captcha组件
 //  *
 //  * @author kuuga
-//  * @date 2020-12-25 下午5:59
+//  * @since 2020-12-25 下午5:59
 //  */
 // @Slf4j
 // @Deprecated

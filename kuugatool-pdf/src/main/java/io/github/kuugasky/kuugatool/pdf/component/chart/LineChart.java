@@ -60,7 +60,10 @@ public abstract class LineChart {
     }
 
     /**
-     * @description 设置自定义的线条和背景色
+     * 设置自定义的线条和背景色
+     *
+     * @param chart   J免费图表
+     * @param dataSet 数据集
      */
     protected abstract void initPlot(JFreeChart chart, DefaultCategoryDataset dataSet);
 
@@ -90,8 +93,14 @@ public abstract class LineChart {
     }
 
     /**
+     * 画出折线图
+     *
+     * @param title   标题
+     * @param xLabel  x标签
+     * @param yLabel  y标签
+     * @param picId   图片ID
+     * @param dataSet 数据集
      * @return 图片地址
-     * @description 画出折线图
      */
     private String drawLineChar(String title, String xLabel, String yLabel, DefaultCategoryDataset dataSet, int picId)
             throws IOException {

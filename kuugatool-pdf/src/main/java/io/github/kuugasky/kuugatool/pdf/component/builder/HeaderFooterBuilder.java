@@ -9,7 +9,7 @@ import com.itextpdf.text.pdf.PdfWriter;
  * 页眉页脚生成器
  *
  * @author kuuga
- * @date 2023-06-12
+ * @since 2023-06-12
  */
 public interface HeaderFooterBuilder {
 

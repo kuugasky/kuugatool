@@ -8,7 +8,7 @@ import java.io.Serializable;
  * 测试实体类
  *
  * @author kuuga
- * @date 2020-12-23 下午2:37
+ * @since 2020-12-23 下午2:37
  */
 @Data
 // @AllArgsConstructor

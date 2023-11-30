@@ -14,7 +14,7 @@ import java.security.MessageDigest;
  * 由于生成的摘要信息更长,运算的过程更加复杂, 在相同的硬件上,SHA-1的运行速度比MD5更慢,但是也更为安全。
  *
  * @author kuuga
- * @date 2018-03-30
+ * @since 2018-03-30
  */
 public final class SHA1Util {
 

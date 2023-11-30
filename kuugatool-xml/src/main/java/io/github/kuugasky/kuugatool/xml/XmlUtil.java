@@ -45,6 +45,7 @@ public final class XmlUtil {
      *
      * @param xmlStr xmlStr
      * @return JSONObject
+     * @throws DocumentException 文档异常
      */
     public static JSONObject toJson(String xmlStr) throws DocumentException {
         Document doc = DocumentHelper.parseText(xmlStr);
@@ -113,6 +114,12 @@ public final class XmlUtil {
         }
     }
 
+    /**
+     * XML内容为空或是字符串null
+     *
+     * @param str xml内容
+     * @return 是否为空
+     */
     public static boolean isEmpty(String str) {
         return StringUtil.isEmpty(str) || "null".equals(str);
     }

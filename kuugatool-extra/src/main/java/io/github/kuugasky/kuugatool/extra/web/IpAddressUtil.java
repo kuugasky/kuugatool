@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
  * IP地址工具类
  *
  * @author kuuga
- * @date 2020-12-25 上午11:33
+ * @since 2020-12-25 上午11:33
  */
 @Slf4j
 public final class IpAddressUtil {

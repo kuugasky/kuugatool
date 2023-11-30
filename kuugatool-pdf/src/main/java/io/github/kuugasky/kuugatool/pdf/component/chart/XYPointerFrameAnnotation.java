@@ -1,5 +1,7 @@
 package io.github.kuugasky.kuugatool.pdf.component.chart;
 
+import lombok.Getter;
+import lombok.Setter;
 import org.jfree.chart.annotations.XYTextAnnotation;
 import org.jfree.chart.axis.ValueAxis;
 import org.jfree.chart.plot.Plot;
@@ -16,33 +18,85 @@ import org.jfree.util.PublicCloneable;
 import java.awt.*;
 import java.awt.geom.Line2D;
 import java.awt.geom.Rectangle2D;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.io.Serializable;
+import java.io.*;
 
 /**
- * Created by fgm on 2017/7/4.
+ * XY指针框架注释
+ *
+ * @author fgm
+ * @since 2017/7/4
  */
+@Getter
+@Setter
 public class XYPointerFrameAnnotation extends XYTextAnnotation implements Cloneable, PublicCloneable, Serializable {
 
+    @Serial
     private static final long serialVersionUID = -4031161445009858499L;
+    /**
+     * 默认提示半径
+     */
     public static final double DEFAULT_TIP_RADIUS = 10.0D;
+    /**
+     * 默认基准半径
+     */
     public static final double DEFAULT_BASE_RADIUS = 40.0D;
+    /**
+     * 默认标签偏移量
+     */
     public static final double DEFAULT_LABEL_OFFSET = 8.0D;
+    /**
+     * 默认箭头长度
+     */
     public static final double DEFAULT_ARROW_LENGTH = 10.0D;
+    /**
+     * 默认箭头宽度
+     */
     public static final double DEFAULT_ARROW_WIDTH = 3.0D;
+    /**
+     * 角
+     */
     private double angle;
+    /**
+     * 尖端半径
+     */
     private double tipRadius;
+    /**
+     * 基础半径
+     */
     private double baseRadius;
+    /**
+     * 箭头长度
+     */
     private double arrowLength;
+    /**
+     * 箭头宽度
+     */
     private double arrowWidth;
+    /**
+     * 箭头行程
+     */
     private transient Stroke arrowStroke;
+    /**
+     * 箭头油漆
+     */
     private transient Paint arrowPaint;
+    /**
+     * 标签偏移
+     */
     private double labelOffset;
+    /**
+     * 线条油漆
+     */
     private transient Paint linePaint;
 
-
+    /**
+     * 创建XY指针框架注释
+     *
+     * @param label 标签
+     * @param x     x值
+     * @param y     y值
+     * @param angle 角
+     */
     public XYPointerFrameAnnotation(String label, double x, double y, double angle) {
         super(label, x, y);
         this.angle = angle;
@@ -56,80 +110,12 @@ public class XYPointerFrameAnnotation extends XYTextAnnotation implements Clonea
         this.linePaint = Color.WHITE;
     }
 
-    public double getAngle() {
-        return this.angle;
-    }
-
-    public void setAngle(double angle) {
-        this.angle = angle;
-    }
-
-    public double getTipRadius() {
-        return this.tipRadius;
-    }
-
-    public void setTipRadius(double radius) {
-        this.tipRadius = radius;
-    }
-
-    public double getBaseRadius() {
-        return this.baseRadius;
-    }
-
-    public void setBaseRadius(double radius) {
-        this.baseRadius = radius;
-    }
-
-    public double getLabelOffset() {
-        return this.labelOffset;
-    }
-
-    public void setLabelOffset(double offset) {
-        this.labelOffset = offset;
-    }
-
-    public double getArrowLength() {
-        return this.arrowLength;
-    }
-
-    public void setArrowLength(double length) {
-        this.arrowLength = length;
-    }
-
-    public double getArrowWidth() {
-        return this.arrowWidth;
-    }
-
-    public void setArrowWidth(double width) {
-        this.arrowWidth = width;
-    }
-
-    public Stroke getArrowStroke() {
-        return this.arrowStroke;
-    }
-
-    public Paint getLinePaint() {
-        return linePaint;
-    }
-
-    public void setLinePaint(Paint linePaint) {
-        this.linePaint = linePaint;
-    }
-
     public void setArrowStroke(Stroke stroke) {
         if (stroke == null) {
-            throw new IllegalArgumentException("Null \'stroke\' not permitted.");
+            throw new IllegalArgumentException("Null 'stroke' not permitted.");
         } else {
             this.arrowStroke = stroke;
         }
-    }
-
-    public Paint getArrowPaint() {
-        return this.arrowPaint;
-    }
-
-    public void setArrowPaint(Paint paint) {
-        this.arrowPaint = paint;
     }
 
     public void draw(Graphics2D g2, XYPlot plot, Rectangle2D dataArea, ValueAxis domainAxis, ValueAxis rangeAxis, int rendererIndex, PlotRenderingInfo info) {
@@ -186,12 +172,27 @@ public class XYPointerFrameAnnotation extends XYTextAnnotation implements Clonea
         return super.clone();
     }
 
+    /**
+     * 写入对象输入流
+     *
+     * @param stream ObjectInputStream
+     * @throws IOException IO异常
+     */
+    @Serial
     private void writeObject(ObjectOutputStream stream) throws IOException {
         stream.defaultWriteObject();
         SerialUtilities.writePaint(this.arrowPaint, stream);
         SerialUtilities.writeStroke(this.arrowStroke, stream);
     }
 
+    /**
+     * 读取对象输入流
+     *
+     * @param stream ObjectInputStream
+     * @throws IOException            IO异常
+     * @throws ClassNotFoundException 类找不到异常
+     */
+    @Serial
     private void readObject(ObjectInputStream stream) throws IOException, ClassNotFoundException {
         stream.defaultReadObject();
         this.arrowPaint = SerialUtilities.readPaint(stream);

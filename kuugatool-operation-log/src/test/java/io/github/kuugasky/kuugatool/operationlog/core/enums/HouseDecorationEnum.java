@@ -7,7 +7,7 @@ import lombok.Getter;
  * 房屋装修类型枚举
  *
  * @author kuuga
- * @date 2021/02/23
+ * @since 2021/02/23
  */
 @AllArgsConstructor
 public enum HouseDecorationEnum {

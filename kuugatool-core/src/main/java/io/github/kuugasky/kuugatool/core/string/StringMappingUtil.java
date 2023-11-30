@@ -12,7 +12,7 @@
 //  * ④ 这样一个md5字符串可以获得4个6位串，取24位字符的前12位。
 //  *
 //  * @author kuuga
-//  * @date 2020-05-12 下午2:44
+//  * @since 2020-05-12 下午2:44
 //  */
 // public class StringMappingUtil {
 //

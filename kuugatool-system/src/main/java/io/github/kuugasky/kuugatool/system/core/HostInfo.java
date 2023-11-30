@@ -19,6 +19,9 @@ public class HostInfo implements Serializable {
     private final String HOST_NAME;
     private final String HOST_ADDRESS;
 
+    /**
+     * 当前主机信息
+     */
     public HostInfo() {
         final String localIpAddress = NetworkUtil.getLocalIpAddr();
         String hostName = SystemUtil.getLocalHostName();

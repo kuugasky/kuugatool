@@ -8,7 +8,7 @@ import java.math.BigDecimal;
  * 数值类型比对工具类
  *
  * @author kuuga
- * @date 2021-01-21 上午11:43
+ * @since 2021-01-21 上午11:43
  */
 public class NumberCompareUtil {
 

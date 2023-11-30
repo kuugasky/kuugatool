@@ -64,9 +64,9 @@ public final class DateChainUtil {
      * 获取环比日期对象
      * <p>
      * 1.计算fromDate和toDate相隔天数:
-     * <java>
+     * <p>
      * long dayDifferenceZeroTime = DateUtil.dayDifferenceZeroTime(fromDate, toDate);
-     * </java>
+     * <p>
      * 2.环比开始日期:fromDate往前推dayDifferenceZeroTime天
      * 3.环比结束日期:fromDate往前推1天
      *
@@ -82,9 +82,9 @@ public final class DateChainUtil {
      * 获取环比日期对象
      * <p>
      * 1.计算fromDate和toDate相隔天数:
-     * <java>
+     * <p>
      * long dayDifferenceZeroTime = DateUtil.dayDifferenceZeroTime(fromDate, toDate);
-     * </java>
+     * <p>
      * 2.环比开始日期:toDate往后推1天
      * 3.环比结束日期:toDate往前推dayDifferenceZeroTime天
      *

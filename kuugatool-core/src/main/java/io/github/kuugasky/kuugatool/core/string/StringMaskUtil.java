@@ -6,7 +6,7 @@ import io.github.kuugasky.kuugatool.core.enums.SignLocation;
  * 号码遮罩工具类
  *
  * @author kuuga
- * @date 2021-01-21 下午2:17
+ * @since 2021-01-21 下午2:17
  */
 public class StringMaskUtil {
 

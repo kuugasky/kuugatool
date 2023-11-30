@@ -31,7 +31,7 @@ import java.util.regex.Pattern;
  * 系统常用工具类
  *
  * @author kuuga
- * @date 2017-09-13
+ * @since 2017-09-13
  */
 public final class SystemUtil {
 

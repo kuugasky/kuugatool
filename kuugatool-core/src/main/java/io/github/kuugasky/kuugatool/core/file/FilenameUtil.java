@@ -231,7 +231,7 @@ public final class FilenameUtil {
     }
 
     /**
-     * 检查文件后缀名是不是传入参数(List<String>)中的一个
+     * 检查文件后缀名是不是传入参数extensions中的一个
      *
      * @param filename   文件名
      * @param extensions 后缀名集合

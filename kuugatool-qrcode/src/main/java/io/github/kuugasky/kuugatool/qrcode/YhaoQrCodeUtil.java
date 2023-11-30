@@ -15,7 +15,7 @@ import java.util.Map;
  * QrCodeUtil
  *
  * @author yhao
- * @date 2020-12-25 下午5:39
+ * @since 2020-12-25 下午5:39
  */
 public class YhaoQrCodeUtil {
 

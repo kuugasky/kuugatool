@@ -2,7 +2,7 @@ package io.github.kuugasky.kuugatool.core.entity;
 
 /**
  * @author kuuga
- * @date 2020-11-22 3:42 下午
+ * @since 2020-11-22 3:42 下午
  */
 public class User {
 

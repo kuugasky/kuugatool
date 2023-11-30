@@ -57,6 +57,9 @@ public class KuugaPdf {
         return new KuugaPdfBuilder();
     }
 
+    /**
+     * pdf构建器
+     */
     public static class KuugaPdfBuilder {
         private HeaderFooterBuilder headerFooterBuilder;
         private File templateFile;

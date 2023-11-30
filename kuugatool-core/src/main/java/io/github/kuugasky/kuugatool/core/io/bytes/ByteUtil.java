@@ -8,7 +8,7 @@ import java.nio.charset.Charset;
  * byte size util
  *
  * @author kuuga
- * @date 2017-09-14
+ * @since 2017-09-14
  */
 public final class ByteUtil {
 
