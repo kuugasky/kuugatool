@@ -15,21 +15,21 @@ public class IoUtilTest {
     }
 
     @Test
-    public void copy() throws IOException {
+    void copy() throws IOException {
         File source = new File("/Users/kuuga/Downloads/1.jpg");
         File target = new File("/Users/kuuga/Downloads/2.jpg");
         IoUtil.copy(new FileReader(source), new FileWriter(target));
     }
 
     @Test
-    public void testCopy() throws IOException {
+    void testCopy() throws IOException {
         File source = new File("/Users/kuuga/Downloads/1.jpg");
         File target = new File("/Users/kuuga/Downloads/2.jpg");
         IoUtil.copy(new FileReader(source), new FileWriter(target), 1024);
     }
 
     @Test
-    public void testCopy1() throws IOException {
+    void testCopy1() throws IOException {
         File source = new File("/Users/kuuga/Downloads/3.png");
         File target = new File("/Users/kuuga/Downloads/4.png");
         long copy = IoUtil.copy(new FileReader(source), new FileWriter(target), NioUtil.DEFAULT_BUFFER_SIZE, new StreamProgress() {
@@ -52,7 +52,7 @@ public class IoUtilTest {
     }
 
     @Test
-    public void testCopy2() {
+    void testCopy2() {
         File source = new File("/Users/kuuga/Downloads/11.jpg");
         File target = new File("/Users/kuuga/Downloads/22.jpg");
         // FileUtil.copyFile(source.getPath(), "/Users/kuuga/Downloads/", "22.jpg");
@@ -61,243 +61,243 @@ public class IoUtilTest {
     }
 
     @Test
-    public void testCopy3() {
+    void testCopy3() {
         File source = new File("/Users/kuuga/Downloads/33.txt");
         File target = new File("/Users/kuuga/Downloads/44.txt");
         FileUtil.copyFileByFileWriter(source, target);
     }
 
     @Test
-    public void testCopy4() {
+    void testCopy4() {
     }
 
     @Test
-    public void testCopy5() {
+    void testCopy5() {
     }
 
     @Test
-    public void getUtf8Reader() {
+    void getUtf8Reader() {
     }
 
     @Test
-    public void getReader() {
+    void getReader() {
     }
 
     @Test
-    public void testGetReader() {
+    void testGetReader() {
     }
 
     @Test
-    public void testGetReader1() {
+    void testGetReader1() {
     }
 
     @Test
-    public void getPushBackReader() {
+    void getPushBackReader() {
     }
 
     @Test
-    public void getUtf8Writer() {
+    void getUtf8Writer() {
     }
 
     @Test
-    public void getWriter() {
+    void getWriter() {
     }
 
     @Test
-    public void testGetWriter() {
+    void testGetWriter() {
     }
 
     @Test
-    public void readUtf8() {
+    void readUtf8() {
     }
 
     @Test
-    public void read() {
+    void read() {
     }
 
     @Test
-    public void testRead() {
+    void testRead() {
     }
 
     @Test
-    public void testRead1() {
+    void testRead1() {
     }
 
     @Test
-    public void testRead2() {
+    void testRead2() {
     }
 
     @Test
-    public void testRead3() {
+    void testRead3() {
     }
 
     @Test
-    public void testRead4() {
+    void testRead4() {
     }
 
     @Test
-    public void readBytes() {
+    void readBytes() {
     }
 
     @Test
-    public void testReadBytes() {
+    void testReadBytes() {
     }
 
     @Test
-    public void testReadBytes1() {
+    void testReadBytes1() {
     }
 
     @Test
-    public void readHex() {
+    void readHex() {
     }
 
     @Test
-    public void readHex28Upper() {
+    void readHex28Upper() {
     }
 
     @Test
-    public void readHex28Lower() {
+    void readHex28Lower() {
     }
 
     @Test
-    public void readObj() {
+    void readObj() {
     }
 
     @Test
-    public void testReadObj() {
+    void testReadObj() {
     }
 
     @Test
-    public void testReadObj1() {
+    void testReadObj1() {
     }
 
     @Test
-    public void readUtf8Lines() {
+    void readUtf8Lines() {
     }
 
     @Test
-    public void readLines() {
+    void readLines() {
     }
 
     @Test
-    public void testReadLines() {
+    void testReadLines() {
     }
 
     @Test
-    public void testReadLines1() {
+    void testReadLines1() {
     }
 
     @Test
-    public void testReadUtf8Lines() {
+    void testReadUtf8Lines() {
     }
 
     @Test
-    public void testReadLines2() {
+    void testReadLines2() {
     }
 
     @Test
-    public void testReadLines3() {
+    void testReadLines3() {
     }
 
     @Test
-    public void toStream() {
+    void toStream() {
     }
 
     @Test
-    public void testToStream() {
+    void testToStream() {
     }
 
     @Test
-    public void toUtf8Stream() {
+    void toUtf8Stream() {
     }
 
     @Test
-    public void testToStream1() {
+    void testToStream1() {
     }
 
     @Test
-    public void testToStream2() {
+    void testToStream2() {
     }
 
     @Test
-    public void toBuffered() {
+    void toBuffered() {
     }
 
     @Test
-    public void testToBuffered() {
+    void testToBuffered() {
     }
 
     @Test
-    public void toMarkSupportStream() {
+    void toMarkSupportStream() {
     }
 
     @Test
-    public void toPushbackStream() {
+    void toPushbackStream() {
     }
 
     @Test
-    public void toAvailableStream() {
+    void toAvailableStream() {
     }
 
     @Test
-    public void write() {
+    void write() {
     }
 
     @Test
-    public void writeUtf8() {
+    void writeUtf8() {
     }
 
     @Test
-    public void testWrite() {
+    void testWrite() {
     }
 
     @Test
-    public void testWrite1() {
+    void testWrite1() {
     }
 
     @Test
-    public void writeObj() {
+    void writeObj() {
     }
 
     @Test
-    public void writeObjects() {
+    void writeObjects() {
     }
 
     @Test
-    public void flush() {
+    void flush() {
         // IoUtil.flush();
     }
 
     @Test
-    public void close() {
+    void close() {
     }
 
     @Test
-    public void closeIfPosible() {
+    void closeIfPosible() {
     }
 
     @Test
-    public void contentEquals() {
+    void contentEquals() {
     }
 
     @Test
-    public void testContentEquals() {
+    void testContentEquals() {
     }
 
     @Test
-    public void contentEqualsIgnoreEOL() {
+    void contentEqualsIgnoreEOL() {
     }
 
     @Test
-    public void checksumCRC32() {
+    void checksumCRC32() {
     }
 
     @Test
-    public void checksum() {
+    void checksum() {
     }
 
     @Test
-    public void checksumValue() {
+    void checksumValue() {
     }
 
     @Test

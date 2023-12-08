@@ -1,6 +1,7 @@
 package io.github.kuugasky.kuugatool.core.string;
 
 import io.github.kuugasky.kuugatool.core.collection.ListUtil;
+import io.github.kuugasky.kuugatool.core.collection.MapUtil;
 import io.github.kuugasky.kuugatool.core.collection.SetUtil;
 import io.github.kuugasky.kuugatool.core.constants.KuugaCharConstants;
 import io.github.kuugasky.kuugatool.core.entity.KuugaDTO;
@@ -130,6 +131,14 @@ class StringUtilTest {
     @Test
     void formatPercentSign() {
         System.out.println(StringUtil.formatPercentSign("My name is %s, i'm %s years old.", "kuuga", 30));
+    }
+
+    @Test
+    void formatPlaceHolder() {
+        String context = "{kuugaName} is good boy.";
+        Map<String, String> kvMap = MapUtil.newHashMap("kuugaName", "kuuga");
+        String x = StringUtil.formatPlaceHolder(context, kvMap);
+        System.out.println(x);
     }
 
     @Test

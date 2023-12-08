@@ -16,7 +16,7 @@ import org.junit.jupiter.api.Test;
 class SpiProxyUtilTest {
 
     @Test
-    public void aopTest() {
+    void aopTest() {
         // 创建cat类，并反射创建TimeIntervalAspect类，再通过SPI获取到代理实现，以此创建代理对象
         Cat cat = SpiProxyUtil.proxy(new Cat(), TimeIntervalAspect.class);
         // 代理对象调用原对象方法时，会执行TimeIntervalAspect
@@ -26,7 +26,7 @@ class SpiProxyUtilTest {
     }
 
     @Test
-    public void aopByAutoCglibTest() {
+    void aopByAutoCglibTest() {
         Animal dog = SpiProxyUtil.proxy(new Dog(), TimeIntervalAspect.class);
         String result = dog.eat();
         Assertions.assertEquals("狗吃肉", result);
@@ -34,7 +34,7 @@ class SpiProxyUtilTest {
     }
 
     @Test
-    public void testCGLIBProxy() {
+    void testCGLIBProxy() {
         TagObj target = new TagObj();
         // 目标类设置标记
         target.setTag("tag");
@@ -45,7 +45,7 @@ class SpiProxyUtilTest {
     }
 
     @Test
-    public void testSpringCglibProxy() {
+    void testSpringCglibProxy() {
         TagObj target = new TagObj();
         // 目标类设置标记
         target.setTag("tag");
@@ -77,7 +77,7 @@ class SpiProxyUtilTest {
      * </p>
      */
     @Test
-    public void testCglibProxy() {
+    void testCglibProxy() {
         TagObj target = new TagObj();
         // 目标类设置标记
         target.setTag("tag");
@@ -88,7 +88,7 @@ class SpiProxyUtilTest {
     }
 
     @Test
-    public void testJdkProxy() {
+    void testJdkProxy() {
         TagObj target = new TagObj();
         // 目标类设置标记
         target.setTag("tag");
@@ -102,7 +102,7 @@ class SpiProxyUtilTest {
      * jdk代理只能用接口去承接具体服务对象
      */
     @Test
-    public void testJdkProxy2() {
+    void testJdkProxy2() {
         Cat animal = new Cat();
         JdkProxyFactory jdkProxyFactory = new JdkProxyFactory();
         Animal proxy = jdkProxyFactory.proxy(animal, TimeIntervalAspect.class);

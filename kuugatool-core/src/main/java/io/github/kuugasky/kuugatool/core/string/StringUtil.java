@@ -222,6 +222,26 @@ public final class StringUtil {
         return isEmpty(tpl) ? tpl : String.format(tpl, params);
     }
 
+    /**
+     * 格式化占位符
+     *
+     * @param context 文本
+     * @param param   占位符映射map
+     * @return 格式化后的文本
+     */
+    public static String formatPlaceHolder(String context, Map<String, String> param) {
+        if (param != null && !param.isEmpty()) {
+            for (Map.Entry<String, String> entry : param.entrySet()) {
+                String key = entry.getKey();
+                String value = entry.getValue();
+
+                String regex = "\\{%s\\}".formatted(key);
+                context = context.replaceAll(regex, value);
+            }
+        }
+        return context;
+    }
+
     // trim strip stripLeading ========================================================================================================================
 
     /**

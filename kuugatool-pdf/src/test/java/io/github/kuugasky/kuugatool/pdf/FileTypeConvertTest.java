@@ -5,7 +5,7 @@ import io.github.kuugasky.kuugatool.core.file.FileUtil;
 import io.github.kuugasky.kuugatool.pdf.component.PDFHeaderFooter;
 import io.github.kuugasky.kuugatool.pdf.util.FreeMarkerUtil;
 import io.github.kuugasky.kuugatool.pdf.util.PdfUtils;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.io.File;
 import java.io.IOException;
@@ -16,10 +16,10 @@ import java.io.IOException;
  * @author kuuga
  * @since 2023/6/13-06-13 17:04
  */
-public class FileTypeConvertTest {
+class FileTypeConvertTest {
 
-    public static String getXmlString() {
-        return "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">\n" +
+    static String getXmlString() {
+        return "<!DOCTYPE html  \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">\n" +
                 "<html lang=\"en\" xmlns=\"http://www.w3.org/1999/xhtml\">\n" +
                 "<head>\n" +
                 "    <meta charset=\"UTF-8\"/>\n" +
@@ -230,7 +230,7 @@ public class FileTypeConvertTest {
      * 成功例子
      */
     @Test
-    public void sss() throws Exception {
+    void sss() throws Exception {
         File htmlFile = FileUtil.file("/Users/kuuga/IdeaProjects/kuugatool/kuugatool-pdf/src/main/resources/templates/table.ftl");
         String readFileToString = FreeMarkerUtil.packTemplateData(htmlFile, MapUtil.newHashMap("companyName", "大秦皇朝"));
         String pdfFile = "/Users/kuuga/Downloads/pdf/invoice-2.pdf";
@@ -238,7 +238,7 @@ public class FileTypeConvertTest {
     }
 
     @Test
-    public void sss2() throws Exception {
+    void sss2() throws Exception {
         File htmlFile = FileUtil.file("/Users/kuuga/IdeaProjects/kuugatool/kuugatool-pdf/src/main/resources/templates/invoice.ftl");
         // String readFileToString = FileUtil.readFileToString(htmlFile);
         String readFileToString = FreeMarkerUtil.packTemplateData(htmlFile, null);
@@ -247,7 +247,7 @@ public class FileTypeConvertTest {
     }
 
     @Test
-    public void sss1() {
+    void sss1() {
         File htmlFile = FileUtil.file("/Users/kuuga/IdeaProjects/kuugatool/kuugatool-pdf/src/main/resources/templates/table.ftl");
         String pdfFile = "/Users/kuuga/Downloads/pdf/invoice-333.pdf";
         PDFHeaderFooter headerFooter = new PDFHeaderFooter("页眉kuuga", null, "页脚kuuga");
