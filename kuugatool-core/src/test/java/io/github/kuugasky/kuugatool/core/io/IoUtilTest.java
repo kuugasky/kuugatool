@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 import java.io.*;
 import java.nio.charset.Charset;
 
-public class IoUtilTest {
+class IoUtilTest {
 
     public static void main(String[] args) throws IOException {
         File source = new File("/Users/kuuga/Downloads/1.jpg");

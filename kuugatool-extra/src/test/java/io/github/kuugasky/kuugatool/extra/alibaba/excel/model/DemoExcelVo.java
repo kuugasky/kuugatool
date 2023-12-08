@@ -1,6 +1,7 @@
 package io.github.kuugasky.kuugatool.extra.alibaba.excel.model;
 
 import com.alibaba.excel.annotation.ExcelProperty;
+import com.alibaba.excel.annotation.format.DateTimeFormat;
 import com.alibaba.excel.annotation.format.NumberFormat;
 import com.alibaba.excel.annotation.write.style.ColumnWidth;
 import com.alibaba.excel.annotation.write.style.HeadRowHeight;
@@ -50,7 +51,7 @@ public class DemoExcelVo extends MultiData {
     @ColumnWidth(value = 20)
     private Double doubleData;
 
-    @sinceTimeFormat("yyyy年MM月dd日HH时mm分ss秒")
+    @DateTimeFormat("yyyy年MM月dd日HH时mm分ss秒")
     @ExcelProperty(value = {"日期", "日期"})
     @ColumnWidth(value = 50)
     private Date date;

@@ -36,6 +36,7 @@ public class NetworkUtil {
 
     /**
      * 获取本地IP地址【本地以太网IP】
+     * <p>
      * loopback：回环网卡就是微软的一种类似于虚拟网卡的一种设备，它能够被安装在一个没有网卡（这里是硬件网卡），的环境下，或者用于测试多个宿主环境。
      *
      * @return string
@@ -55,14 +56,14 @@ public class NetworkUtil {
         // 遍历网卡设备
         while (networks.hasMoreElements()) {
             NetworkInterface ni = networks.nextElement();
-//            Enumeration<InetAddress> inetAddresses = ni.getInetAddresses();
-//            StringBuilder stringBuilder = StringUtil.builder();
-//            while (inetAddresses.hasMoreElements()) {
-//                InetAddress inetAddress = inetAddresses.nextElement();
-//                if (!inetAddress.isLoopbackAddress() && inetAddress.isSiteLocalAddress() && !inetAddress.getHostAddress().contains(":")) {
-//                    stringBuilder.append(inetAddress).append(",");
-//                }
-//            }
+            // Enumeration<InetAddress> inetAddresses = ni.getInetAddresses();
+            // StringBuilder stringBuilder = StringUtil.builder();
+            // while (inetAddresses.hasMoreElements()) {
+            //     InetAddress inetAddress = inetAddresses.nextElement();
+            //     if (!inetAddress.isLoopbackAddress() && inetAddress.isSiteLocalAddress() && !inetAddress.getHostAddress().contains(":")) {
+            //         stringBuilder.append(inetAddress).append(",");
+            //     }
+            // }
             try {
                 // Console.error("网卡:{}, 在线:{}, 回环网卡:{}, 虚拟网卡:{}, 点对点:{}, IP:{}",
                 //         ni.getDisplayName(), ni.isUp(), ni.isLoopback(), ni.isVirtual(), ni.isPointToPoint(), StringUtil.removeEnd(stringBuilder.toString(), ","));
@@ -103,15 +104,18 @@ public class NetworkUtil {
                 Enumeration<InetAddress> addresses = netInterface.getInetAddresses();
                 while (addresses.hasMoreElements()) {
                     InetAddress ip = addresses.nextElement();
-                    if (ip instanceof Inet4Address
-                            && !ip.isLoopbackAddress() // loopback地址即本机地址，IPv4的loopback范围是127.0.0.0 ~ 127.255.255.255
-                            && !ip.getHostAddress().contains(":")) {
-                        return ip.getHostAddress();
+                    // loopback地址即本机地址，IPv4的loopback范围是127.0.0.0 ~ 127.255.255.255
+                    boolean isNotLoopbackAddress = !ip.isLoopbackAddress();
+                    String hostAddress = ip.getHostAddress();
+                    boolean hostAddressNoContains = !hostAddress.contains(":");
+
+                    if (ip instanceof Inet4Address && isNotLoopbackAddress && hostAddressNoContains) {
+                        return hostAddress;
                     }
                 }
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            log.error("NetworkUtil#getLocalNetworkCardIp error:{}", e.getMessage(), e);
         }
         return null;
     }
@@ -235,11 +239,21 @@ public class NetworkUtil {
      * 根据host获取ip
      *
      * @return ip地址
-     * @throws UnknownHostException 未知主机异常
      */
-    public static String getIpByHost(String host) throws UnknownHostException {
-        InetAddress inetAddress = InetAddress.getByName(host);
-        return inetAddress.getHostAddress();
+    public static String getIpByHost(String host) {
+        if (StringUtil.isEmpty(host)) {
+            return StringUtil.EMPTY;
+        }
+        if (StringUtil.contains(host, "://")) {
+            host = host.split("://")[1];
+        }
+        try {
+            InetAddress inetAddress = InetAddress.getByName(host);
+            return inetAddress.getHostAddress();
+        } catch (UnknownHostException e) {
+            log.error("getIpByHost error:{}", e.getMessage(), e);
+            return StringUtil.EMPTY;
+        }
     }
 
 }

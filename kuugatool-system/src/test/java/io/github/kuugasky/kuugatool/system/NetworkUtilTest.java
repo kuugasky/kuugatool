@@ -104,7 +104,7 @@ public class NetworkUtilTest {
     }
 
     @Test
-    public void getIpByHost() throws UnknownHostException {
+    public void getIpByHost() {
         System.out.println(NetworkUtil.getIpByHost("www.baidu.com"));
         System.out.println(NetworkUtil.getIpByHost("http://www.baidu.com"));
         System.out.println(NetworkUtil.getIpByHost("httpsx://www.baidu.com"));
