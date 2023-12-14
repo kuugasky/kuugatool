@@ -10,7 +10,7 @@ import io.github.kuugasky.kuugatool.pdf.component.chart.impl.DefaultLineChart;
 import io.github.kuugasky.kuugatool.pdf.component.chart.model.XYLine;
 import io.github.kuugasky.kuugatool.pdf.other.ScatterPlotChartTest;
 import io.github.kuugasky.kuugatool.pdf.other.TemplateBO;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -25,7 +25,7 @@ import static io.github.kuugasky.kuugatool.pdf.other.ReportKit360.getTemperature
  * @author kuuga
  * @since 2023/6/12-06-12 16:16
  */
-public class KuugaPdfTest {
+class KuugaPdfTest {
 
     public static void main(String[] args) {
         String templateFilePath = "/Users/kuuga/IdeaProjects/kuugatool/kuugatool-pdf/src/test/resources/templates/hello.ftl";
@@ -38,7 +38,7 @@ public class KuugaPdfTest {
     }
 
     @Test
-    public void test() {
+    void test() {
         PDFHeaderFooter headerFooter = new PDFHeaderFooter("页眉kuuga", null, "页脚kuuga");
 
         String outputFile = "/Users/kuuga/Downloads/pdf/kuugaPdf.pdf";
@@ -83,7 +83,7 @@ public class KuugaPdfTest {
     }
 
     @Test
-    public void kuuga() {
+    void kuuga() {
         PDFHeaderFooter headerFooter = new PDFHeaderFooter("kuuga", null, "Thank you for reading.");
 
         String outputFile = "/Users/kuuga/Downloads/pdf/kuugaPdf.pdf";

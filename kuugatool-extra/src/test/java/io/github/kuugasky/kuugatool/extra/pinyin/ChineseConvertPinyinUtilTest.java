@@ -47,14 +47,13 @@ class ChineseConvertPinyinUtilTest {
         // 转换为不带音调的拼音字符串
         // System.out.println(ChineseConvertPinyinUtil.convertToTonePinYin(str, true, null));
         // System.out.println(ChineseConvertPinyinUtil.convertToTonePinYin(str, false, "¥"));
-        System.out.println(ChineseConvertPinyinUtil.convertToTonePinYin("黄泽源 秦枫", false, "  "));
+        System.out.println(ChineseConvertPinyinUtil.convertToTonePinYin("秦枫", false, "  "));
     }
 
     @Test
     void convertToTraditional() {
         // 简体转换为繁体
         System.out.println(ChineseConvertPinyinUtil.convertToTraditional(str, true));
-        System.out.println(ChineseConvertPinyinUtil.convertToTraditional("黄泽源", true));
         System.out.println(ChineseConvertPinyinUtil.convertToTraditional("秦枫", true));
     }
 }

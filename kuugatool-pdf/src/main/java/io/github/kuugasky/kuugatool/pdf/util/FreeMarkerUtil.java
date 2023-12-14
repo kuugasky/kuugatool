@@ -82,7 +82,7 @@ public class FreeMarkerUtil {
     // }
 
     public static void main(String[] args) {
-        String s = packTemplateData(FileUtil.file("/Users/kuuga/IdeaProjects/kuugatool/kuugatool-pdf/src/main/resources/templates/invoice.ftl"), MapUtil.newHashMap("payee", "黄泽源"));
+        String s = packTemplateData(FileUtil.file("/Users/kuuga/IdeaProjects/kuugatool/kuugatool-pdf/src/main/resources/templates/invoice.ftl"), MapUtil.newHashMap("payee", "KUUGA"));
         System.out.println(s);
     }
 
