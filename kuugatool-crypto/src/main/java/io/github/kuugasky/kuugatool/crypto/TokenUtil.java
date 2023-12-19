@@ -6,7 +6,9 @@ import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.TokenExpiredException;
 import com.auth0.jwt.interfaces.Claim;
 import com.auth0.jwt.interfaces.JWTVerifier;
+import io.github.kuugasky.kuugatool.core.collection.MapUtil;
 import io.github.kuugasky.kuugatool.core.string.StringUtil;
+import io.github.kuugasky.kuugatool.crypto.exception.TokenException;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.Base64;
@@ -16,6 +18,8 @@ import java.util.Map;
 
 /**
  * TokenUtil
+ * <p>
+ * JWT签名验签
  *
  * @author kuuga
  * @since 2023/3/14-03-14 10:29
@@ -79,6 +83,7 @@ public class TokenUtil {
      * @return token
      */
     public static String sign(String tokenSecret, long expireTimeOfSeconds, Map<String, Object> map) {
+        checkSignParamsRequire(tokenSecret, expireTimeOfSeconds, map);
         try {
             // 私钥和加密算法
             Algorithm algorithm = Algorithm.HMAC256(tokenSecret);
@@ -123,14 +128,45 @@ public class TokenUtil {
     }
 
     /**
+     * 签名参数必填校验
+     *
+     * @param tokenSecret         token secret
+     * @param expireTimeOfSeconds 失效时间(s)
+     * @param map                 申明参数
+     */
+    private static void checkSignParamsRequire(String tokenSecret, long expireTimeOfSeconds, Map<String, Object> map) {
+        if (StringUtil.isEmpty(tokenSecret)) {
+            throw new TokenException("the token secret can not be empty");
+        }
+        if (expireTimeOfSeconds < 0) {
+            throw new TokenException("the expire time(seconds) can not less zero");
+        }
+        if (MapUtil.isEmpty(map)) {
+            throw new TokenException("the claim params can not be empty");
+        }
+    }
+
+    /**
      * 检验token是否正确
      *
-     * @param token **token**
+     * @param token token
      * @return boolean
      */
     public static boolean verify(String token) {
+        return verify(DEFAULT_TOKEN_SECRET, token);
+    }
+
+    /**
+     * 检验token是否正确
+     *
+     * @param secret secret
+     * @param token  token
+     * @return boolean
+     */
+    public static boolean verify(String secret, String token) {
         try {
-            Algorithm algorithm = Algorithm.HMAC256(DEFAULT_TOKEN_SECRET);
+            secret = StringUtil.isEmpty(secret) ? DEFAULT_TOKEN_SECRET : secret;
+            Algorithm algorithm = Algorithm.HMAC256(secret);
             JWTVerifier verifier = com.auth0.jwt.JWT.require(algorithm).build();
             verifier.verify(token);
             return true;
@@ -147,7 +183,19 @@ public class TokenUtil {
      * @return map
      */
     public static Map<String, Claim> getClaims(String token) {
-        Algorithm algorithm = Algorithm.HMAC256(DEFAULT_TOKEN_SECRET);
+        return getClaims(token, DEFAULT_TOKEN_SECRET);
+    }
+
+    /**
+     * 获取用户自定义Claim集合
+     *
+     * @param token  token
+     * @param secret secret
+     * @return map
+     */
+    public static Map<String, Claim> getClaims(String token, String secret) {
+        secret = StringUtil.isEmpty(secret) ? DEFAULT_TOKEN_SECRET : secret;
+        Algorithm algorithm = Algorithm.HMAC256(secret);
         JWTVerifier verifier = JWT.require(algorithm).build();
         return verifier.verify(token).getClaims();
     }
@@ -161,6 +209,17 @@ public class TokenUtil {
      */
     public static Claim getClaimValue(String token, String key) {
         return getClaims(token).get(key);
+    }
+
+    /**
+     * 获取声明值
+     *
+     * @param token token
+     * @param key   claimKey
+     * @return claimValue
+     */
+    public static Claim getClaimValue(String secret, String token, String key) {
+        return getClaims(token, secret).get(key);
     }
 
     /**

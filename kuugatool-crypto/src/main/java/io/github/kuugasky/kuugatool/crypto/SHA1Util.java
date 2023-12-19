@@ -18,10 +18,16 @@ import java.security.MessageDigest;
  */
 public final class SHA1Util {
 
-    private static final char[] HEX_DIGITS = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'};
+    private static final char[] HEX_DIGITS = {
+            '0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
+            'a', 'b', 'c', 'd', 'e', 'f'};
+
+    private static final String SHA_1 = "SHA1";
 
     /**
      * Takes the raw bytes from the digest and formats them correct.
+     * <p>
+     * 从摘要中获取原始字节，并正确格式化它们。
      *
      * @param bytes the raw bytes from the digest.
      * @return the formatted bytes.
@@ -37,13 +43,19 @@ public final class SHA1Util {
         return buf.toString();
     }
 
-    public static String encode(String str) {
-        if (str == null) {
+    /**
+     * 加密
+     *
+     * @param plaintext 明文
+     * @return 密文
+     */
+    public static String encode(String plaintext) {
+        if (plaintext == null) {
             return null;
         }
         try {
-            MessageDigest messageDigest = MessageDigest.getInstance("SHA1");
-            messageDigest.update(str.getBytes(Charset.defaultCharset()));
+            MessageDigest messageDigest = MessageDigest.getInstance(SHA_1);
+            messageDigest.update(plaintext.getBytes(Charset.defaultCharset()));
             return getFormattedText(messageDigest.digest());
         } catch (Exception e) {
             throw new RuntimeException(e);

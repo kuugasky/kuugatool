@@ -1,5 +1,6 @@
 package io.github.kuugasky.kuugatool.crypto;
 
+import io.github.kuugasky.kuugatool.core.collection.ArrayUtil;
 import io.github.kuugasky.kuugatool.core.constants.KuugaConstants;
 import io.github.kuugasky.kuugatool.core.string.StringUtil;
 import org.slf4j.Logger;
@@ -37,30 +38,58 @@ public final class MD5Util {
     /**
      * 用来将字节转换成 16 进制表示的字符
      */
-    private static final char[] HEX_DIGITS = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'};
+    private static final char[] HEX_DIGITS = {
+            '0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
+            'a', 'b', 'c', 'd', 'e', 'f'
+    };
 
-    public static String getMD5ToUpperCase(String source) {
-        String md5 = getMD5(source);
+    private static final String MD5 = "MD5";
+
+    /**
+     * 返回md5加密大写
+     *
+     * @param plaintext 明文
+     * @return 密文
+     */
+    public static String getMd5ToUpperCase(String plaintext) {
+        String md5 = getMd5(plaintext);
         return StringUtil.hasText(md5) ? md5.toUpperCase() : md5;
     }
 
-    public static String getMD5ToUpperCase(byte[] source) {
-        String md5 = getMD5(source);
+    /**
+     * 返回md5加密大写
+     *
+     * @param plaintextBytes 明文bytes
+     * @return 密文
+     */
+    public static String getMd5ToUpperCase(byte[] plaintextBytes) {
+        String md5 = getMd5(plaintextBytes);
         return StringUtil.hasText(md5) ? md5.toUpperCase() : md5;
     }
 
-    public static String getMD5(String source) {
-        return getMD5(source.getBytes(Charset.defaultCharset()));
+    /**
+     * 返回md5加密
+     *
+     * @param plaintext 明文
+     * @return 密文
+     */
+    public static String getMd5(String plaintext) {
+        return getMd5(plaintext.getBytes(Charset.defaultCharset()));
     }
 
-    public static String getMD5(byte[] source) {
-        if (source == null || source.length == 0) {
+    /**
+     * 返回md5加密
+     *
+     * @param plaintextBytes 明文bytes
+     * @return 密文
+     */
+    public static String getMd5(byte[] plaintextBytes) {
+        if (ArrayUtil.isEmpty(plaintextBytes)) {
             return StringUtil.EMPTY;
         }
-        String result = null;
         try {
-            MessageDigest md = MessageDigest.getInstance("MD5");
-            md.update(source);
+            MessageDigest md = MessageDigest.getInstance(MD5);
+            md.update(plaintextBytes);
             // MD5 的计算结果是一个 128 位的长整数
             byte[] tmp = md.digest();
             // 用字节表示就是 16 个字节
@@ -82,11 +111,11 @@ public final class MD5Util {
                 str[k++] = HEX_DIGITS[byte0 & 0xf];
             }
             // 换后的结果转换为字符串
-            result = new String(str);
+            return new String(str);
         } catch (Exception e) {
             logger.error("MD5加密异常:{}", e.getMessage());
         }
-        return result;
+        return null;
     }
 
 }

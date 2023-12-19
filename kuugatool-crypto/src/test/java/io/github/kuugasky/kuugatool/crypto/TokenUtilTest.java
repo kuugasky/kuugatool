@@ -9,6 +9,7 @@ import io.github.kuugasky.kuugatool.core.concurrent.pool.ThreadScheduledPool;
 import io.github.kuugasky.kuugatool.core.date.DateUtil;
 import io.github.kuugasky.kuugatool.core.object.ObjectUtil;
 import io.github.kuugasky.kuugatool.core.string.StringUtil;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.Date;
@@ -25,20 +26,23 @@ class TokenUtilTest {
     @Test
     void test4() {
         String sign = TokenUtil.sign(0, MapUtil.newHashMap("1", "2"));
-        System.out.println(sign);
-        String s = TokenUtil.getClaimValue(sign, "1").asString();
-        System.out.println(s);
+        // 获取声明值
+        String value = TokenUtil.getClaimValue(sign, "1").asString();
+        // 设置永不失效
         String sign1 = TokenUtil.sign(0, MapUtil.newHashMap("1", "2"));
-        System.out.println(sign1);
-        System.out.println(sign.equals(sign1));
-        System.out.println(TokenUtil.verify(sign1));
+
+        System.out.println("sign:" + sign);
+        System.out.println("claim value:" + value);
+
+        Assertions.assertEquals(sign, sign1);
+        Assertions.assertTrue(TokenUtil.verify(sign1));
     }
 
     @Test
     void test3() {
         LoginDto loginDto = new LoginDto();
         loginDto.setId(UUID.randomUUID().toString());
-        loginDto.setPhone("15919907075");
+        loginDto.setPhone("13800138000");
         loginDto.setName("kuuga");
         loginDto.setCreateTime(DateUtil.now());
         loginDto.setVersion(System.currentTimeMillis());
@@ -123,6 +127,15 @@ class TokenUtilTest {
         System.out.println(StringUtil.repeatNormal());
 
         System.out.println(MapUtil.toString(claims, true));
+    }
+
+    @Test
+    void test5() {
+        String secret = "kuuga";
+        String sign = TokenUtil.sign(secret, MapUtil.newHashMap("name", secret));
+        String nameValue = TokenUtil.getClaimValue(secret, sign, "name").toString();
+        System.out.println(nameValue);
+        System.out.println(TokenUtil.verify(secret, sign));
     }
 
 

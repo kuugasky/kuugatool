@@ -8,6 +8,7 @@ import io.github.kuugasky.kuugatool.core.string.StringUtil;
  * @author yoara
  */
 public class HexUtil {
+
     /**
      * 将 16进制（hex）字符串转换成  byte[]
      *
@@ -56,4 +57,5 @@ public class HexUtil {
         }
         return sb.toString();
     }
+
 }

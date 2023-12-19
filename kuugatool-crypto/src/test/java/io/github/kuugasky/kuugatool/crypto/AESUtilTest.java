@@ -30,14 +30,14 @@ public class AESUtilTest {
     public void getAESSecretKey() {
         // 用字符串生成的私钥
         byte[] bytes = AESUtil.makeKey();
-        SecretKeySpec secretKeySpec = AESUtil.getAESSecretKey(bytes);
+        SecretKeySpec secretKeySpec = AESUtil.getAesSecretKey(bytes);
         System.out.println(StringUtil.formatString(secretKeySpec));
     }
 
     @Test
     public void testGetAESSecretKey() throws Exception {
         // 用字符串生成的私钥
-        SecretKeySpec secretKeySpec = AESUtil.getAESSecretKey("kuuga", false);
+        SecretKeySpec secretKeySpec = AESUtil.getAesSecretKey("kuuga", false);
         System.out.println(StringUtil.formatString(secretKeySpec));
     }
 
@@ -45,7 +45,7 @@ public class AESUtilTest {
     public void encrypt() throws Exception {
         // 对数据加密，默认UTF-8 加密
         byte[] bytes = AESUtil.makeKey(AESUtil.AESSize.SIZE_128, "kuugasky");
-        SecretKeySpec secretKeySpec = AESUtil.getAESSecretKey(bytes);
+        SecretKeySpec secretKeySpec = AESUtil.getAesSecretKey(bytes);
         byte[] kuuga_is_a_good_boys = AESUtil.encrypt("Kuuga is a good boy", secretKeySpec);
         System.out.println(Arrays.toString(kuuga_is_a_good_boys));
         System.out.println(new String(kuuga_is_a_good_boys));
@@ -54,14 +54,14 @@ public class AESUtilTest {
     @Test
     public void decrypt() throws Exception {
         byte[] bytes = AESUtil.makeKey(AESUtil.AESSize.SIZE_128, "kuugasky");
-        SecretKeySpec secretKeySpec = AESUtil.getAESSecretKey(bytes);
+        SecretKeySpec secretKeySpec = AESUtil.getAesSecretKey(bytes);
         byte[] kuuga_is_a_good_boys = AESUtil.encrypt("Kuuga is a good boy", secretKeySpec);
         String encode = new String(Base64.getEncoder().encode(kuuga_is_a_good_boys));
         System.out.println("加密Base64编码后：" + encode);
         byte[] decode = Base64.getDecoder().decode(encode);
 
         byte[] bytes1 = AESUtil.makeKey(AESUtil.AESSize.SIZE_128, "kuuga1");
-        SecretKeySpec secretKeySpec1 = AESUtil.getAESSecretKey(bytes1);
+        SecretKeySpec secretKeySpec1 = AESUtil.getAesSecretKey(bytes1);
 
         String kuuga_is_a_good_boys1 = AESUtil.decrypt(decode, secretKeySpec);
         System.out.println("解密后：" + kuuga_is_a_good_boys1);

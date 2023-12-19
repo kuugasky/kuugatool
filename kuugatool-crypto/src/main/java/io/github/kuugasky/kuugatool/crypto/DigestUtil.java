@@ -11,16 +11,20 @@ import java.security.NoSuchAlgorithmException;
 /**
  * DigestUtil
  * 哈希算法（Hash）又称摘要算法（Digest），它的作用是：对任意一组输入数据进行计算，得到一个固定长度的输出摘要。
- * <a href="https://www.liaoxuefeng.com/wiki/1252599548343744/1304227729113121">...</a>
+ * <br>
+ * <a href="https://www.liaoxuefeng.com/wiki/1252599548343744/1304227729113121">哈希算法</a>
  * <p>
- * 哈希算法可用于验证数据完整性，具有防篡改检测的功能；
- * 常用的哈希算法有MD5、SHA-1等；
+ * 哈希算法可用于验证数据完整性，具有防篡改检测的功能；<br>
+ * 常用的哈希算法有MD5、SHA-1等；<br>
  * 用哈希存储口令时要考虑彩虹表攻击，可以采用明文前后加上自定义文本。
  *
  * @author kuuga
  * @since 2021/6/7
  */
 public class DigestUtil {
+
+    private static final String MD5 = "MD5";
+    private static final String SHA_1 = "SHA-1";
 
     /**
      * Java标准库提供了常用的哈希算法，并且有一套统一的接口。如MD5
@@ -30,9 +34,9 @@ public class DigestUtil {
      * @throws NoSuchAlgorithmException NoSuchAlgorithmException
      */
     public static String md5(String plaintext) throws NoSuchAlgorithmException {
-        // 创建一个MessageDigest实例:
-        MessageDigest md = MessageDigest.getInstance("MD5");
-        // 反复调用update输入数据:
+        // 创建一个MessageDigest实例
+        MessageDigest md = MessageDigest.getInstance(MD5);
+        // 反复调用update输入数据
         md.update(plaintext.getBytes(StandardCharsets.UTF_8));
         // 16 bytes: 68e109f0f40ca72a15e05cc22786f8e6
         byte[] result = md.digest();
@@ -51,7 +55,7 @@ public class DigestUtil {
      */
     public static String sha1(String plaintext) throws NoSuchAlgorithmException {
         // 创建一个MessageDigest实例:
-        MessageDigest md = MessageDigest.getInstance("SHA-1");
+        MessageDigest md = MessageDigest.getInstance(SHA_1);
         // 反复调用update输入数据:
         md.update(plaintext.getBytes(StandardCharsets.UTF_8));
         byte[] result = md.digest();
@@ -59,24 +63,32 @@ public class DigestUtil {
     }
 
     public static String sha1(String plaintext, ShaAlgorithmEnum shaAlgorithmEnum) throws NoSuchAlgorithmException {
-        // 创建一个MessageDigest实例:
+        // 创建一个MessageDigest实例
         MessageDigest md = MessageDigest.getInstance(shaAlgorithmEnum.algorithm);
-        // 反复调用update输入数据:
+        // 反复调用update输入数据
         md.update(plaintext.getBytes(StandardCharsets.UTF_8));
         byte[] result = md.digest();
         return new BigInteger(1, result).toString(16);
     }
 
+    @Getter
     @AllArgsConstructor
-    enum ShaAlgorithmEnum {
+    public enum ShaAlgorithmEnum {
         /**
          *
          */
-        SHA_1("SHA-1"),
-        SHA_256("SHA-256"),
-        SHA_512("SHA-512");
-        @Getter
+        SHA_1(DigestUtil.SHA_1, 40),
+        SHA_256("SHA-256", 64),
+        SHA_512("SHA-512", 128);
+
+        /**
+         * 算法
+         */
         private final String algorithm;
+        /**
+         * 密文长度
+         */
+        private final int ciphertextLength;
     }
 
 }

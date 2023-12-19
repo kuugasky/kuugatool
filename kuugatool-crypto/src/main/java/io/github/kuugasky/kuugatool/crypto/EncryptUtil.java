@@ -15,6 +15,9 @@ import java.util.Base64;
 @Slf4j
 public class EncryptUtil {
 
+    private static final String SHA = "SHA";
+    private static final String MD5 = "MD5";
+
     /**
      * 私有构造方法,将该工具类设为单例模式.
      */
@@ -27,8 +30,8 @@ public class EncryptUtil {
      * @param str 需要加密的字符串
      * @return MD5加密后的结果
      */
-    public static String encodeMD5String(String str, String salt) {
-        return encode(str + salt, "MD5");
+    public static String encodeMd5(String str, String salt) {
+        return encode(str + salt, MD5);
     }
 
     /**
@@ -37,8 +40,8 @@ public class EncryptUtil {
      * @param str 需要加密的字符串
      * @return SHA加密后的结果
      */
-    public static String encodeSHAString(String str) {
-        return encode(str, "SHA");
+    public static String encodeSha(String str) {
+        return encode(str, SHA);
     }
 
     /**
@@ -47,7 +50,7 @@ public class EncryptUtil {
      * @param str 需要加密的字符串
      * @return base64加密后的结果
      */
-    public static String encodeBase64String(String str) {
+    public static String encodeBase64(String str) {
         return Base64.getEncoder().encodeToString(str.getBytes());
     }
 
@@ -57,15 +60,15 @@ public class EncryptUtil {
      * @param str 需要解密的字符串
      * @return base64解密后的结果
      */
-    public static String decodeBase64String(String str) {
+    public static String decodeBase64(String str) {
         return new String(Base64.getDecoder().decode(str));
     }
 
     private static String encode(String str, String method) {
         MessageDigest mdInst;
         // 把密文转换成十六进制的字符串形式
-        // 单线程用StringBuilder，速度快 多线程用stringbuffer，安全
-        StringBuilder dstr = new StringBuilder();
+        // 单线程用StringBuilder，速度快 多线程用StringBuffer，安全
+        StringBuilder stringBuilder = new StringBuilder();
         try {
             // 获得MD5摘要算法的 MessageDigest对象
             mdInst = MessageDigest.getInstance(method);
@@ -79,19 +82,14 @@ public class EncryptUtil {
                     tmp += 256;
                 }
                 if (tmp < 16) {
-                    dstr.append("0");
+                    stringBuilder.append("0");
                 }
-                dstr.append(Integer.toHexString(tmp));
+                stringBuilder.append(Integer.toHexString(tmp));
             }
         } catch (NoSuchAlgorithmException e) {
             log.error(e.getMessage(), e);
         }
-        return dstr.toString();
-    }
-
-    public static void main(String[] args) {
-        System.out.println(EncryptUtil.encodeMD5String("123456", "18620936193"));
-        // cdb85e07996fb37eb6aab5fadc2d784f
+        return stringBuilder.toString();
     }
 
 }
