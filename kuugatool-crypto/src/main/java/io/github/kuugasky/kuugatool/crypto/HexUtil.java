@@ -10,7 +10,21 @@ import io.github.kuugasky.kuugatool.core.string.StringUtil;
 public class HexUtil {
 
     /**
-     * 将 16进制（hex）字符串转换成  byte[]
+     * 将 16进制（hex）字符串转换成String
+     *
+     * @param hexString 16进制字符串
+     * @return byte[]
+     */
+    public static String hexStringToString(String hexString) {
+        if (StringUtil.isEmpty(hexString)) {
+            return null;
+        }
+        byte[] bytes = hexStringToBytes(hexString);
+        return new String(bytes);
+    }
+
+    /**
+     * 将 16进制（hex）字符串转换成byte[]
      *
      * @param hexString 16进制字符串
      * @return byte[]
@@ -38,6 +52,19 @@ public class HexUtil {
      */
     private static byte charToByte(char c) {
         return (byte) "0123456789ABCDEF".indexOf(c);
+    }
+
+    /**
+     * 将字符串转换成16进制字符串
+     *
+     * @param str 字符串
+     * @return 16进制字符串
+     */
+    public static String stringToHexString(String str) {
+        if (StringUtil.isEmpty(str)) {
+            return null;
+        }
+        return byteToHexString(str.getBytes());
     }
 
     /**
