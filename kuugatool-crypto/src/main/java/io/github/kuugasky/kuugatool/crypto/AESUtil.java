@@ -1,19 +1,3 @@
-/*
- * Copyright 2016-2019 yoara
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 package io.github.kuugasky.kuugatool.crypto;
 
 import io.github.kuugasky.kuugatool.crypto.exception.DecryptionException;
@@ -33,13 +17,14 @@ import java.util.Base64;
 
 /**
  * AES对称加密和解密【对称加密】
- * 高级加密标准：
- * 是美国联邦政府采用的一种对称加密标准,这个标准用来替代原先的DES算法,已经广为全世界所使用,已然成为对称加密算法中最流行的算法之一。
+ * <p>
+ * 高级加密标准：<br>
+ * 是美国联邦政府采用的一种对称加密标准,这个标准用来替代原先的DES算法,已经广为全世界所使用,已然成为对称加密算法中最流行的算法之一。<br>
  * AES算法作为新一代的数据加密标准汇聚了强安全性、高性能、高效率、易用和灵活等优点,设计有三个密钥长度:128,192,256位,比DES算法的加密强度更高,更为安全。
  * <p>
  * 可自定义加密规则：encodeRules
  * <p>
- * 在对称加密算法中,数据发送方将明文(原始数据)和加密密钥一起经过特殊加密算法处理后,生成复杂的加密密文进行发送,数据接收方收到密文后,若想读取原文,
+ * 在对称加密算法中,数据发送方将明文(原始数据)和加密密钥一起经过特殊加密算法处理后,生成复杂的加密密文进行发送,数据接收方收到密文后,若想读取原文,<br>
  * 则需要使用加密使用的密钥及相同算法的逆算法对加密的密文进行解密,才能使其恢复成可读明文。
  *
  * @author kuuga
