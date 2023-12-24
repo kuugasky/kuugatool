@@ -184,7 +184,7 @@ public class SyncFinisher {
         public void onFailure(@NonNull Throwable t) {
             try {
                 String message = t.getMessage();
-                String md5 = MD5Util.getMD5(message);
+                String md5 = MD5Util.getMd5(message);
                 // 任务失败，失败量+1
                 workerErrorCount.incrementAndGet();
                 // 异常信息存储

@@ -82,7 +82,7 @@ public class KuugaDataCacheAop {
             } else {
                 String sign = StringUtil.isEmpty(kuugaDataCacheAble.value())
                         ? joinPoint.getSignature().toShortString() : kuugaDataCacheAble.value();
-                String key = sign + ":" + MD5Util.getMD5(makeKey(joinPoint, kuugaDataCacheAble.key()));
+                String key = sign + ":" + MD5Util.getMd5(makeKey(joinPoint, kuugaDataCacheAble.key()));
                 cacheObject = kuugaCache.get(KuugaBaseCacheKey.REDIS_CACHED_DATA, key);
                 if (cacheObject == null) {
                     processFlag = true;
@@ -121,7 +121,7 @@ public class KuugaDataCacheAop {
         String sign = StringUtil.isEmpty(kuugaDataCacheRemove.value())
                 ? joinPoint.getSignature().toShortString() : kuugaDataCacheRemove.value();
         String key = sign + ":" +
-                MD5Util.getMD5(makeKey(joinPoint, kuugaDataCacheRemove.key()));
+                MD5Util.getMd5(makeKey(joinPoint, kuugaDataCacheRemove.key()));
         kuugaCache.remove(KuugaBaseCacheKey.REDIS_CACHED_DATA, key);
         return joinPoint.proceed();
     }
