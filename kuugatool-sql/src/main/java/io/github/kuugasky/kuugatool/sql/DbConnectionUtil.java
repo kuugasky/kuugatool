@@ -44,10 +44,7 @@ public class DbConnectionUtil {
             Class.forName(dbType.getDriver());
             // 第二步，取得数据库连接
             conn = DriverManager.getConnection(url, username, password);
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } catch (SQLException e) {
-            e.printStackTrace();
+        } catch (ClassNotFoundException | SQLException e) {
             log.error(e.getMessage());
         }
         return conn;

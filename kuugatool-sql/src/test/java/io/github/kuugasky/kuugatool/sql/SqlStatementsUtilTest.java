@@ -10,7 +10,7 @@ public class SqlStatementsUtilTest {
                     `garden`.`FNAME`                                                                                               AS `楼盘名`,
                     `zone`.`FNAME`                                                                                                 AS `区域`,
             concat(`areazone`.`FNAME`)                                                                                     AS `商圈`,
-                    `agent_house`.`selectHouseTypeByHouseId`(`house`.`FID`)                                                        AS `房源状态`,
+                    `kuuga_house`.`selectHouseTypeByHouseId`(`house`.`FID`)                                                        AS `房源状态`,
                     `house`.`FROOM_NUMBER`                                                                                         AS `房号编码`,
                     `dts_infra_oa`.`selectWarZoneOrgName`(`person`.`FEXTEND_PERSON_ORG_ID`)                                        AS `拓房人战区`,
             extendPersonOrg.FREGION_ORG_NAME,
@@ -43,11 +43,11 @@ public class SqlStatementsUtilTest {
                     if((`entrust`.`FSELL_ENTRUST_TYPE` in ('SELF_SIGN', 'NOT_SELF_SIGN')),
                     (to_days(`entrust`.`FENTRUST_END_TIME`) - to_days(now())),
                     '-')                                                                                                        AS `委卖到期天数`
-            from (((((((`agent_house`.`t_house_sell` `sell`
-                    left join `agent_house`.`t_house` `house` on ((`house`.`FID` = `sell`.`FHOUSE_ID`))) left join `agent_house`.`t_house_extend_person` `person` on ((
+            from (((((((`kuuga_house`.`t_house_sell` `sell`
+                    left join `kuuga_house`.`t_house` `house` on ((`house`.`FID` = `sell`.`FHOUSE_ID`))) left join `kuuga_house`.`t_house_extend_person` `person` on ((
                                                                                                                                                                               (`person`.`FHOUSE_ID` = `sell`.`FHOUSE_ID`) and
                 (`person`.`FENABLED_STATUS` = 'ENABLED'))))
-            left join `agent_dts`.`t_dts_dict_garden` `garden` on ((`garden`.`FID` = `house`.`FGARDEN_ID`))) left join `agent_house`.`t_house_entrust` `entrust` on ((
+            left join `kuuga_dts`.`t_dts_dict_garden` `garden` on ((`garden`.`FID` = `house`.`FGARDEN_ID`))) left join `kuuga_house`.`t_house_entrust` `entrust` on ((
                                                                                                                                                                              (`house`.`FID` = `entrust`.`FHOUSE_ID`) and
                 (`entrust`.`FENABLED_STATUS` = 'ENABLED'))))
             left join `dts_infra_dict`.`t_zone` `zone` on ((convert(`zone`.`FID` using utf8mb4) = `house`.`FREGION_ID`))) left join `dts_infra_dict`.`t_garden_businessarea` `businessarea` on ((

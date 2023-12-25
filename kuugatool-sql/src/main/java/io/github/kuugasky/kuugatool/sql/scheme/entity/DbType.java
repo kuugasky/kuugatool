@@ -11,6 +11,7 @@ import java.util.Map;
  *
  * @author kuuga
  */
+@Getter
 @AllArgsConstructor
 public enum DbType {
 
@@ -21,9 +22,7 @@ public enum DbType {
     ORACLE("oracle.jdbc.driver.OracleDriver", DbTypeConstants.ORACLE_TYPE_MAP),
     ;
 
-    @Getter
     private final String driver;
-    @Getter
     private final Map<String, String> typeMap;
 
 }

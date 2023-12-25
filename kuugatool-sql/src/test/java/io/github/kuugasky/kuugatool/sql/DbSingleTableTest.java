@@ -18,14 +18,14 @@ import java.util.Map;
  */
 class DbSingleTableTest {
 
-    static void main(String[] args) throws Exception {
-        String url = "jdbc:mysql:replication://10.210.10.155:3306,10.210.10.155:3306/agent_house?useSSL=false&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useLegacyDatetimeCode=false&autoReconnect=true";
+    public static void main(String[] args) throws Exception {
+        String url = "jdbc:mysql:replication://10.210.10.155:3306,10.210.10.155:3306/kuuga_house?useSSL=false&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useLegacyDatetimeCode=false&autoReconnect=true";
         String username = "root";
         String password = "kfang.com";
 
         DbConnectParam dbConnectParam = new DbConnectParam(DbType.MYSQL, url, username, password);
 
-        TableInfo allTableInfo = DbTableUtil.getTableInfo(dbConnectParam, "agent_house", "t_house");
+        TableInfo allTableInfo = DbTableUtil.getTableInfo(dbConnectParam, "kuuga_house", "t_house");
 
         String tableDesc = allTableInfo.getTableDesc();
         System.out.println(tableDesc);
@@ -44,13 +44,13 @@ class DbSingleTableTest {
 
     @Test
     void scan() throws Exception {
-        String url = "jdbc:mysql:replication://10.210.10.155:3306,10.210.10.155:3306/agent_house?useSSL=false&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useLegacyDatetimeCode=false&autoReconnect=true";
+        String url = "jdbc:mysql:replication://10.210.10.155:3306,10.210.10.155:3306/kuuga_house?useSSL=false&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useLegacyDatetimeCode=false&autoReconnect=true";
         String username = "root";
         String password = "kfang.com";
 
         DbConnectParam dbConnectParam = new DbConnectParam(DbType.MYSQL, url, username, password);
 
-        TableInfo allTableInfo = DbTableUtil.getTableInfo(dbConnectParam, "agent_house", "t_house_log");
+        TableInfo allTableInfo = DbTableUtil.getTableInfo(dbConnectParam, "kuuga_house", "t_house_log");
         System.out.println(allTableInfo.getTableDesc());
         List<FieldModel> defList = allTableInfo.getFieldModels();
 

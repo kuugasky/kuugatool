@@ -50,7 +50,7 @@ public class ImNotifyMessage implements Serializable {
     private String toUserOnlineStatus;
 
     /**
-     * USED（二手）、RENT（租赁）、NEW_HOUSE（新房）、COMMUNITY（小区）、AGENT_SHOP（经纪人店铺）、OTHER（其他）
+     * USED（二手）、RENT（租赁）、NEW_HOUSE（新房）、COMMUNITY（小区）、KUUGA_SHOP（经纪人店铺）、OTHER（其他）
      */
     private String businessType;
 
@@ -144,7 +144,7 @@ public class ImNotifyMessage implements Serializable {
         RENT("租赁"),
         NEW_HOUSE("新房"),
         COMMUNITY("小区"),
-        AGENT_SHOP("经纪人店铺"),
+        KUUGA_SHOP("经纪人店铺"),
         OTHER("其他"),
         ;
 

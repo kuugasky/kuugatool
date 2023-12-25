@@ -15,7 +15,7 @@ import java.util.List;
  */
 public class MysqlTableContainsFieldUtil {
 
-    private final static String INFORMATION_SCHEMA = "agent_house_pre";
+    private final static String INFORMATION_SCHEMA = "kuuga_house_pre";
     private final static String MYSQL_DB_URL = "jdbc:mysql:replication://10.210.10.155:3306,10.210.10.155:3306/" + INFORMATION_SCHEMA + "?useSSL=false&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useLegacyDatetimeCode=false&autoReconnect=true";
     private final static String MYSQL_DB_USERNAME = "root";
     private final static String MYSQL_DB_PASSWORD = "kfang.com";
@@ -23,15 +23,15 @@ public class MysqlTableContainsFieldUtil {
 
     public static void main(String[] args) throws SQLException {
         List<String> schemas = ListUtil.newArrayList();
-        schemas.add("agent_complaint");
-        schemas.add("agent_customer");
-        schemas.add("agent_dts");
-        schemas.add("agent_house");
-        schemas.add("agent_house_pre");
-        schemas.add("agent_monitor");
-        schemas.add("agent_oms");
-        schemas.add("agent_photographer");
-        schemas.add("agent_report");
+        schemas.add("kuuga_complaint");
+        schemas.add("kuuga_customer");
+        schemas.add("kuuga_dts");
+        schemas.add("kuuga_house");
+        schemas.add("kuuga_house_pre");
+        schemas.add("kuuga_monitor");
+        schemas.add("kuuga_oms");
+        schemas.add("kuuga_photographer");
+        schemas.add("kuuga_report");
         schemas.add("dts_infra_dict");
         schemas.add("dts_infra_oa");
         schemas.add("tuofangbao_dts");

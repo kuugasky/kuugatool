@@ -102,6 +102,7 @@ public final class DbTableUtil {
      * @return 表结构信息结合
      * @throws SQLException sql异常
      */
+    @SuppressWarnings("all")
     public static List<TableInfo> queryTableInfos(DbConnectParam dbConnectParam, String schemaName) throws SQLException {
         Connection connection = DbConnectionUtil.getConnect(dbConnectParam);
         try {

@@ -87,7 +87,7 @@ public class ContextInterceptor extends ZBaseInterceptorAdapter {
     @Override
     public boolean preHandle(@NonNull HttpServletRequest request, @NonNull HttpServletResponse response, @NonNull Object handler) {
         try {
-            ContextHolder.setDataSource(DataSource.WEB_AGENT_BUSINESS_PC);
+            ContextHolder.setDataSource(DataSource.WEB_KUUGA_BUSINESS_PC);
 
             WebSleuthLogUtil.initSleuthInfo(request);
             return super.preHandle(request, response, handler);
@@ -101,7 +101,7 @@ public class ContextInterceptor extends ZBaseInterceptorAdapter {
         /**
          *
          */
-        WEB_AGENT_BUSINESS_PC
+        WEB_KUUGA_BUSINESS_PC
     }
 
 }

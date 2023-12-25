@@ -68,12 +68,12 @@ public final class MysqlStatementsUtil {
      * sql简化并移除单引号
      *
      * @param sql             sql
-     * @param removeBackquote 移除单引号
+     * @param removeBackQuote 移除单引号
      * @return sql
      */
-    public static String sqlSimplify(String sql, boolean removeBackquote) {
+    public static String sqlSimplify(String sql, boolean removeBackQuote) {
         String sqlString = SqlStatementsUtil.toSqlString(sql, MYSQL, false, true);
-        if (removeBackquote) {
+        if (removeBackQuote) {
             return sqlString.replaceAll(KuugaConstants.BACKQUOTE, StringUtil.EMPTY);
         }
         return sqlString;

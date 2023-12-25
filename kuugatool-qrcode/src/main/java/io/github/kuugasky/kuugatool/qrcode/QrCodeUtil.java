@@ -18,6 +18,7 @@ import java.io.OutputStream;
  * 二维码 工具类
  * <p>
  * 说明: 二维码是一种编码形式， 将内容encode，得到二维码;， 将内容decode,得到数据内容。
+ * @author kuuga
  */
 @Slf4j
 @SuppressWarnings("unused")

@@ -8,7 +8,7 @@ import java.sql.Connection;
 
 class DbConnectionUtilTest {
 
-    private final static String INFORMATION_SCHEMA = "agent_house_pre";
+    private final static String INFORMATION_SCHEMA = "kuuga_house_pre";
     private final static String MYSQL_DB_URL = "jdbc:mysql:replication://10.210.10.155:3306,10.210.10.155:3306/" + INFORMATION_SCHEMA + "?useSSL=false&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useLegacyDatetimeCode=false&autoReconnect=true";
     private final static String MYSQL_DB_USERNAME = "root";
     private final static String MYSQL_DB_PASSWORD = "kfang.com";

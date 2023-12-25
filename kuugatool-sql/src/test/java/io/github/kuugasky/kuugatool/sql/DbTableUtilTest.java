@@ -18,10 +18,10 @@ class DbTableUtilTest {
     void testQueryTableInfos() throws SQLException {
         String username = "root";
         String password = "kfang.com";
-        String url = "jdbc:mysql:replication://10.210.10.155:3306,10.210.10.155:3306/agent_house?useSSL=false&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useLegacyDatetimeCode=false&autoReconnect=true";
+        String url = "jdbc:mysql:replication://10.210.10.155:3306,10.210.10.155:3306/kuuga_house?useSSL=false&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useLegacyDatetimeCode=false&autoReconnect=true";
         DbConnectParam dbConnectParam = new DbConnectParam(DbType.MYSQL, username, password, url);
 
-        List<TableInfo> tableInfos = DbTableUtil.queryTableInfos(dbConnectParam, "agent_house");
+        List<TableInfo> tableInfos = DbTableUtil.queryTableInfos(dbConnectParam, "kuuga_house");
         ListUtil.optimize(tableInfos).forEach(tableInfo -> {
             List<FieldModel> fieldModels = tableInfo.getFieldModels();
             String collect = fieldModels.stream().map(FieldModel::getColumnName).collect(Collectors.joining("#"));
@@ -33,10 +33,10 @@ class DbTableUtilTest {
     void testTestQueryTableInfos() throws SQLException {
         String username = "root";
         String password = "kfang.com";
-        String url = "jdbc:mysql:replication://10.210.10.155:3306,10.210.10.155:3306/agent_house?useSSL=false&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useLegacyDatetimeCode=false&autoReconnect=true";
+        String url = "jdbc:mysql:replication://10.210.10.155:3306,10.210.10.155:3306/kuuga_house?useSSL=false&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useLegacyDatetimeCode=false&autoReconnect=true";
         DbConnectParam dbConnectParam = new DbConnectParam(DbType.MYSQL, url, username, password);
 
-        TableInfo tableInfo = DbTableUtil.getTableInfo(dbConnectParam, "agent_house", "t_house_log");
+        TableInfo tableInfo = DbTableUtil.getTableInfo(dbConnectParam, "kuuga_house", "t_house_log");
         List<FieldModel> fieldModels = tableInfo.getFieldModels();
         String collect = fieldModels.stream().map(FieldModel::getColumnName).collect(Collectors.joining("#"));
         System.out.println(tableInfo.getTableDesc() + ":" + collect);
@@ -46,10 +46,10 @@ class DbTableUtilTest {
     void testQueryTableInfosByContainsField() throws SQLException {
         String username = "root";
         String password = "kfang.com";
-        String url = "jdbc:mysql:replication://10.210.10.155:3306,10.210.10.155:3306/agent_house?useSSL=false&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useLegacyDatetimeCode=false&autoReconnect=true";
+        String url = "jdbc:mysql:replication://10.210.10.155:3306,10.210.10.155:3306/kuuga_house?useSSL=false&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useLegacyDatetimeCode=false&autoReconnect=true";
         DbConnectParam dbConnectParam = new DbConnectParam(DbType.MYSQL, url, username, password);
 
-        List<TableInfo> tableInfos = DbTableUtil.queryTableInfosByContainsField(dbConnectParam, "agent_house", "FROOM_ID");
+        List<TableInfo> tableInfos = DbTableUtil.queryTableInfosByContainsField(dbConnectParam, "kuuga_house", "FROOM_ID");
         System.out.println(tableInfos.size());
     }
 
@@ -57,10 +57,10 @@ class DbTableUtilTest {
     void testTestQueryTableInfosByContainsField() throws SQLException {
         String username = "root";
         String password = "kfang.com";
-        String url = "jdbc:mysql:replication://10.210.10.155:3306,10.210.10.155:3306/agent_house?useSSL=false&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useLegacyDatetimeCode=false&autoReconnect=true";
+        String url = "jdbc:mysql:replication://10.210.10.155:3306,10.210.10.155:3306/kuuga_house?useSSL=false&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useLegacyDatetimeCode=false&autoReconnect=true";
         DbConnectParam dbConnectParam = new DbConnectParam(DbType.MYSQL, url, username, password);
 
-        List<TableInfo> tableInfos = DbTableUtil.queryTableInfosByContainsField(dbConnectParam, "agent_house", "froom_id", true);
+        List<TableInfo> tableInfos = DbTableUtil.queryTableInfosByContainsField(dbConnectParam, "kuuga_house", "froom_id", true);
         System.out.println(tableInfos.size());
         tableInfos.forEach(tableInfo -> System.out.println(StringUtil.formatString(tableInfo)));
     }
