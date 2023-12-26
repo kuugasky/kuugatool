@@ -6,13 +6,13 @@
     <parent>
         <artifactId>kuugatool-parent</artifactId>
         <groupId>io.github.kuugasky</groupId>
-        <version>1.0.0</version>
+        <version>2.0.0</version>
     </parent>
 
     <packaging>jar</packaging>
     <modelVersion>4.0.0</modelVersion>
     <artifactId>kuugatool-xml</artifactId>
-    <version>1.0.0</version>
+    <version>2.0.0</version>
     <name>${project.artifactId}</name>
     <description>kuugatool XML工具</description>
 
@@ -20,13 +20,13 @@
         <dependency>
             <groupId>io.github.kuugasky</groupId>
             <artifactId>kuugatool-core</artifactId>
-            <version>1.0.0</version>
+            <version>2.0.0</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>io.github.kuugasky</groupId>
             <artifactId>kuugatool-json</artifactId>
-            <version>1.0.0</version>
+            <version>2.0.0</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
