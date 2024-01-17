@@ -87,7 +87,7 @@ public final class ShortUrlUtil {
         }
         String expireDateStr;
         // 如果失效时间有效，则按失效时间生成短链接，否则默认失效时间是一个月
-        if (expireDate != null && DateUtil.before(DateUtil.now(), expireDate)) {
+        if (expireDate != null && DateUtil.isBefore(DateUtil.now(), expireDate)) {
             expireDateStr = DateUtil.formatDate(expireDate);
         } else {
             expireDateStr = DateUtil.formatDate(DateUtil.moreOrLessMonths(DateUtil.now(), 1));

@@ -1,5 +1,7 @@
 package io.github.kuugasky.kuugatool.core.date;
 
+import lombok.Getter;
+
 import java.time.temporal.ChronoUnit;
 
 /**
@@ -7,7 +9,9 @@ import java.time.temporal.ChronoUnit;
  *
  * @author Looly
  */
+@Getter
 public enum DateUnit {
+
     /**
      * 一毫秒
      */
@@ -33,17 +37,13 @@ public enum DateUnit {
      */
     WEEK(DAY.getMillis() * 7);
 
+    /**
+     * 单位对应的毫秒数
+     */
     private final long millis;
 
     DateUnit(long millis) {
         this.millis = millis;
-    }
-
-    /**
-     * @return 单位对应的毫秒数
-     */
-    public long getMillis() {
-        return this.millis;
     }
 
     /**

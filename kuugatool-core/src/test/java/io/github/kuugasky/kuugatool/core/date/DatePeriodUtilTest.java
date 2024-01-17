@@ -37,7 +37,7 @@ class DatePeriodUtilTest {
     @Test
     void between() {
         Date startDate = DateUtil.of(2022, 7, 9, 12, 0, 0);
-        Date endDate = DateUtil.of(2022, 7, 10, 0, 0, 0);
+        Date endDate = DateUtil.of(2022, 8, 10, 0, 0, 0);
 
         Period period = DatePeriodUtil.between(DateUtil.toLocalDate(startDate), DateUtil.toLocalDate(endDate));
 

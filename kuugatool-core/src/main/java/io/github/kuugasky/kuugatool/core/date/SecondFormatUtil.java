@@ -1,6 +1,5 @@
 package io.github.kuugasky.kuugatool.core.date;
 
-
 import io.github.kuugasky.kuugatool.core.constants.KuugaConstants;
 import io.github.kuugasky.kuugatool.core.string.StringUtil;
 
@@ -28,6 +27,14 @@ public final class SecondFormatUtil {
     private static final String ZERO_SECOND = "00:00";
     private static final String ZERO_SECOND_FULL_FORMAT = "00:00:00";
 
+    /**
+     * 在给定的时间格式字符串周围添加方括号。
+     * <li>入参：02:25</li>
+     * <li>出参：[02:25]</li>
+     *
+     * @param timeFormatStr 时间格式字符串
+     * @return 添加方括号后的时间格式字符串
+     */
     public static String fillSquareBrackets(String timeFormatStr) {
         return String.format("[%s]", timeFormatStr);
     }
@@ -35,21 +42,21 @@ public final class SecondFormatUtil {
     /**
      * 格式化秒
      *
-     * @param time 180s
+     * @param second 180s
      * @return 03:00
      */
-    public static String getSecondFormat(int time) {
-        return getSecondFormat(Long.parseLong(time + StringUtil.EMPTY));
+    public static String getSecondFormat(int second) {
+        return getSecondFormat(Long.parseLong(second + StringUtil.EMPTY));
     }
 
     /**
      * 格式化秒
      *
-     * @param time 180s
+     * @param second 180s
      * @return 03:00
      */
-    public static String getSecondFormat(long time) {
-        return getSecondFormat(time, false);
+    public static String getSecondFormat(long second) {
+        return getSecondFormat(second, false);
     }
 
     /**
@@ -63,11 +70,19 @@ public final class SecondFormatUtil {
         return getSecondFormat(time, fullFormat, false);
     }
 
+    /**
+     * 根据传入的时间获取秒的格式化字符串
+     *
+     * @param time               时间值秒
+     * @param fullFormat         是否显示完整格式
+     * @param fillSquareBrackets 是否添加方括号
+     * @return 格式化后的字符串结果
+     */
     public static String getSecondFormat(long time, boolean fullFormat, boolean fillSquareBrackets) {
         String timeFormatStr;
         long dayCount = 0;
         if (time > ONE_DAY_SECOND) {
-            // throw new RuntimeException("超过一天最大秒数");
+            // 抛出运行时异常，表示时间超过一天的最大秒数
             dayCount = (time / ONE_DAY_SECOND);
             time = time - (dayCount * ONE_DAY_SECOND);
         }
@@ -107,6 +122,14 @@ public final class SecondFormatUtil {
         return assemblyResults(dayCount, timeFormatStr, fillSquareBrackets);
     }
 
+    /**
+     * 拼接结果
+     *
+     * @param dayCount           天数
+     * @param timeFormatStr      时间格式字符串
+     * @param fillSquareBrackets 是否填充方括号
+     * @return 拼接后的结果字符串
+     */
     private static String assemblyResults(long dayCount, String timeFormatStr, boolean fillSquareBrackets) {
         if (dayCount > 0) {
             timeFormatStr = String.format("%sd %s", dayCount, timeFormatStr);
@@ -117,6 +140,14 @@ public final class SecondFormatUtil {
         return timeFormatStr;
     }
 
+    /**
+     * 对给定的长整型时间值进行补零处理，使其总位数等于10位。<br>
+     * 如果时间值小于10，则在时间值前补零；<br>
+     * 如果时间值大于等于10，则在时间值后添加一个空字符串。<br>
+     *
+     * @param time 需要进行补零处理的时间值
+     * @return 补零处理后的字符串
+     */
     private static String zeroPadding(long time) {
         if (time < KuugaConstants.TEN) {
             return "0" + time;
@@ -125,14 +156,17 @@ public final class SecondFormatUtil {
     }
 
     private static boolean isHour(long time) {
+        // 判断给定的时间是否大于等于一小时
         return time >= ONE_HOUR_SECOND;
     }
 
     private static boolean isMinute(long time) {
+        // 判断给定的时间是否在一小时和一分钟之间
         return ONE_HOUR_SECOND > time && time >= ONE_MINUTE_SECOND;
     }
 
     private static boolean isSecond(long time) {
+        // 判断给定的时间是否小于一分钟
         return time < ONE_MINUTE_SECOND;
     }
 

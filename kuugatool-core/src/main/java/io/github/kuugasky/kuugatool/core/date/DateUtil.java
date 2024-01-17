@@ -6,6 +6,7 @@ import io.github.kuugasky.kuugatool.core.constants.KuugaConstants;
 import io.github.kuugasky.kuugatool.core.object.ObjectUtil;
 import io.github.kuugasky.kuugatool.core.string.StringUtil;
 import lombok.Data;
+import lombok.extern.slf4j.Slf4j;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -24,6 +25,7 @@ import java.util.regex.Pattern;
  *
  * @author kuuga
  */
+@Slf4j
 public final class DateUtil {
 
     private static final String DEFAULT_OFFSET_ID = "+8";
@@ -135,64 +137,148 @@ public final class DateUtil {
 
     // 获取年月日时分秒===========================================================================================================
 
+    /**
+     * 获取当前年份
+     *
+     * @return 当前年份
+     */
     public static int thisYear() {
         return LocalDate.now().getYear();
     }
 
+    /**
+     * 获取指定日期的年份
+     *
+     * @param date 指定的日期
+     * @return 年份
+     */
     public static int getYear(Date date) {
         return toLocalDate(date).getYear();
     }
 
+    /**
+     * 获取当前月份
+     *
+     * @return 当前月份
+     */
     public static int thisMonth() {
         return LocalDate.now().getMonthValue();
     }
 
+    /**
+     * 获取给定日期的月份
+     *
+     * @param date 传入的日期
+     * @return 传入日期的月份值
+     */
     public static int getMonth(Date date) {
         return toLocalDate(date).getMonthValue();
     }
 
+    /**
+     * 获取当前日期的天数。
+     *
+     * @return 当前日期的天数
+     */
     public static int thisDay() {
         return LocalDate.now().getDayOfMonth();
     }
 
+    /**
+     * 获取给定日期是该月的第几天
+     *
+     * @param date 日期对象
+     * @return 该月的第几天，从1开始
+     */
     public static int getDay(Date date) {
         return toLocalDate(date).getDayOfMonth();
     }
 
+    /**
+     * 获取当前小时数
+     *
+     * @return 当前小时数
+     */
     public static int thisHour() {
         return LocalTime.now().getHour();
     }
 
+    /**
+     * 获取指定日期的小时数
+     *
+     * @param date 日期对象
+     * @return 指定日期的小时数
+     */
     public static int getHour(Date date) {
         return toLocalTime(date).getHour();
     }
 
+    /**
+     * 获取当前分钟数
+     *
+     * @return 当前分钟数
+     */
     public static int thisMinute() {
         return LocalTime.now().getMinute();
     }
 
+    /**
+     * 获取给定日期的分钟数
+     *
+     * @param date 一个给定的日期
+     * @return 给定日期的分钟数
+     */
     public static int getMinute(Date date) {
         return toLocalTime(date).getMinute();
     }
 
+    /**
+     * 获取当前秒数
+     *
+     * @return 当前秒数
+     */
     public static int thisSecond() {
         return LocalTime.now().getSecond();
     }
 
+    /**
+     * 获取指定日期的秒数
+     *
+     * @param date 日期对象
+     * @return 秒数
+     */
     public static int getSecond(Date date) {
         return toLocalTime(date).getSecond();
     }
 
     // 当天日期相关===========================================================================================================
 
+    /**
+     * 获取当前时间
+     *
+     * @return 返回当前时间的Date对象
+     */
     public static Date now() {
         return new Date();
     }
 
+    /**
+     * 返回当前日期的字符串表示
+     *
+     * @return 当前日期的字符串表示
+     */
     public static String today() {
         return LocalDate.now().toString();
     }
 
+    /**
+     * 返回当前日期的字符串表示，格式为yyyy-MM-dd。<br>
+     * 如果传入的日期格式与yyyy-MM-dd相同，则调用today()方法返回当天的日期字符串；<br>
+     * 否则，调用format方法将当前日期转换为指定的日期格式。
+     *
+     * @param dateFormat 日期格式
+     * @return 当前日期的字符串表示
+     */
     public static String today(final DateFormat dateFormat) {
         if (dateFormat == DateFormat.yyyy_MM_dd) {
             return today();
@@ -200,19 +286,40 @@ public final class DateUtil {
         return format(dateFormat, new Date());
     }
 
+    /**
+     * 获取当前时间的字符串表示，格式为"yyyy-MM-dd HH:mm:ss"。
+     *
+     * @return 当前时间的字符串表示。
+     */
     public static String todayTime() {
         return today(DateFormat.yyyy_MM_dd_HH_mm_ss);
     }
 
     // 时间格式校验===========================================================================================================
 
+    /**
+     * 检查月份字符串的格式是否符合指定的格式
+     *
+     * @param monthStr 月份字符串
+     * @return 如果月份字符串格式符合指定格式，则返回true；否则返回false
+     */
     public static boolean checkMonthFormat(final String monthStr) {
+        // 定义月份格式的正则表达式
         final String monthFormat = "\\d{4}-\\d{2}";
+        // 编译正则表达式
         Pattern pattern = Pattern.compile(monthFormat);
+        // 创建匹配器
         Matcher match = pattern.matcher(monthStr);
+        // 判断匹配结果是否匹配成功
         return match.matches();
     }
 
+    /**
+     * 检查日期格式是否符合指定格式
+     *
+     * @param dateStr 日期字符串
+     * @return 如果日期格式符合指定格式，则返回true；否则返回false
+     */
     public static boolean checkDateFormat(final String dateStr) {
         final String dateFormat = "\\d{4}-\\d{2}-\\d{2}";
         Pattern pattern = Pattern.compile(dateFormat);
@@ -222,42 +329,90 @@ public final class DateUtil {
 
     // JDK8日期和Date互转===========================================================================================================
 
+    /**
+     * 将给定的LocalDate对象转换为Date对象
+     *
+     * @param localDate 一个LocalDate对象
+     * @return 转换后的Date对象
+     */
     public static Date toDate(final LocalDate localDate) {
         ZonedDateTime zdt = localDate.atStartOfDay(ZONE_ID);
         return Date.from(zdt.toInstant());
     }
 
+    /**
+     * 将给定的LocalTime对象转换为Date对象
+     *
+     * @param localTime 一个LocalTime对象
+     * @return 转换后的Date对象
+     */
     public static Date toDate(final LocalTime localTime) {
-        LocalDate localDate = LocalDate.now();
-        LocalDateTime localDateTime = LocalDateTime.of(localDate, localTime);
-        Instant instant = localDateTime.atZone(ZONE_ID).toInstant();
-        return Date.from(instant);
+        LocalDate localDate = LocalDate.now(); // 获取当前日期
+        LocalDateTime localDateTime = LocalDateTime.of(localDate, localTime); // 使用给定的时间生成当前日期和时间的对象
+        Instant instant = localDateTime.atZone(ZONE_ID).toInstant(); // 将日期时间转换为指定时区的Instant对象
+        return Date.from(instant); // 将Instant对象转换为Date对象
     }
 
+    /**
+     * 将给定的LocalDateTime对象转换为Date对象
+     *
+     * @param localDateTime 一个LocalDateTime对象
+     * @return 转换后的Date对象
+     */
     public static Date toDate(final LocalDateTime localDateTime) {
         ZonedDateTime zdt = localDateTime.atZone(ZONE_ID);
         return Date.from(zdt.toInstant());
     }
 
+    /**
+     * 将 Date 对象转换为 LocalDate 对象
+     *
+     * @param date 需要转换的 Date 对象
+     * @return 转换后的 LocalDate 对象
+     */
     public static LocalDate toLocalDate(final Date date) {
         Instant instant = date.toInstant();
         return instant.atZone(ZONE_ID).toLocalDate();
     }
 
+    /**
+     * 将 Date 对象转换为 LocalTime 类型的对象
+     *
+     * @param date 待转换的 Date 对象
+     * @return 转换后的 LocalTime 类型的对象
+     */
     public static LocalTime toLocalTime(final Date date) {
         return toLocalDateTime(date).toLocalTime();
     }
 
+    /**
+     * 将 Java 的 Date 对象转换为 LocalDateTime 对象
+     *
+     * @param date 需要转换的 Date 对象
+     * @return 转换后的 LocalDateTime 对象
+     */
     public static LocalDateTime toLocalDateTime(final Date date) {
         Instant instant = date.toInstant();
         return instant.atZone(ZONE_ID).toLocalDateTime();
     }
 
+    /**
+     * 将给定的日期转换为年份和月份。
+     *
+     * @param date 日期对象
+     * @return 年份和月份的组合对象
+     */
     public static YearMonth toYearMonth(final Date date) {
         LocalDate localDate = toLocalDate(date);
         return YearMonth.of(localDate.getYear(), localDate.getMonthValue());
     }
 
+    /**
+     * 将给定的日期转换为月日组合对象。
+     *
+     * @param date 日期对象
+     * @return 月日组合对象
+     */
     public static MonthDay toMonthDay(final Date date) {
         LocalDate localDate = toLocalDate(date);
         return MonthDay.of(localDate.getMonthValue(), localDate.getDayOfMonth());
@@ -265,6 +420,13 @@ public final class DateUtil {
 
     // 增减年月日周复合功能函数===========================================================================================================
 
+    /**
+     * 对指定的日期进行加减秒操作
+     *
+     * @param date         待操作的日期
+     * @param secondsCount 秒数的变化量，正数表示加秒，负数表示减秒
+     * @return 操作后的日期
+     */
     public static Date moreOrLessSeconds(final Date date, final int secondsCount) {
         if (secondsCount == 0) {
             return date;
@@ -275,6 +437,13 @@ public final class DateUtil {
         return minusSeconds(date, Math.abs(secondsCount));
     }
 
+    /**
+     * 对指定的日期进行加减分钟操作
+     *
+     * @param date         待操作的日期
+     * @param minutesCount 分钟的变化量，正数表示加分钟，负数表示减分钟
+     * @return 操作后的日期
+     */
     public static Date moreOrLessMinutes(final Date date, final int minutesCount) {
         if (minutesCount == 0) {
             return date;
@@ -285,6 +454,13 @@ public final class DateUtil {
         return minusMinutes(date, Math.abs(minutesCount));
     }
 
+    /**
+     * 对指定的日期进行加减小时操作
+     *
+     * @param date       待操作的日期
+     * @param hoursCount 小时的变化量，正数表示加小时，负数表示减小时
+     * @return 操作后的日期
+     */
     public static Date moreOrLessHours(final Date date, final int hoursCount) {
         if (hoursCount == 0) {
             return date;
@@ -295,6 +471,13 @@ public final class DateUtil {
         return minusHours(date, Math.abs(hoursCount));
     }
 
+    /**
+     * 对指定的日期进行加减天数操作
+     *
+     * @param date      待操作的日期
+     * @param daysCount 天数的变化量，正数表示加天数，负数表示减天数
+     * @return 操作后的日期
+     */
     public static Date moreOrLessDays(final Date date, final int daysCount) {
         if (daysCount == 0) {
             return date;
@@ -305,6 +488,13 @@ public final class DateUtil {
         return minusDays(date, Math.abs(daysCount));
     }
 
+    /**
+     * 对指定的日期进行加减月数操作
+     *
+     * @param date        待操作的日期
+     * @param monthsCount 月数的变化量，正数表示加月数，负数表示减月数
+     * @return 操作后的日期
+     */
     public static Date moreOrLessMonths(final Date date, final int monthsCount) {
         if (monthsCount == 0) {
             return date;
@@ -315,6 +505,13 @@ public final class DateUtil {
         return minusMonths(date, Math.abs(monthsCount));
     }
 
+    /**
+     * 对指定的日期进行加减年数操作
+     *
+     * @param date       待操作的日期
+     * @param yearsCount 年数的变化量，正数表示加年数，负数表示减年数
+     * @return 操作后的日期
+     */
     public static Date moreOrLessYears(final Date date, final int yearsCount) {
         if (yearsCount == 0) {
             return date;
@@ -325,6 +522,13 @@ public final class DateUtil {
         return minusYears(date, Math.abs(yearsCount));
     }
 
+    /**
+     * 对指定的日期进行加减周数操作
+     *
+     * @param date       待操作的日期
+     * @param weeksCount 周数的变化量，正数表示加周数，负数表示减周数
+     * @return 操作后的日期
+     */
     public static Date moreOrLessWeeks(final Date date, final int weeksCount) {
         if (weeksCount == 0) {
             return date;
@@ -335,6 +539,14 @@ public final class DateUtil {
         return minusWeeks(date, Math.abs(weeksCount));
     }
 
+    /**
+     * 对指定的日期按照给定的时间单位进行加减操作
+     *
+     * @param date  要进行操作的日期
+     * @param count 加减的次数
+     * @param unit  时间单位
+     * @return 操作后的日期
+     */
     public static Date moreOrLess(final Date date, final int count, final ChronoUnit unit) {
         if (count == 0) {
             return date;
@@ -348,14 +560,35 @@ public final class DateUtil {
 
     // 增减年月日周单功能函数===========================================================================================================
 
+    /**
+     * 向给定的日期添加指定的秒数。
+     *
+     * @param date         要添加秒数的日期
+     * @param secondsCount 要添加的秒数
+     * @return 添加秒数后的日期
+     */
     private static Date plusSeconds(Date date, int secondsCount) {
         return toDate(toLocalDateTime(date).plusSeconds(secondsCount));
     }
 
+    /**
+     * 从给定的日期中减去指定的秒数。
+     *
+     * @param date         要减去秒数的日期
+     * @param secondsCount 要减去的秒数
+     * @return 减去秒数后的日期
+     */
     private static Date minusSeconds(Date date, int secondsCount) {
         return toDate(toLocalDateTime(date).minusSeconds(secondsCount));
     }
 
+    /**
+     * 从给定的日期中加上指定的分钟数。
+     *
+     * @param date         要添加分钟数的日期
+     * @param minutesCount 要添加的分钟数
+     * @return 添加分钟数后的日期
+     */
     private static Date plusMinutes(final Date date, final int minutesCount) {
         return toDate(toLocalDateTime(date).plusMinutes(minutesCount));
     }
@@ -439,63 +672,134 @@ public final class DateUtil {
         return toDate(localDate);
     }
 
+    /**
+     * 返回指定日期所在月份下一个月的第一个日期。
+     *
+     * @param date 日期
+     * @return 下一个月的第一个日期
+     */
     public static Date firstDayOfNextMonth(final Date date) {
         LocalDate localDate = toLocalDate(date).with(TemporalAdjusters.firstDayOfNextMonth());
         return toDate(localDate);
     }
 
+    /**
+     * 返回指定日期所在年份的第一天日期。
+     *
+     * @param date 日期
+     * @return 年份的第一天日期
+     */
     public static Date firstDayOfYear(final Date date) {
         LocalDate localDate = toLocalDate(date).with(TemporalAdjusters.firstDayOfYear());
         return toDate(localDate);
     }
 
+    /**
+     * 返回指定日期所在年份的下一年的第一天日期。
+     *
+     * @param date 日期
+     * @return 下一年的第一天日期
+     */
     public static Date firstDayOfNextYear(final Date date) {
         LocalDate localDate = toLocalDate(date).with(TemporalAdjusters.firstDayOfNextYear());
         return toDate(localDate);
     }
 
+    /**
+     * 返回指定日期所在周的周一。
+     *
+     * @param date 指定的日期
+     * @return 返回指定日期所在周的周一的日期
+     */
     public static Date firstDayOfWeek(final Date date) {
-        // previousOrSame如果date就是周一，则返回date
+        // 如果指定日期就是周一，则直接返回该日期
         LocalDate saturdayWeekDate = toLocalDate(date).with(TemporalAdjusters.previousOrSame(DayOfWeek.MONDAY));
         return toDate(saturdayWeekDate);
     }
 
+    /**
+     * 返回指定日期所在下一个星期的第一天。
+     *
+     * @param date 一个Date对象，表示需要计算的日期
+     * @return 返回指定日期所在下一个星期的第一天的Date对象
+     */
     public static Date firstDayOfNextWeek(final Date date) {
         LocalDate saturdayWeekDate = toLocalDate(date).with(TemporalAdjusters.next(DayOfWeek.MONDAY));
         return toDate(saturdayWeekDate);
     }
 
+
     // 最后一天===========================================================================================================
 
+    /**
+     * 返回指定日期所在月份的最后一天。
+     *
+     * @param date 一个Date对象，表示需要计算的日期
+     * @return 返回指定日期所在月份的最后一天的Date对象
+     */
     public static Date lastDayOfMonth(final Date date) {
         LocalDate localDate = toLocalDate(date).with(TemporalAdjusters.lastDayOfMonth());
         return toDate(localDate);
     }
 
+
+    /**
+     * 求下个月的最后一天
+     *
+     * @param date 日期
+     * @return 下个月的最后一天
+     */
     public static Date lastDayOfNextMonth(final Date date) {
         Date nextMonthDate = plusMonths(date, 1);
         return lastDayOfMonth(nextMonthDate);
     }
 
+
+    /**
+     * 返回给定日期所在年的最后一天。
+     *
+     * @param date 给定的日期
+     * @return 给定日期所在年的最后一天
+     */
     public static Date lastDayOfYear(final Date date) {
         LocalDate localDate = toLocalDate(date).with(TemporalAdjusters.lastDayOfYear());
         return toDate(localDate);
     }
 
+
+    /**
+     * 返回下一年的最后一天。
+     *
+     * @param date 一个Date对象，表示当前日期
+     * @return 返回下一年的最后一天的Date对象
+     */
     public static Date lastDayOfNextYear(final Date date) {
         Date nextMonthDate = plusYears(date, 1);
         return lastDayOfYear(nextMonthDate);
     }
 
+    /**
+     * 返回给定日期所在周的最后一天。
+     *
+     * @param date 一个Date对象，表示要计算的日期
+     * @return 返回给定日期所在周的最后一天的Date对象
+     */
     public static Date lastDayOfWeek(final Date date) {
         LocalDate sundayWeekDate = toLocalDate(date).with(TemporalAdjusters.nextOrSame(DayOfWeek.SUNDAY));
         return toDate(sundayWeekDate);
     }
 
+    /**
+     * 返回下周的最后一天
+     *
+     * @param date 一个日期对象
+     * @return 返回下周的最后一天
+     */
     public static Date lastDayOfNextWeek(final Date date) {
         Date nextWeekDate = plusWeeks(date, 1);
         return lastDayOfWeek(nextWeekDate);
     }
+
 
     // date format ===========================================================================================================
 
@@ -592,7 +896,7 @@ public final class DateUtil {
             try {
                 return simpleDateFormat.parse(dateTimeStr);
             } catch (ParseException e) {
-                e.printStackTrace();
+                log.error("日期时间解析失败，日期时间格式：{}，日期时间文本：{}", dateFormat, dateTimeStr);
                 return null;
             }
         }
@@ -775,6 +1079,12 @@ public final class DateUtil {
             String toString = "%dY%dM%dD %dH%dm%ds.%dns";
             return String.format(toString, years, months, days, hours, minutes, seconds, nanos);
         }
+
+        public String toStringCN() {
+            String toString = "%d年%d月%d日 %d时%d分%d秒.%d纳秒";
+            return String.format(toString, years, months, days, hours, minutes, seconds, nanos);
+        }
+
     }
 
     /**
@@ -1026,25 +1336,24 @@ public final class DateUtil {
     }
 
     /**
-     * date1在date2之前
+     * 判断两个日期是否满足 date1 在 date2 之前的关系。
      *
-     * @param date1 date1
-     * @param date2 date2
-     * @return date1是否在date2之前
+     * @param date1 第一个日期对象
+     * @param date2 第二个日期对象
+     * @return 如果 date1 在 date2 之前返回 true，否则返回 false
      */
-    public static boolean before(final Date date1, final Date date2) {
+    public static boolean isBefore(final Date date1, final Date date2) {
         return toLocalDateTime(date1).isBefore(toLocalDateTime(date2));
     }
 
-
     /**
-     * date1在date2之后
+     * 判断两个日期是否满足 date1 在 date2 之后的关系。
      *
-     * @param date1 date1
-     * @param date2 date2
-     * @return date1是否在date2之后
+     * @param date1 第一个日期对象
+     * @param date2 第二个日期对象
+     * @return 如果 date1 在 date2 之后返回 true，否则返回 false
      */
-    public static boolean after(final Date date1, final Date date2) {
+    public static boolean isAfter(final Date date1, final Date date2) {
         return toLocalDateTime(date1).isAfter(toLocalDateTime(date2));
     }
 
@@ -1244,7 +1553,9 @@ public final class DateUtil {
         MonthDay monthDay = MonthDay.from(now);
         int monthValue = monthDay.getMonthValue();
         int dayOfMonth = monthDay.getDayOfMonth();
-        return String.format(formatStr, (monthValue < 10 ? "0" + monthValue : monthValue), (dayOfMonth < 10 ? "0" + dayOfMonth : dayOfMonth));
+        Object monthZeroFill = monthValue < 10 ? "0" + monthValue : monthValue;
+        Object dayZeroFill = dayOfMonth < 10 ? "0" + dayOfMonth : dayOfMonth;
+        return String.format(formatStr, monthZeroFill, dayZeroFill);
     }
 
     /**
@@ -1254,12 +1565,22 @@ public final class DateUtil {
      * @return 是否
      */
     public static boolean isBirthdayToday(final Date birthday) {
-        MonthDay birthdayMonthDay = MonthDay.from(toLocalDate(birthday));
+        return isCycleDate(birthday);
+    }
+
+    /**
+     * 判断今天是否某个周期性日期
+     *
+     * @param cycleDate 周期性日期
+     * @return True is a periodic date and false is a non-periodic date.
+     */
+    public static boolean isCycleDate(final Date cycleDate) {
+        MonthDay cycleMonthDay = MonthDay.from(toLocalDate(cycleDate));
 
         LocalDate now = toLocalDate(new Date());
         MonthDay monthDay = MonthDay.from(now);
 
-        return birthdayMonthDay.equals(monthDay);
+        return cycleMonthDay.equals(monthDay);
     }
 
     // 判断是否闰年===========================================================================================================
@@ -1299,8 +1620,11 @@ public final class DateUtil {
      * @return 时间戳
      */
     public static long currentTimeSeconds() {
+        // 将当前时间转换为LocalDateTime对象
         LocalDateTime localDateTime = toLocalDateTime(now());
+        // 将LocalDateTime对象转换为从1970年1月1日00:00:00 UTC到当前时间的秒数，并使用默认时区
         return localDateTime.toEpochSecond(ZoneOffset.of(DEFAULT_OFFSET_ID));
+
     }
 
     /**
@@ -1501,11 +1825,24 @@ public final class DateUtil {
     }
 
     /**
+     * 对比年
+     *
+     * @param date1 date1
+     * @param date2 date2
+     * @return Ture is the same year and false is not the same year.
+     */
+    public static boolean equalsYear(final Date date1, final Date date2) {
+        YearMonth localDate1 = toYearMonth(date1);
+        YearMonth localDate2 = toYearMonth(date2);
+        return localDate1.getYear() == localDate2.getYear();
+    }
+
+    /**
      * 获取本月共有多少天
      *
      * @return 总共天数
      */
-    public static int getLengthOfMonth() {
+    public static int lengthOfMonth() {
         YearMonth currentYearMonth = YearMonth.now();
         return currentYearMonth.lengthOfMonth();
     }
@@ -1515,7 +1852,7 @@ public final class DateUtil {
      *
      * @return 总共天数
      */
-    public static int getLengthOfMonth(final Date date) {
+    public static int lengthOfMonth(final Date date) {
         YearMonth currentYearMonth = toYearMonth(date);
         return currentYearMonth.lengthOfMonth();
     }
@@ -1534,7 +1871,7 @@ public final class DateUtil {
     }
 
     /**
-     * 间隔时间对比 返回 ?天?时?分?秒
+     * 间隔时间对比 返回两个时间间隔 ?天?时?分?秒
      *
      * @param fromDate from小 to大 返回为正数
      * @param toDate   from大 to小 返回为负数

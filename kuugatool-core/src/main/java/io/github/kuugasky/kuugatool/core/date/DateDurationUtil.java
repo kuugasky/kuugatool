@@ -6,7 +6,7 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 
 /**
- * DatePeriodUtil
+ * DateDurationUtil
  * <p>
  * Duration 表示一个时间段，Duration 包含两部分：seconds 表示秒，nanos 表示纳秒，它们的组合表达了时间长度。
  *
@@ -16,13 +16,13 @@ import java.time.LocalTime;
 public final class DateDurationUtil {
 
     /**
-     * 获取表示两个时间对象之间持续时间的Duration。
-     * 它计算两个临时对象之间的持续时间。
-     * 如果对象类型不同，则根据第一个对象的类型计算持续时间。
-     * 例如，如果第一个参数是LocalTime，那么第二个参数将转换为LocalTime。
-     * 指定的时态对象必须支持SECONDS单元。
-     * 为了完全准确，应该支持NANOS单元或NANO_OF_SECOND字段。
-     * 如果结束在开始之前，这个方法的结果可以是一个负数周期。
+     * 获取表示两个时间对象之间持续时间的Duration。<br>
+     * 它计算两个临时对象之间的持续时间。<br>
+     * 如果对象类型不同，则根据第一个对象的类型计算持续时间。<br>
+     * 例如，如果第一个参数是LocalTime，那么第二个参数将转换为LocalTime。<br>
+     * 指定的时态对象必须支持SECONDS单元。<br>
+     * 为了完全准确，应该支持NANOS单元或NANO_OF_SECOND字段。<br>
+     * 如果结束在开始之前，这个方法的结果可以是一个负数周期。<br>
      * 为了保证获得正的持续时间，对结果调用abs()。
      *
      * @param startInclusive the start instant, inclusive, not null

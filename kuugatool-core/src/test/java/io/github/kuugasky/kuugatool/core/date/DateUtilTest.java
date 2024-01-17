@@ -8,8 +8,12 @@ import org.junit.jupiter.api.Test;
 
 import java.time.*;
 import java.time.temporal.ChronoUnit;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class DateUtilTest {
 
@@ -494,17 +498,17 @@ class DateUtilTest {
     @Test
     void before() {
         Date before = DateUtil.moreOrLessDays(DateUtil.now(), -3);
-        System.out.println(DateUtil.before(before, DateUtil.now()));
-        System.out.println(DateUtil.before(DateUtil.now(), DateUtil.now()));
-        System.out.println(DateUtil.before(DateUtil.moreOrLessSeconds(DateUtil.now(), -1), DateUtil.now()));
+        System.out.println(DateUtil.isBefore(before, DateUtil.now()));
+        System.out.println(DateUtil.isBefore(DateUtil.now(), DateUtil.now()));
+        System.out.println(DateUtil.isBefore(DateUtil.moreOrLessSeconds(DateUtil.now(), -1), DateUtil.now()));
     }
 
     @Test
     void after() {
         Date after = DateUtil.moreOrLessDays(DateUtil.now(), 3);
-        System.out.println(DateUtil.after(after, DateUtil.now()));
-        System.out.println(DateUtil.after(DateUtil.now(), DateUtil.now()));
-        System.out.println(DateUtil.after(DateUtil.moreOrLessSeconds(DateUtil.now(), 1), DateUtil.now()));
+        System.out.println(DateUtil.isAfter(after, DateUtil.now()));
+        System.out.println(DateUtil.isAfter(DateUtil.now(), DateUtil.now()));
+        System.out.println(DateUtil.isAfter(DateUtil.moreOrLessSeconds(DateUtil.now(), 1), DateUtil.now()));
     }
 
     @Test
@@ -734,14 +738,36 @@ class DateUtilTest {
     }
 
     @Test
+    public void testEqualsYear_sameYear_returnTrue() {
+        Date date1 = new Date();
+        Date date2 = new Date();
+
+        boolean result = DateUtil.equalsYear(date1, date2);
+
+        assertTrue(result);
+    }
+
+    @Test
+    public void testEqualsYear_differentYear_returnFalse() {
+        Date date1 = new Date();
+        Calendar calendar = Calendar.getInstance();
+        calendar.add(Calendar.YEAR, 1);
+        Date date2 = new Date(calendar.getTime().getTime());
+
+        boolean result = DateUtil.equalsYear(date1, date2);
+
+        assertFalse(result);
+    }
+
+    @Test
     void getLengthOfMonth() {
-        System.out.println(DateUtil.getLengthOfMonth());
+        System.out.println(DateUtil.lengthOfMonth());
     }
 
     @Test
     void testGetLengthOfMonth() {
         Date date = DateUtil.moreOrLessDays(DateUtil.now(), -1);
-        System.out.println(DateUtil.getLengthOfMonth(date));
+        System.out.println(DateUtil.lengthOfMonth(date));
     }
 
     @Test
@@ -804,7 +830,7 @@ class DateUtilTest {
         System.out.println(DateUtil.getSecond(DateUtil.now()));
     }
 
-    static void main(String[] args) {
+    public static void main(String[] args) {
         System.out.println(DateFormat.yyyyMMdd.name() + "=" + DateUtil.format(DateFormat.yyyy_MM_dd_HH_mm_ss, DateUtil.parse(DateFormat.yyyyMMdd, "19900513")));
         System.out.println(DateFormat.yyyyMM.name() + "=" + DateUtil.format(DateFormat.yyyy_MM_dd_HH_mm_ss, DateUtil.parse(DateFormat.yyyyMM, "199005")));
         System.out.println(DateFormat.yyyyMM2.name() + "=" + DateUtil.format(DateFormat.yyyy_MM_dd_HH_mm_ss, DateUtil.parse(DateFormat.yyyyMM2, "1999-05")));
@@ -926,7 +952,7 @@ class DateUtilTest {
 
     @Test
     void isNextNaturalMonthByNow() {
-        System.out.println(DateUtil.isNextNaturalMonthByNow(null));
+        System.out.println(DateUtil.isNextNaturalMonthByNow(DateUtil.now()));
     }
 
     @Test
@@ -954,6 +980,7 @@ class DateUtilTest {
         Thread.sleep(1000);
         DateUtil.DateInfo difference = DateUtil.difference(startDateTime, endDateTime);
         System.out.println(difference);
+        System.out.println(difference.toStringCN());
     }
 
     @Test

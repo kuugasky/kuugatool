@@ -7,52 +7,52 @@ import java.util.Date;
 public class DateChainUtilTest {
 
     @Test
-    public void qoqBefore() {
-        DateChainUtil.DateQoQ date = DateChainUtil.qoqBefore(DateUtil.of(2022, 4, 19));
-        System.out.println(DateUtil.format(date.getFromDate()));
-        System.out.println(DateUtil.format(date.getToDate()));
+    public void rangeBefore() {
+        DateChainRangeUtil.DateChainRange date = DateChainRangeUtil.rangeBefore(DateUtil.of(2024, 1, 17));
+        System.out.println(DateUtil.format(date.getStartDate()));
+        System.out.println(DateUtil.format(date.getEndDate()));
     }
 
     @Test
-    public void qoqAfter() {
-        DateChainUtil.DateQoQ date = DateChainUtil.qoqAfter(DateUtil.of(2022, 4, 19));
-        System.out.println(DateUtil.format(date.getFromDate()));
-        System.out.println(DateUtil.format(date.getToDate()));
+    public void rangeAfter() {
+        DateChainRangeUtil.DateChainRange date = DateChainRangeUtil.rangeAfter(DateUtil.of(2022, 4, 19));
+        System.out.println(DateUtil.format(date.getStartDate()));
+        System.out.println(DateUtil.format(date.getEndDate()));
     }
 
     @Test
-    public void qoq() {
+    public void dateChainRange() {
         Date startDate = DateUtil.of(2022, 4, 19);
-        DateChainUtil.DateQoQ date = DateChainUtil.qoq(startDate, DateChainUtil.QoQType.BEFORE);
-        System.out.println(DateUtil.format(date.getFromDate()));
-        System.out.println(DateUtil.format(date.getToDate()));
+        DateChainRangeUtil.DateChainRange date = DateChainRangeUtil.dateChainRange(startDate, DateChainRangeUtil.DateChainType.BEFORE);
+        System.out.println(DateUtil.format(date.getStartDate()));
+        System.out.println(DateUtil.format(date.getEndDate()));
     }
 
     @Test
-    public void testQoqBefore() {
+    public void testRangeBefore() {
         Date fromDate = DateUtil.of(2022, 8, 29);
         Date toDate = DateUtil.of(2022, 9, 4);
-        DateChainUtil.DateQoQ date = DateChainUtil.qoqBefore(fromDate, toDate);
-        System.out.println(DateUtil.format(date.getFromDate()));
-        System.out.println(DateUtil.format(date.getToDate()));
+        DateChainRangeUtil.DateChainRange date = DateChainRangeUtil.rangeBefore(fromDate, toDate);
+        System.out.println(DateUtil.format(date.getStartDate()));
+        System.out.println(DateUtil.format(date.getEndDate()));
     }
 
     @Test
-    public void testQoqAfter() {
+    public void testRangeAfter() {
         Date fromDate = DateUtil.of(2022, 8, 29);
         Date toDate = DateUtil.of(2022, 9, 4);
-        DateChainUtil.DateQoQ date = DateChainUtil.qoqAfter(fromDate, toDate);
-        System.out.println(DateUtil.format(date.getFromDate()));
-        System.out.println(DateUtil.format(date.getToDate()));
+        DateChainRangeUtil.DateChainRange date = DateChainRangeUtil.rangeAfter(fromDate, toDate);
+        System.out.println(DateUtil.format(date.getStartDate()));
+        System.out.println(DateUtil.format(date.getEndDate()));
     }
 
     @Test
-    public void testQoq() {
-        Date fromDate = DateUtil.of(2022, 4, 11);
-        Date toDate = DateUtil.of(2022, 4, 17);
-        DateChainUtil.DateQoQ date = DateChainUtil.qoq(fromDate, toDate, DateChainUtil.QoQType.AFTER);
-        System.out.println(DateUtil.format(date.getFromDate()));
-        System.out.println(DateUtil.format(date.getToDate()));
+    public void testDateChainRange() {
+        Date fromDate = DateUtil.of(2024, 1, 2);
+        Date toDate = DateUtil.of(2024, 1, 8);
+        DateChainRangeUtil.DateChainRange date = DateChainRangeUtil.dateChainRange(fromDate, toDate, DateChainRangeUtil.DateChainType.AFTER);
+        System.out.println(DateUtil.format(date.getStartDate()));
+        System.out.println(DateUtil.format(date.getEndDate()));
     }
 
 }
