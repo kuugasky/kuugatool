@@ -5,6 +5,7 @@ import io.github.kuugasky.kuugatool.core.file.FileUtil;
 import io.github.kuugasky.kuugatool.core.file.FilenameUtil;
 import io.github.kuugasky.kuugatool.core.io.IoUtil;
 import io.github.kuugasky.kuugatool.core.string.StringUtil;
+import jakarta.servlet.http.HttpServletResponse;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
@@ -12,7 +13,6 @@ import org.apache.http.impl.client.HttpClientBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.servlet.http.HttpServletResponse;
 import java.io.*;
 import java.util.List;
 import java.util.zip.ZipEntry;
@@ -134,7 +134,7 @@ public final class ZipUtil {
     public static void zip(File inFile, ZipOutputStream out, String directoryPath) throws IOException {
         if (inFile.isDirectory()) {
             File[] files = inFile.listFiles();
-            if (files != null && files.length > 0) {
+            if (files != null) {
                 for (File file : files) {
                     String name = inFile.getName();
                     if (!StringUtil.EMPTY.equals(directoryPath)) {
@@ -250,7 +250,6 @@ public final class ZipUtil {
                 out.flush();
             }
         } catch (IOException e) {
-            e.printStackTrace();
             logger.error("ZipUtil工具类压缩异常：{}", e.getMessage(), e);
         } finally {
             out.closeEntry();

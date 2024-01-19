@@ -36,9 +36,9 @@
         <dozer.version>5.5.1</dozer.version>
         <dozermapper.version>6.5.2</dozermapper.version>
         <commons.io.version>2.11.0</commons.io.version>
-        <springframework.version>5.3.23</springframework.version>
+        <springframework.version>6.1.1</springframework.version>
         <commons-collections4.version>4.4</commons-collections4.version>
-        <servlet.api.version>4.0.1</servlet.api.version>
+        <servlet.api.version>6.0.0</servlet.api.version>
         <emoji.java.version>5.1.1</emoji.java.version>
         <junit.version>4.13.2</junit.version>
         <lombok.version>1.18.30</lombok.version>

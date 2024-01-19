@@ -7,13 +7,14 @@ import io.github.kuugasky.kuugatool.thirdparty.basic.enums.RequestedAuthenticati
 import io.github.kuugasky.kuugatool.thirdparty.requested.authentication.RequestedAuthentication;
 import io.github.kuugasky.kuugatool.thirdparty.requested.config.RequestedConfigFactory;
 import io.github.kuugasky.kuugatool.thirdparty.requested.config.RequestedConfiguration;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.core.MethodParameter;
 import org.springframework.lang.NonNull;
+import org.springframework.web.context.request.WebRequestInterceptor;
 import org.springframework.web.method.HandlerMethod;
-import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
+import org.springframework.web.servlet.handler.WebRequestHandlerInterceptorAdapter;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.lang.reflect.Type;
 
 /**
@@ -24,7 +25,11 @@ import java.lang.reflect.Type;
  * @author pengqinglong
  * @since 2021/9/16
  */
-public class RequestedBodyInterceptor extends HandlerInterceptorAdapter {
+public class RequestedBodyInterceptor extends WebRequestHandlerInterceptorAdapter {
+
+    public RequestedBodyInterceptor(WebRequestInterceptor requestInterceptor) {
+        super(requestInterceptor);
+    }
 
     @Override
     public boolean preHandle(@NonNull HttpServletRequest request, @NonNull HttpServletResponse response, @NonNull Object handler) throws Exception {

@@ -2,11 +2,11 @@ package io.github.kuugasky.kuugatool.extra.spring;
 
 import io.github.kuugasky.kuugatool.core.object.ObjectUtil;
 import io.github.kuugasky.kuugatool.core.string.StringUtil;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.web.util.ContentCachingRequestWrapper;
 import org.springframework.web.util.ContentCachingResponseWrapper;
 import org.springframework.web.util.WebUtils;
 
-import javax.servlet.http.HttpServletRequest;
 import java.io.UnsupportedEncodingException;
 import java.util.Enumeration;
 
@@ -19,7 +19,7 @@ import java.util.Enumeration;
 public final class AccessObjectUtil {
 
     /**
-     * 打印{@link @RequestBody}请求参数
+     * 打印{@link org.springframework.web.bind.annotation.RequestBody}请求参数
      * 使用前需要先将request进行封装
      * ContentCachingRequestWrapper wrapperRequest = new ContentCachingRequestWrapper(request);
      * ContentCachingResponseWrapper wrapperResponse = new ContentCachingResponseWrapper(response);

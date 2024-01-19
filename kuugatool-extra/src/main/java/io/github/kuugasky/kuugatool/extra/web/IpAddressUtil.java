@@ -2,9 +2,8 @@ package io.github.kuugasky.kuugatool.extra.web;
 
 import io.github.kuugasky.kuugatool.core.constants.KuugaConstants;
 import io.github.kuugasky.kuugatool.core.string.StringUtil;
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
-
-import javax.servlet.http.HttpServletRequest;
 
 /**
  * IP地址工具类

@@ -4,10 +4,9 @@ import io.github.kuugasky.kuugatool.core.collection.ArrayUtil;
 import io.github.kuugasky.kuugatool.core.collection.ListUtil;
 import io.github.kuugasky.kuugatool.core.object.ObjectUtil;
 import io.github.kuugasky.kuugatool.core.string.StringUtil;
-
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 /**
  * Cookie工具类

@@ -1,9 +1,9 @@
 package io.github.kuugasky.kuugatool.extra.web;
 
 import io.github.kuugasky.kuugatool.core.date.DateFormat;
+import jakarta.servlet.http.HttpServletRequest;
 import org.junit.jupiter.api.Test;
 
-import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.io.InputStream;
 import java.math.BigDecimal;

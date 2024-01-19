@@ -21,7 +21,7 @@ import java.util.concurrent.*;
  * @author kuuga
  * @since 2021/6/16
  */
-//@ComponentScan(basePackageClasses = KuugaSpringBeanPicker.class)、
+//@ComponentScan(basePackageClasses = KuugaSpringBeanPicker.class)
 @Component
 public class SleuthThreadPoolConfig {
 
