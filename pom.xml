@@ -39,6 +39,7 @@
         <springframework.version>6.1.1</springframework.version>
         <commons-collections4.version>4.4</commons-collections4.version>
         <servlet.api.version>6.0.0</servlet.api.version>
+        <servlet.annotation.api.version>2.1.1</servlet.annotation.api.version>
         <emoji.java.version>5.1.1</emoji.java.version>
         <junit.version>4.13.2</junit.version>
         <lombok.version>1.18.30</lombok.version>
@@ -129,7 +130,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.11.0</version>
+                <version>3.12.1</version>
                 <configuration>
                     <source>${java.version}</source>
                     <target>${java.version}</target>

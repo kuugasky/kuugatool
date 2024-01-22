@@ -10,6 +10,7 @@ import io.github.kuugasky.kuugatool.cache.basic.constants.CacheConstants;
 import io.github.kuugasky.kuugatool.core.md5.MD5Util;
 import io.github.kuugasky.kuugatool.core.string.StringUtil;
 import io.github.kuugasky.kuugatool.extra.spring.KuugaSpringBeanPicker;
+import jakarta.annotation.PostConstruct;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
@@ -21,7 +22,6 @@ import org.springframework.expression.ExpressionParser;
 import org.springframework.expression.spel.standard.SpelExpressionParser;
 import org.springframework.stereotype.Component;
 
-import javax.annotation.PostConstruct;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 

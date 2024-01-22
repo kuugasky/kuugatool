@@ -30,12 +30,12 @@
             <scope>compile</scope>
         </dependency>
 
-        <dependency>
+        <!--<dependency>
             <groupId>jakarta.servlet</groupId>
             <artifactId>jakarta.servlet-api</artifactId>
             <version>${servlet.api.version}</version>
             <scope>compile</scope>
-        </dependency>
+        </dependency>-->
 
         <!--拼音-->
         <dependency>

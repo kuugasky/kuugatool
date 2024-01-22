@@ -1,9 +1,9 @@
 package io.github.kuugasky.kuugatool.extra.concurrent.completion;
 
+import jakarta.annotation.Resource;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.BeanFactory;
 
-import javax.annotation.Resource;
 
 public class SleuthCompletionServicePoolTest {
 

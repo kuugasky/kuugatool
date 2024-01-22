@@ -2,6 +2,7 @@ package io.github.kuugasky.kuugatool.cache.redis.subscribe;
 
 import io.github.kuugasky.kuugatool.core.string.StringUtil;
 import io.github.kuugasky.kuugatool.extra.spring.KuugaSpringBeanPicker;
+import jakarta.annotation.Resource;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.context.ApplicationContext;
@@ -14,8 +15,6 @@ import org.springframework.data.redis.listener.RedisMessageListenerContainer;
 import org.springframework.data.redis.listener.adapter.MessageListenerAdapter;
 import org.springframework.data.redis.serializer.JdkSerializationRedisSerializer;
 import org.springframework.lang.NonNull;
-
-import javax.annotation.Resource;
 
 /**
  * AbstractRedisListenerContainer

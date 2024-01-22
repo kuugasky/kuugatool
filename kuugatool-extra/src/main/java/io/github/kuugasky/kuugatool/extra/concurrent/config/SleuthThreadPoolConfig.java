@@ -6,13 +6,13 @@ import io.github.kuugasky.kuugatool.core.concurrent.core.KuugaThreadPoolExecutor
 import io.github.kuugasky.kuugatool.extra.concurrent.SleuthCompletableFuturePool;
 import io.github.kuugasky.kuugatool.extra.concurrent.SleuthThreadPool;
 import io.github.kuugasky.kuugatool.extra.concurrent.SleuthThreadScheduledPool;
+import jakarta.annotation.Resource;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.cloud.sleuth.instrument.async.TraceableExecutorService;
 import org.springframework.cloud.sleuth.instrument.async.TraceableScheduledExecutorService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 
-import javax.annotation.Resource;
 import java.util.concurrent.*;
 
 /**
