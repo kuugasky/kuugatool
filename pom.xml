@@ -8,7 +8,7 @@
     <artifactId>kuugatool-parent</artifactId>
     <version>2.0.0</version>
     <packaging>pom</packaging>
-    <description>kuugatool-工具类库</description>
+    <description>kuugatool-工具类库(JDK21版本)</description>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
