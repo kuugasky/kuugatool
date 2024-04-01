@@ -27,7 +27,7 @@ class DateRangeCheckTest {
         Date date3 = DateUtil.toDate(date1);
         Date date4 = DateUtil.toDate(date2);
         DateRangeCheck dateRangeCheck = DateRangeCheck.build(date3, date4).maxEndDays(-1).rangeDays(7);
-        System.out.println(dateRangeCheck);
+        dateRangeCheck.print();
     }
 
     @Test

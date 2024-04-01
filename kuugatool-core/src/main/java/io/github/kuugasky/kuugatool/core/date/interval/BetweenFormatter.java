@@ -30,10 +30,12 @@ public final class BetweenFormatter implements Serializable {
     /**
      * 时长毫秒数
      */
+    @Getter
     private long betweenMs;
     /**
      * 格式化级别
      */
+    @Getter
     private Level level;
     /**
      * 格式化级别的最大个数
@@ -122,30 +124,12 @@ public final class BetweenFormatter implements Serializable {
     }
 
     /**
-     * 获得 时长毫秒数
-     *
-     * @return 时长毫秒数
-     */
-    public long getBetweenMs() {
-        return betweenMs;
-    }
-
-    /**
      * 设置 时长毫秒数
      *
      * @param betweenMs 时长毫秒数
      */
     public void setBetweenMs(long betweenMs) {
         this.betweenMs = betweenMs;
-    }
-
-    /**
-     * 获得 格式化级别
-     *
-     * @return 格式化级别
-     */
-    public Level getLevel() {
-        return level;
     }
 
     /**
