@@ -132,4 +132,26 @@ public class ArrayUtilTest {
         System.out.println(Arrays.toString(resize));
     }
 
+    @Test
+    void findFirst() {
+        Integer[] ints = {1, 2, 3, 4};
+        System.out.println(ArrayUtil.findFirst(ints, 3));
+        ints = new Integer[]{};
+        System.out.println(ArrayUtil.findFirst(ints, 0));
+    }
+
+    @Test
+    void findLast() {
+        Integer[] ints = {1, 2, 3, 4};
+        System.out.println(ArrayUtil.findLast(ints, 3));
+        ints = new Integer[]{};
+        System.out.println(ArrayUtil.findLast(ints, 3));
+    }
+
+    @Test
+    void indexOf() {
+        int[] integers = {1, 2, 3, 4};
+        System.out.println(ArrayUtil.indexOf(integers, 3));
+    }
+
 }

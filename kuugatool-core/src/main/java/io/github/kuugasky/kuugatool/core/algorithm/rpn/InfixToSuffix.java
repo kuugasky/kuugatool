@@ -23,7 +23,7 @@ public class InfixToSuffix {
         System.out.println(infixList); // [1, +, (, (, 2, +, 3, ), *, 4, ), -, 5]
         // 2. 将中缀表达式转成后缀表达式
         List<String> suffixList = infixToSuffix.infixList2SuffixList(infixList);
-        System.out.println(suffixList); // [1, 2, 3, +, 4, *, +, 5, -]
+        System.out.println("中缀表达式转成后缀表达式:" + suffixList); // [1, 2, 3, +, 4, *, +, 5, -]
         System.out.println(String.join(" ", suffixList));
     }
 
@@ -131,6 +131,7 @@ public class InfixToSuffix {
             default -> -1;
         };
     }
+
 }
 
 

@@ -24,7 +24,7 @@ import org.aspectj.lang.annotation.Pointcut;
 public interface AspectAroundInject extends AspectPointcutStatement {
 
     /**
-     * 环绕通知：灵活自由的在目标方法中切入代码
+     * 环绕通知：灵活自由的在目标方法中切入代码<br>
      * 第一个参数必须是ProceedingJoinPoint，通过该对象的proceed()方法来传递拦截器（通知）链或执行函数，proceed()的返回值就是环绕通知的返回值。
      *
      * @param pjp pjp

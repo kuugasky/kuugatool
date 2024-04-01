@@ -2,6 +2,7 @@ package io.github.kuugasky.kuugatool.core.collection;
 
 import io.github.kuugasky.kuugatool.core.comparator.CompareUtil;
 import io.github.kuugasky.kuugatool.core.number.NumberUtil;
+import io.github.kuugasky.kuugatool.core.object.ObjectUtil;
 import io.github.kuugasky.kuugatool.core.string.StringUtil;
 import org.apache.commons.lang3.ArrayUtils;
 
@@ -756,6 +757,25 @@ public final class ArrayUtil {
      * @return 数组中指定元素所在位置，未找到返回{@link #INDEX_NOT_FOUND}
      * @since 3.0.7
      */
+    public static int indexOf(int[] array, int value) {
+        if (null != array) {
+            for (int i = 0; i < array.length; i++) {
+                if (value == array[i]) {
+                    return i;
+                }
+            }
+        }
+        return INDEX_NOT_FOUND;
+    }
+
+    /**
+     * 返回数组中指定元素所在位置，未找到返回{@link #INDEX_NOT_FOUND}
+     *
+     * @param array 数组
+     * @param value 被检查的元素
+     * @return 数组中指定元素所在位置，未找到返回{@link #INDEX_NOT_FOUND}
+     * @since 3.0.7
+     */
     public static int indexOf(long[] array, long value) {
         if (null != array) {
             for (int i = 0; i < array.length; i++) {
@@ -806,7 +826,7 @@ public final class ArrayUtil {
      * @return 数组中指定元素所在位置，未找到返回{@link #INDEX_NOT_FOUND}
      * @since 3.0.7
      */
-    public static int indexOf(int[] array, int value) {
+    public static <E> int indexOf(E[] array, E value) {
         if (null != array) {
             for (int i = 0; i < array.length; i++) {
                 if (value == array[i]) {
@@ -1223,6 +1243,62 @@ public final class ArrayUtil {
     @SafeVarargs
     public static <T> T[] addAll(T[] array1, T... array2) {
         return ArrayUtils.addAll(array1, array2);
+    }
+
+    // find ================================================================================================================================================
+
+    /**
+     * 获取数组中存放的第一个元素
+     *
+     * @param <E>   泛型元素
+     * @param array array
+     * @return o 第一个元素
+     */
+    public static <E> E findFirst(E[] array) {
+        if (isEmpty(array)) {
+            return null;
+        }
+        return Arrays.stream(array).findFirst().orElse(null);
+    }
+
+    /**
+     * 获取数组中存放的第一个元素
+     *
+     * @param <E>          泛型元素
+     * @param array        array
+     * @param defaultValue the default value
+     * @return o 第一个元素
+     */
+    public static <E> E findFirst(E[] array, E defaultValue) {
+        E first = findFirst(array);
+        return ObjectUtil.isNull(first) ? defaultValue : first;
+    }
+
+    /**
+     * 获取数组中存放的最后一个元素
+     *
+     * @param <E>   <E>
+     * @param array array
+     * @return o t
+     */
+    public static <E> E findLast(E[] array) {
+        if (isEmpty(array)) {
+            return null;
+        }
+        return Arrays.stream(array).toList().getLast();
+    }
+
+    /**
+     * 获取数组中存放的最后一个元素
+     *
+     * @param <E>          <E>
+     * @param array        array
+     * @param defaultValue the default value
+     * @return o t
+     */
+    public static <E> E findLast(E[] array, E defaultValue) {
+        E last = findLast(array);
+        return ObjectUtil.isNull(last) ? defaultValue : last;
     }
 
 }

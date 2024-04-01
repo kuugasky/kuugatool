@@ -3,6 +3,7 @@ package io.github.kuugasky.kuugatool.core.collection;
 import com.google.common.base.Function;
 import com.google.common.base.Predicate;
 import com.google.common.collect.*;
+import io.github.kuugasky.kuugatool.core.object.ObjectUtil;
 import org.checkerframework.checker.nullness.qual.Nullable;
 
 import java.util.*;
@@ -27,13 +28,13 @@ public final class SetUtil {
      *
      * @return ArrayList实例
      */
-    public static <T> Set<T> newHashSet() {
+    public static <E> Set<E> newHashSet() {
         return new HashSet<>();
     }
 
     @SafeVarargs
-    public static <T> Set<T> newHashSet(T... items) {
-        Set<T> set = new HashSet<>(items.length);
+    public static <E> Set<E> newHashSet(E... items) {
+        Set<E> set = new HashSet<>(items.length);
         Collections.addAll(set, items);
         return set;
     }
@@ -87,7 +88,7 @@ public final class SetUtil {
      * @param collection collection
      * @return boolean
      */
-    public static <T> boolean isEmpty(Collection<T> collection) {
+    public static <E> boolean isEmpty(Collection<E> collection) {
         return collection == null || collection.isEmpty();
     }
 
@@ -97,11 +98,11 @@ public final class SetUtil {
      * @param collection collection
      * @return boolean
      */
-    public static <T> boolean hasItem(Collection<T> collection) {
+    public static <E> boolean hasItem(Collection<E> collection) {
         return !isEmpty(collection);
     }
 
-    public static <T> Set<T> optimize(Set<T> set) {
+    public static <E> Set<E> optimize(Set<E> set) {
         if (Objects.isNull(set)) {
             return emptySet();
         }
@@ -113,7 +114,7 @@ public final class SetUtil {
 
     // emptySet ================================================================================================================================================
 
-    public static <T> Set<T> emptySet() {
+    public static <E> Set<E> emptySet() {
         return Collections.emptySet();
     }
 
@@ -125,7 +126,7 @@ public final class SetUtil {
      * @param objectSet set
      * @return 只读集合
      */
-    public static <T> Set<T> unmodifiableSet(Set<T> objectSet) {
+    public static <E> Set<E> unmodifiableSet(Set<E> objectSet) {
         return Collections.unmodifiableSet(objectSet);
     }
 
@@ -139,33 +140,60 @@ public final class SetUtil {
      * @param objectSet set
      * @return 线程安全列表
      */
-    public static <T> Set<T> synchronizedSet(Set<T> objectSet) {
+    public static <E> Set<E> synchronizedSet(Set<E> objectSet) {
         return Collections.synchronizedSet(objectSet);
     }
+
+    // find ============================================================================================================
 
     /**
      * 获取list中存放的第一个元素
      *
      * @param set set
-     * @param <T> <T>
+     * @param <E> <E>
      * @return o
      */
-    public static <T> T findFirst(Set<T> set) {
+    public static <E> E findFirst(Set<E> set) {
         return optimize(set).stream().findFirst().orElse(null);
+    }
+
+    /**
+     * 获取set中存放的第一个元素
+     *
+     * @param set          set
+     * @param <E>          <E>
+     * @param defaultValue the default value
+     * @return o 第一个元素
+     */
+    public static <E> E findFirst(Set<E> set, E defaultValue) {
+        return optimize(set).stream().findFirst().orElse(defaultValue);
     }
 
     /**
      * 获取list中存放的最后一个元素
      *
      * @param set set
-     * @param <T> <T>
+     * @param <E> <E>
      * @return o
      */
-    public static <T> T findLast(Set<T> set) {
+    public static <E> E findLast(Set<E> set) {
         if (isEmpty(set)) {
             return null;
         }
         return ListUtil.newArrayList(set).get(set.size() - 1);
+    }
+
+    /**
+     * 获取set中存放的最后一个元素
+     *
+     * @param <E>          <E>
+     * @param set          set
+     * @param defaultValue the default value
+     * @return o t
+     */
+    public static <E> E findLast(Set<E> set, E defaultValue) {
+        E last = findLast(set);
+        return ObjectUtil.isNull(last) ? defaultValue : last;
     }
 
     // 非常规set ========================================================================

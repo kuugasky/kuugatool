@@ -2,6 +2,7 @@ package io.github.kuugasky.kuugatool.aop.interceptor;
 
 import io.github.kuugasky.kuugatool.aop.aspects.Aspect;
 import io.github.kuugasky.kuugatool.core.clazz.ClassUtil;
+import lombok.Getter;
 
 import java.io.Serial;
 import java.io.Serializable;
@@ -23,6 +24,7 @@ public class JdkInterceptor implements InvocationHandler, Serializable {
     /**
      * 原对象
      */
+    @Getter
     private final Object target;
     /**
      * 切面
@@ -38,10 +40,6 @@ public class JdkInterceptor implements InvocationHandler, Serializable {
     public JdkInterceptor(Object target, Aspect aspect) {
         this.target = target;
         this.aspect = aspect;
-    }
-
-    public Object getTarget() {
-        return this.target;
     }
 
     @Override

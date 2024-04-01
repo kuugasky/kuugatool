@@ -1,6 +1,7 @@
 package io.github.kuugasky.kuugatool.aop.interceptor;
 
 import io.github.kuugasky.kuugatool.aop.aspects.Aspect;
+import lombok.Getter;
 import net.sf.cglib.proxy.MethodInterceptor;
 import net.sf.cglib.proxy.MethodProxy;
 
@@ -22,6 +23,7 @@ public class CglibInterceptor implements MethodInterceptor, Serializable {
     /**
      * 原对象
      */
+    @Getter
     private final Object target;
     /**
      * 自定义切面
@@ -37,10 +39,6 @@ public class CglibInterceptor implements MethodInterceptor, Serializable {
     public CglibInterceptor(Object target, Aspect aspect) {
         this.target = target;
         this.aspect = aspect;
-    }
-
-    public Object getTarget() {
-        return this.target;
     }
 
     @Override

@@ -175,7 +175,7 @@ public class ReversePolishMultiCalc {
         Collections.reverse(stack);
         data.addAll(new ArrayList<>(stack));
 
-        System.out.println(data);
+        // System.out.println(data);
         return data;
     }
 
