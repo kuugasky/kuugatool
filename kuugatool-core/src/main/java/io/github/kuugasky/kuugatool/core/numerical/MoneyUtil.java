@@ -16,8 +16,8 @@ public class MoneyUtil {
      * @param money 数字
      * @return 中文大写数字
      */
-    public static String digitUppercase(BigDecimal money) {
-        return digitUppercase(money, true);
+    public static String formatMoneyUnit(BigDecimal money) {
+        return formatMoneyUnit(money, true);
     }
 
     /**
@@ -27,7 +27,7 @@ public class MoneyUtil {
      * @param upperCase 大写中文
      * @return 中文大写数字
      */
-    public static String digitUppercase(BigDecimal money, boolean upperCase) {
+    public static String formatMoneyUnit(BigDecimal money, boolean upperCase) {
         String[] fraction = {"角", "分"};
         String[] digit;
         String[][] unit;
@@ -43,7 +43,9 @@ public class MoneyUtil {
         String head = moneyDouble < 0 ? "负" : "";
         moneyDouble = Math.abs(moneyDouble);
 
-        if (String.valueOf(money).split("\\.")[1].length() > 2) {
+        String[] moneySplit = String.valueOf(money).split("\\.");
+
+        if (moneySplit.length > 1 && moneySplit[1].length() > 2) {
             throw new RuntimeException("数字金额转大写，最小单位仅支持到分");
         }
 
@@ -64,7 +66,11 @@ public class MoneyUtil {
             }
             s.insert(0, p.toString().replaceAll("(零.)*零$", "").replaceAll("^$", "零") + unit[0][i]);
         }
-        return head + s.toString().replaceAll("(零.)*零元", "元").replaceFirst("(零.)+", "").replaceAll("(零.)+", "零").replaceAll("^整$", "零元整");
+        if (upperCase) {
+            return head + s.toString().replaceAll("(零.)*零元", "元").replaceFirst("(零.)+", "").replaceAll("(零.)+", "零").replaceAll("^整$", "零元整");
+        } else {
+            return head + s.toString().replaceAll("(0.)*0元", "元").replaceFirst("(0.)+", "").replaceAll("(0.)+", "0").replaceAll("^整$", "0元整");
+        }
     }
 
     /**

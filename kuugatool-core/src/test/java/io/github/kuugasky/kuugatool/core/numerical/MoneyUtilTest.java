@@ -8,10 +8,10 @@ class MoneyUtilTest {
 
     @Test
     void digitUppercase() {
-        assertEquals("壹佰贰拾叁万肆仟伍佰陆拾柒元捌角柒分", MoneyUtil.digitUppercase(BigDecimalUtil.of(1234567.87)));
-        System.out.println(MoneyUtil.digitUppercase(BigDecimalUtil.of(7891.56)));
-        System.out.println(MoneyUtil.digitUppercase(BigDecimalUtil.of(7891.56), false));
-        System.out.println(MoneyUtil.digitUppercase(BigDecimalUtil.of(-7891.56)));
+        assertEquals("壹佰贰拾叁万肆仟伍佰陆拾柒元捌角柒分", MoneyUtil.formatMoneyUnit(BigDecimalUtil.of(1234567.87)));
+        System.out.println(MoneyUtil.formatMoneyUnit(BigDecimalUtil.of(7891.56)));
+        System.out.println(MoneyUtil.formatMoneyUnit(BigDecimalUtil.of(7891.56), false));
+        System.out.println(MoneyUtil.formatMoneyUnit(BigDecimalUtil.of(-7891.56)));
     }
 
     /**
