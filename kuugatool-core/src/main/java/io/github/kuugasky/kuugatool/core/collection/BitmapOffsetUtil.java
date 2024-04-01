@@ -1,5 +1,7 @@
 package io.github.kuugasky.kuugatool.core.collection;
 
+import io.github.kuugasky.kuugatool.core.string.StringUtil;
+
 import java.util.Arrays;
 
 /**
@@ -57,6 +59,7 @@ public final class BitmapOffsetUtil {
         while (i <= 120) {
             System.out.printf("[%s] [%s - %s]%n", j++, (i == 0 ? 0 : i + 1), (i = (i == 0 ? i + 7 : i + 8)));
         }
+        System.out.println(StringUtil.repeat("-", 50));
         System.out.println(Arrays.toString(byteRange(121)));
         System.out.println(Arrays.toString(byteRange(87)));
         System.out.println(Arrays.toString(byteRange(88)));

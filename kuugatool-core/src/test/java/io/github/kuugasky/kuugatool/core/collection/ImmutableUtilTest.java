@@ -1,14 +1,15 @@
 package io.github.kuugasky.kuugatool.core.collection;
 
 import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableSet;
 import org.junit.jupiter.api.Test;
 
 import java.util.*;
 
-public class ImmutableUtilTest {
+class ImmutableUtilTest {
 
     @Test
-    public void copyOf() {
+    void copyOf() {
         List<Integer> list = ListUtil.newArrayList(1, 2, 3);
         ImmutableList<Integer> integers = ImmutableUtil.copyOf(list);
         // integers.add(0, 0);
@@ -27,17 +28,31 @@ public class ImmutableUtilTest {
     }
 
     @Test
-    public void testCopyOf() {
+    void testCopyOf() {
         Set<Object> set = SetUtil.newHashSet();
         set.add(1);
         System.out.println(ImmutableUtil.copyOf(set));
     }
 
     @Test
-    public void testCopyOf1() {
+    void testCopyOf1() {
         Map<Object, Object> map = MapUtil.newHashMap();
         map.put(1, 2);
         System.out.println(ImmutableUtil.copyOf(map));
+    }
+
+    @Test
+    void ofList() {
+        ImmutableList<Integer> integers = ImmutableUtil.ofList(1, 2, 3);
+        integers.add(5);
+        System.out.println(integers);
+    }
+
+    @Test
+    void ofSet() {
+        ImmutableSet<Integer> integers = ImmutableUtil.ofSet(1, 2, 3);
+        integers.add(5);
+        System.out.println(integers);
     }
 
 }

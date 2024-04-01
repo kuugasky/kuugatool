@@ -1,6 +1,5 @@
 package io.github.kuugasky.kuugatool.core.collection;
 
-
 import java.util.*;
 import java.util.function.BiFunction;
 import java.util.function.Function;

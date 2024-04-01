@@ -1,5 +1,6 @@
 package io.github.kuugasky.kuugatool.core.collection;
 
+import javax.annotation.Nonnull;
 import java.io.Serial;
 import java.util.AbstractSet;
 import java.util.Collection;
@@ -85,6 +86,7 @@ public class ConcurrentHashSet<E> extends AbstractSet<E> implements java.io.Seri
     // Constructor end ===============================================================================================
 
     @Override
+    @Nonnull
     public Iterator<E> iterator() {
         return concurrentHashMap.keySet().iterator();
     }
@@ -100,6 +102,7 @@ public class ConcurrentHashSet<E> extends AbstractSet<E> implements java.io.Seri
     }
 
     @Override
+    @SuppressWarnings("all")
     public boolean contains(Object o) {
         return concurrentHashMap.containsKey(o);
     }

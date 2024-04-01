@@ -61,32 +61,38 @@ public class DelegatedExecutorService extends AbstractExecutorService {
     }
 
     @Override
+    @NonNull
     public Future<?> submit(@NonNull Runnable task) {
         return executorService.submit(task);
     }
 
     @Override
+    @NonNull
     public <T> Future<T> submit(@NonNull Callable<T> task) {
         return executorService.submit(task);
     }
 
     @Override
+    @NonNull
     public <T> Future<T> submit(@NonNull Runnable task, T result) {
         return executorService.submit(task, result);
     }
 
     @Override
+    @NonNull
     public <T> List<Future<T>> invokeAll(@NonNull Collection<? extends Callable<T>> tasks) throws InterruptedException {
         return executorService.invokeAll(tasks);
     }
 
     @Override
+    @NonNull
     public <T> List<Future<T>> invokeAll(@NonNull Collection<? extends Callable<T>> tasks, long timeout, @NonNull TimeUnit unit)
             throws InterruptedException {
         return executorService.invokeAll(tasks, timeout, unit);
     }
 
     @Override
+    @NonNull
     public <T> T invokeAny(@NonNull Collection<? extends Callable<T>> tasks)
             throws InterruptedException, ExecutionException {
         return executorService.invokeAny(tasks);

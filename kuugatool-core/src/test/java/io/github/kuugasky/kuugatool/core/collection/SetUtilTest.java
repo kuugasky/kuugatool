@@ -114,6 +114,13 @@ public class SetUtilTest {
     }
 
     @Test
+    public void findLast2() {
+        Set<Integer> set = SetUtil.newHashSet();
+        Integer first = SetUtil.findLast(set, 5);
+        System.out.println(first);
+    }
+
+    @Test
     public void newMultiset() {
         Multiset<String> multiset = SetUtil.newMultiset();
         multiset.add("apple");

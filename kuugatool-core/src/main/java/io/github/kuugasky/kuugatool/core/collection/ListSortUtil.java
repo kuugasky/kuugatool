@@ -67,7 +67,7 @@ public final class ListSortUtil {
         Stack<T> stack = new Stack<>();
         stack.addAll(list);
         List<T> result = ListUtil.newArrayList(list.size());
-        while (stack.size() > 0) {
+        while (!stack.isEmpty()) {
             T pop = stack.pop();
             boolean needSkip = filterEmpty && (pop == null || StringUtil.isEmpty(pop) || "null".equalsIgnoreCase(pop.toString()));
             if (!needSkip) {

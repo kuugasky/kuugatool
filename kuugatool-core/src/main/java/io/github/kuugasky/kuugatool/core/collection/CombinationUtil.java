@@ -14,7 +14,7 @@ import java.util.Map;
  */
 public final class CombinationUtil {
 
-    public static final int TWO = 2;
+    private static final int TWO = 2;
 
     /**
      * 两种元素的所有组合方式
