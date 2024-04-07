@@ -1,6 +1,7 @@
 package io.github.kuugasky.kuugatool.core.idcard;
 
 import io.github.kuugasky.kuugatool.core.date.DateUtil;
+import lombok.extern.slf4j.Slf4j;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -14,6 +15,7 @@ import java.util.regex.Pattern;
  *
  * @author kuuga
  */
+@Slf4j
 public final class IDCardVerify {
 
     /**
@@ -143,7 +145,7 @@ public final class IDCardVerify {
                 return true;
             }
         } catch (NumberFormatException e) {
-            e.printStackTrace();
+            log.error("IDCardVerify.isValidYear exception:{}", e.getMessage(), e);
         }
         return false;
     }

@@ -21,12 +21,19 @@ public class JarUtilTest {
     }
 
     @Test
-    public void readFileContentInJarClasses() {
+    public void readFileContentInJarClasses() throws IOException {
+        // String fileNameOfInClasses = "io/github/kuugasky/kuugatool/core/jar/JarUtilTest.class";
+        // String fileNameOfInClasses = "io/github/kuugasky/kuugatool/core/jar/test.json";
+        // String fileNameOfInClasses = "io/github/kuugasky/kuugatool/core/jar/bootstrap.yml";
+        String fileNameOfInClasses = "logback.xml";
+        String s = JarUtil.readFileContentUnderJarClasses(JarUtilTest.class.getClassLoader(),
+                fileNameOfInClasses, true);
+        System.out.println(s);
     }
 
     @Test
     public void getManiFest() throws IOException {
-        File file = new File("/Users/kuuga/IdeaProjects/kuugatool/kuugatool-core/target/kuugatool-core-2.2.0-SNAPSHOT.jar");
+        File file = new File("/Users/hyuga/IdeaProjects/github/kuugasky/kuugatool-parent/kuugatool-core/target/kuugatool-core-2.0.0.jar");
         JarUtil.getManiFest(file.getPath());
     }
 }

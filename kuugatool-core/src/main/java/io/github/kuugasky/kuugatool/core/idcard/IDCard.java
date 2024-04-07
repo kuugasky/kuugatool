@@ -39,6 +39,7 @@ public final class IDCard {
     /**
      * 有效状态
      */
+    @Getter
     private final boolean valid;
     /**
      * 无效状态
@@ -61,10 +62,6 @@ public final class IDCard {
 
         this.valid = isValidIDCard();
         this.isInvalid = !valid;
-    }
-
-    public boolean isValid() {
-        return this.valid;
     }
 
     /**

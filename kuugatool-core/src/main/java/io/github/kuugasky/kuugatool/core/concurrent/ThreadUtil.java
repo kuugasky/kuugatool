@@ -352,8 +352,7 @@ public class ThreadUtil {
 
     /**
      * 获取JVM中与当前线程同组的所有线程<br>
-     * 使用数组二次拷贝方式，防止在线程列表获取过程中线程终止<br>
-     * from Voovan
+     * 使用数组二次拷贝方式，防止在线程列表获取过程中线程终止
      *
      * @param group 线程组
      * @return 线程对象数组
@@ -374,7 +373,7 @@ public class ThreadUtil {
      */
     public static Thread getMainThread() {
         for (Thread thread : getThreads()) {
-            if (thread.getId() == 1) {
+            if (1 == thread.threadId()) {
                 return thread;
             }
         }
