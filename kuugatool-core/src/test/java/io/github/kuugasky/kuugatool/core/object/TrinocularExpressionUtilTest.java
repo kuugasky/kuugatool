@@ -7,7 +7,7 @@ public class TrinocularExpressionUtilTest {
 
     @Test
     public void judge() {
-        Integer judge = TrinocularExpressionUtil.judge(() -> {
+        Integer judge = ConditionalOperatorUtil.judge(() -> {
             String string = RandomUtil.randomString(10);
             System.out.println(string);
             return string.contains("a");

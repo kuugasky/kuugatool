@@ -7,7 +7,7 @@ package io.github.kuugasky.kuugatool.core.function;
  * @since 2021/6/8
  */
 @FunctionalInterface
-public interface TrinocularExpressionFunc {
+public interface ConditionalOperatorFunc {
 
     /**
      * 表达式判断

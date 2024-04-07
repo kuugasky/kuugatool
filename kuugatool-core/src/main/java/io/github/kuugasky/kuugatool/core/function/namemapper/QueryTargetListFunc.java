@@ -9,14 +9,14 @@ import java.util.List;
  * @since 2021/2/8
  */
 @FunctionalInterface
-public interface QueryTargetListFunc<R> {
+public interface QueryTargetListFunc<R, E> {
 
     /**
      * 执行器
      *
      * @param sourceIds 源数据IDS
-     * @return 目标数据集合
+     * @return 目标数据集合，如根据源数据IDS查询返回List< NameMapper >
      */
-    List<R> execute(List<String> sourceIds);
+    List<R> execute(List<E> sourceIds);
 
 }
