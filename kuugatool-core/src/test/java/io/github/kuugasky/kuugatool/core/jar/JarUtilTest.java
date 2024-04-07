@@ -16,7 +16,7 @@ public class JarUtilTest {
     @Test
     public void printJarAllSources() throws IOException {
         File file = new File("/Users/kuuga/IdeaProjects/kuugatool/kuugatool-core/target/kuugatool-core-2.2.0-SNAPSHOT.jar");
-        // File file = new File("/Users/kuuga/IdeaProjects/kfang/kuugatool/kuugatool-core/src/main/java/cn/kuugatool/core/jar/JarUtil.java");
+        // File file = new File("/Users/kuuga/IdeaProjects/kuuga/kuugatool/kuugatool-core/src/main/java/cn/kuugatool/core/jar/JarUtil.java");
         JarUtil.printJarAllSources(file);
     }
 

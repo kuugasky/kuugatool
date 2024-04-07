@@ -36,7 +36,7 @@ class ZipUtilTest {
 
     @Test
     void zipUrl() throws IOException {
-        String url = "https://test-image.kfangcdn.com/test/survey/52980b2b3a3b45488017e908374c3997.jpeg-l1024x768w";
+        String url = "https://test-image.kuugacdn.com/test/survey/52980b2b3a3b45488017e908374c3997.jpeg-l1024x768w";
 
         File file = FileUtil.file("/Users/kuuga/Downloads/zipUrl.zip");
         ZipOutputStream out = IoUtil.toZipOutputStream(file);
@@ -45,7 +45,7 @@ class ZipUtilTest {
 
     @Test
     void zipUrl2() throws IOException {
-        String url = "https://test-image.kfangcdn.com/test/survey/52980b2b3a3b45488017e908374c3997.jpeg-l1024x768w";
+        String url = "https://test-image.kuugacdn.com/test/survey/52980b2b3a3b45488017e908374c3997.jpeg-l1024x768w";
 
         File file = FileUtil.file("/Users/kuuga/Downloads/zipUrl1.zip");
         ZipUtil.zipUrl(url, file);
@@ -64,7 +64,7 @@ class ZipUtilTest {
 
     @Test
     void testZip1() throws IOException {
-        String url = "https://test-image.kfangcdn.com/test/survey/52980b2b3a3b45488017e908374c3997.jpeg-l1024x768w";
+        String url = "https://test-image.kuugacdn.com/test/survey/52980b2b3a3b45488017e908374c3997.jpeg-l1024x768w";
 
         File file = FileUtil.file("/Users/kuuga/Downloads/zipUrl2.zip");
         ZipUtil.zipUrl(url, "Kuuga.jpg", IoUtil.toZipOutputStream(file));
@@ -79,13 +79,13 @@ class ZipUtilTest {
     @Test
     void doZipUrls() {
         List<String> objects = ListUtil.newArrayList();
-        objects.add("https://test-image.kfangcdn.com/test/survey/52980b2b3a3b45488017e908374c3997.jpeg-l1024x768w");
-        objects.add("https://test-image.kfangcdn.com/test/survey/c93910d743344313a4b51c28c79788e8.jpeg-l1024x768w");
-        objects.add("https://test-image.kfangcdn.com/test/survey/9aa884fa78f34f3487c673dfcb0fafb2.jpeg-l1024x768w");
-        objects.add("https://test-image.kfangcdn.com/test/survey/7c6ff5e277ba4c249b09341329a45ca0.jpeg-l1024x768w");
-        objects.add("https://test-image.kfangcdn.com/test/survey/f66f85eff0a54354a298e611433dc9f6.jpeg-l1024x768w");
-        objects.add("https://test-image.kfangcdn.com/test/survey/bcfe149d32be4fec8da0458123dd9181.jpeg-l1024x768w");
-        objects.add("https://test-image.kfangcdn.com/test/survey/39a2bcee71bc48148896cd323a06f880.jpeg-l1024x768w");
+        objects.add("https://test-image.kuugacdn.com/test/survey/52980b2b3a3b45488017e908374c3997.jpeg-l1024x768w");
+        objects.add("https://test-image.kuugacdn.com/test/survey/c93910d743344313a4b51c28c79788e8.jpeg-l1024x768w");
+        objects.add("https://test-image.kuugacdn.com/test/survey/9aa884fa78f34f3487c673dfcb0fafb2.jpeg-l1024x768w");
+        objects.add("https://test-image.kuugacdn.com/test/survey/7c6ff5e277ba4c249b09341329a45ca0.jpeg-l1024x768w");
+        objects.add("https://test-image.kuugacdn.com/test/survey/f66f85eff0a54354a298e611433dc9f6.jpeg-l1024x768w");
+        objects.add("https://test-image.kuugacdn.com/test/survey/bcfe149d32be4fec8da0458123dd9181.jpeg-l1024x768w");
+        objects.add("https://test-image.kuugacdn.com/test/survey/39a2bcee71bc48148896cd323a06f880.jpeg-l1024x768w");
 
         ZipUtil.doZip("室内图", objects, null);
     }

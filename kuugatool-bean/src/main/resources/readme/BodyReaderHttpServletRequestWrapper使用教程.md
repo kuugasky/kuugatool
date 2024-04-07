@@ -16,18 +16,18 @@
 > 定义一个类
 
 ```java
-package com.kfang.web.agent.utils;
+package com.kuuga.web.agent.utils;
 
 import object.io.github.kuugasky.kuugatool.core.ObjectUtil;
 import web.io.github.kuugasky.kuugatool.extra.IpAddressUtil;
-import kfang.infra.common.model.LoginDto;
-import kfang.infra.web.constants.WebCommonConstants;
+import kuuga.infra.common.model.LoginDto;
+import kuuga.infra.web.constants.WebCommonConstants;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.MDC;
 
 import jakarta.servlet.http.HttpServletRequest;
 
-import static com.kfang.common.agent.utils.OperatorInfoUtil.*;
+import static com.kuuga.common.agent.utils.OperatorInfoUtil.*;
 
 /**
  * Web端全局拦截器工具类
@@ -61,11 +61,11 @@ public class WebSleuthLogUtil {
 > 全局拦截器嵌入
 
 ```java
-package com.kfang.web.agent.business.pc.interceptor;
+package com.kuuga.web.agent.business.pc.interceptor;
 
-import com.kfang.web.agent.utils.WebSleuthLogUtil;
-import kfang.infra.common.ContextHolder;
-import kfang.infra.web.interceptor.ZBaseInterceptorAdapter;
+import com.kuuga.web.agent.utils.WebSleuthLogUtil;
+import kuuga.infra.common.ContextHolder;
+import kuuga.infra.web.interceptor.ZBaseInterceptorAdapter;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -112,7 +112,7 @@ public class ContextInterceptor extends ZBaseInterceptorAdapter {
 > 创建一个过滤器注入
 
 ```java
-package com.kfang.service.agent.filter;
+package com.kuuga.service.agent.filter;
 
 import io.github.kuugasky.kuugatool.bean.servlet.BodyReaderHttpServletRequestWrapper;
 import object.io.github.kuugasky.kuugatool.core.ObjectUtil;
@@ -121,8 +121,8 @@ import web.io.github.kuugasky.kuugatool.extra.CommonWebUtil;
 import web.io.github.kuugasky.kuugatool.extra.IpAddressUtil;
 import io.github.kuugasky.kuugatool.json.JsonUtil;
 import com.alibaba.fastjson2.JSONObject;
-import com.kfang.common.agent.constants.SysConstants;
-import kfang.infra.common.model.LoginDto;
+import com.kuuga.common.agent.constants.SysConstants;
+import kuuga.infra.common.model.LoginDto;
 import org.slf4j.MDC;
 import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Component;
@@ -134,7 +134,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-import static com.kfang.common.agent.utils.OperatorInfoUtil.*;
+import static com.kuuga.common.agent.utils.OperatorInfoUtil.*;
 
 /**
  * ServiceRequestLogFilter

@@ -115,14 +115,14 @@ public class FileUtilTest {
 
     @Test
     void getFileSizeForNetworkUrl() {
-        long fileSizeForNetworkUrl = FileUtil.getFileSizeForNetworkUrl("https://imagenw.kfangcdn.com/prod/6d63c85f-bb53-486d-9a09-16c3bb77e170.jpg-f800x600");
+        long fileSizeForNetworkUrl = FileUtil.getFileSizeForNetworkUrl("https://imagenw.kuugacdn.com/prod/6d63c85f-bb53-486d-9a09-16c3bb77e170.jpg-f800x600");
         System.out.println(fileSizeForNetworkUrl);
         System.out.println(ByteSizeConvert.model().convertTo(fileSizeForNetworkUrl, ByteType.KB));
     }
 
     @Test
     void testGetFileSizeForNetworkUrl() {
-        long fileSizeForNetworkUrl = FileUtil.getFileSizeForNetworkUrl("https://imagenw.kfangcdn.com/prod/6d63c85f-bb53-486d-9a09-16c3bb77e170.jpg-f800x600", "https://imagenw.kfangcdn.com");
+        long fileSizeForNetworkUrl = FileUtil.getFileSizeForNetworkUrl("https://imagenw.kuugacdn.com/prod/6d63c85f-bb53-486d-9a09-16c3bb77e170.jpg-f800x600", "https://imagenw.kuugacdn.com");
         System.out.println(fileSizeForNetworkUrl);
         System.out.println(ByteSizeConvert.model().convertTo(fileSizeForNetworkUrl, ByteType.KB));
     }

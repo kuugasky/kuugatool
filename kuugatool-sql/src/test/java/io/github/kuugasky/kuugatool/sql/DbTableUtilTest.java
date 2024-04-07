@@ -17,7 +17,7 @@ class DbTableUtilTest {
     @Test
     void testQueryTableInfos() throws SQLException {
         String username = "root";
-        String password = "kfang.com";
+        String password = "kuuga.com";
         String url = "jdbc:mysql:replication://10.210.10.155:3306,10.210.10.155:3306/kuuga_house?useSSL=false&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useLegacyDatetimeCode=false&autoReconnect=true";
         DbConnectParam dbConnectParam = new DbConnectParam(DbType.MYSQL, username, password, url);
 
@@ -32,7 +32,7 @@ class DbTableUtilTest {
     @Test
     void testTestQueryTableInfos() throws SQLException {
         String username = "root";
-        String password = "kfang.com";
+        String password = "kuuga.com";
         String url = "jdbc:mysql:replication://10.210.10.155:3306,10.210.10.155:3306/kuuga_house?useSSL=false&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useLegacyDatetimeCode=false&autoReconnect=true";
         DbConnectParam dbConnectParam = new DbConnectParam(DbType.MYSQL, url, username, password);
 
@@ -45,7 +45,7 @@ class DbTableUtilTest {
     @Test
     void testQueryTableInfosByContainsField() throws SQLException {
         String username = "root";
-        String password = "kfang.com";
+        String password = "kuuga.com";
         String url = "jdbc:mysql:replication://10.210.10.155:3306,10.210.10.155:3306/kuuga_house?useSSL=false&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useLegacyDatetimeCode=false&autoReconnect=true";
         DbConnectParam dbConnectParam = new DbConnectParam(DbType.MYSQL, url, username, password);
 
@@ -56,7 +56,7 @@ class DbTableUtilTest {
     @Test
     void testTestQueryTableInfosByContainsField() throws SQLException {
         String username = "root";
-        String password = "kfang.com";
+        String password = "kuuga.com";
         String url = "jdbc:mysql:replication://10.210.10.155:3306,10.210.10.155:3306/kuuga_house?useSSL=false&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useLegacyDatetimeCode=false&autoReconnect=true";
         DbConnectParam dbConnectParam = new DbConnectParam(DbType.MYSQL, url, username, password);
 

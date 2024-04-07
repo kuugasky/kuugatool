@@ -21,7 +21,7 @@ class DbSingleTableTest {
     public static void main(String[] args) throws Exception {
         String url = "jdbc:mysql:replication://10.210.10.155:3306,10.210.10.155:3306/kuuga_house?useSSL=false&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useLegacyDatetimeCode=false&autoReconnect=true";
         String username = "root";
-        String password = "kfang.com";
+        String password = "kuuga.com";
 
         DbConnectParam dbConnectParam = new DbConnectParam(DbType.MYSQL, url, username, password);
 
@@ -46,7 +46,7 @@ class DbSingleTableTest {
     void scan() throws Exception {
         String url = "jdbc:mysql:replication://10.210.10.155:3306,10.210.10.155:3306/kuuga_house?useSSL=false&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useLegacyDatetimeCode=false&autoReconnect=true";
         String username = "root";
-        String password = "kfang.com";
+        String password = "kuuga.com";
 
         DbConnectParam dbConnectParam = new DbConnectParam(DbType.MYSQL, url, username, password);
 

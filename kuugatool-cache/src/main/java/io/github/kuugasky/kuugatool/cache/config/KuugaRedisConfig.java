@@ -252,7 +252,7 @@ public class KuugaRedisConfig {
      * <p>
      * 拆分集群配置地址，解析成
      * <p>
-     * eg：kfang.infra.agent.save-redis.url=172.24.16.150:7001,172.24.16.151:7001,172.24.16.152:7001,172.24.16.152:7002,172.24.16.151:7002,172.24.16.150:7002
+     * eg：kuuga.infra.agent.save-redis.url=172.24.16.150:7001,172.24.16.151:7001,172.24.16.152:7001,172.24.16.152:7002,172.24.16.151:7002,172.24.16.150:7002
      *
      * @param envUrl 集群redis配置
      * @return RedisClusterConfiguration

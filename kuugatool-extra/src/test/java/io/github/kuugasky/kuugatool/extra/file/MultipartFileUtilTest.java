@@ -29,7 +29,7 @@ class MultipartFileUtilTest {
 
     @Test
     void fileUrlToMultipartFile() throws IOException {
-        String url = "https://test-image.kfangcdn.com/test/survey/52980b2b3a3b45488017e908374c3997.jpeg-l1024x768w";
+        String url = "https://test-image.kuugacdn.com/test/survey/52980b2b3a3b45488017e908374c3997.jpeg-l1024x768w";
         MultipartFile multipartFile = MultipartFileUtil.fileUrlToMultipartFile(url);
         System.out.println(multipartFile);
     }

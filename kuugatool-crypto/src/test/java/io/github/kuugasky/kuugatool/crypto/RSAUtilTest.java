@@ -166,7 +166,7 @@ class RSAUtilTest {
 
     @Test
     void sbw() throws Exception {
-        RSAKeyPairUtil.RSAKeyPair rsaKeyPair = RSAKeyPairUtil.initRsaKeyPair("kfang&sbw");
+        RSAKeyPairUtil.RSAKeyPair rsaKeyPair = RSAKeyPairUtil.initRsaKeyPair("kuuga&sbw");
         // 私钥
         PrivateKey privateKey = rsaKeyPair.getRsaPrivateKey();
         System.out.println(privateKey);
@@ -185,7 +185,7 @@ class RSAUtilTest {
         // 加密
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("key1", "sbw");
-        jsonObject.put("key2", "kfang");
+        jsonObject.put("key2", "kuuga");
 
         String plaintext = jsonObject.toString();
         System.out.println("明文:" + plaintext);

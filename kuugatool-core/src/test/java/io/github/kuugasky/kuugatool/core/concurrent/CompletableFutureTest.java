@@ -40,7 +40,7 @@ public class CompletableFutureTest {
                 });
         CompletableFuture<Integer> ageFuture = CompletableFuture.supplyAsync(() -> 1, scanTestExecutor)
                 .exceptionally(e -> {
-                    log.error("kfangScan method error:" + e.getMessage(), e);
+                    log.error("kuugaScan method error:" + e.getMessage(), e);
                     return null;
                 });
 

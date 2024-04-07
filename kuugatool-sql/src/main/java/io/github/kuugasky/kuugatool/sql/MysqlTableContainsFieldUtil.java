@@ -18,7 +18,7 @@ public class MysqlTableContainsFieldUtil {
     private final static String INFORMATION_SCHEMA = "kuuga_house_pre";
     private final static String MYSQL_DB_URL = "jdbc:mysql:replication://10.210.10.155:3306,10.210.10.155:3306/" + INFORMATION_SCHEMA + "?useSSL=false&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useLegacyDatetimeCode=false&autoReconnect=true";
     private final static String MYSQL_DB_USERNAME = "root";
-    private final static String MYSQL_DB_PASSWORD = "kfang.com";
+    private final static String MYSQL_DB_PASSWORD = "kuuga.com";
     private final static String FIELD_NAME = "FGARDEN_ID";
 
     public static void main(String[] args) throws SQLException {

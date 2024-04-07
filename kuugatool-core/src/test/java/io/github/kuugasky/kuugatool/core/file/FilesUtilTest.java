@@ -51,13 +51,13 @@ public class FilesUtilTest {
 
     @Test
     public void getFileExtension() {
-        File file = new File("/Users/kuuga/IdeaProjects/kfang/kuugatool/kuugatool-core/src/main/java/cn/kuugatool/core/file/FilenameUtil.java");
+        File file = new File("/Users/kuuga/IdeaProjects/kuuga/kuugatool/kuugatool-core/src/main/java/cn/kuugatool/core/file/FilenameUtil.java");
         System.out.println(FilesUtil.getFileExtension(file.getPath()));
     }
 
     @Test
     public void getNameWithoutExtension() {
-        File file = new File("/Users/kuuga/IdeaProjects/kfang/kuugatool/kuugatool-core/src/main/java/cn/kuugatool/core/file/FilenameUtil.java");
+        File file = new File("/Users/kuuga/IdeaProjects/kuuga/kuugatool/kuugatool-core/src/main/java/cn/kuugatool/core/file/FilenameUtil.java");
         System.out.println(FilesUtil.getNameWithoutExtension(file.getPath()));
     }
 

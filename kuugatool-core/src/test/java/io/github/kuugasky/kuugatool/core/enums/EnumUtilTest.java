@@ -66,7 +66,7 @@ class EnumUtilTest {
     @Test
     void findClassInPackageByFile() {
         EnumUtil.findClassInPackageByFile("io.github.kuugasky.kuugatool.core.enums",
-                "/Users/kuuga/IdeaProjects/kfang/kuugatool/kuugatool-core/target/test-classes/cn/kuugatool/core/enums",
+                "/Users/kuuga/IdeaProjects/kuuga/kuugatool/kuugatool-core/target/test-classes/cn/kuugatool/core/enums",
                 false, SetUtil.newHashSet(HouseDoorModelEnum.class));
     }
 

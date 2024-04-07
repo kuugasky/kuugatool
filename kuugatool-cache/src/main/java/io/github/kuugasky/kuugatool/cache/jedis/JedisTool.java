@@ -179,7 +179,7 @@ public enum JedisTool {
         //         .url("10.210.10.154")
         //         .port(7001)
         //         .user(null)
-        //         .password("kfang.com").build();
+        //         .password("kuuga.com").build();
 
         String key = "FEIGN-ISOLATION:service-kuuga:10210";
         JedisTool.set(key, "1");

@@ -188,7 +188,7 @@ public final class FilenameUtil {
 
     /**
      * 从完整文件名中获取路径前缀。
-     * /Users/kuuga/IdeaProjects/kfang/kuugatool/kuugatool-captcha/src/main/java/cn/kuugatool/captcha/
+     * /Users/kuuga/IdeaProjects/kuuga/kuugatool/kuugatool-captcha/src/main/java/cn/kuugatool/captcha/
      *
      * @param file 文件
      * @return 完整路径
@@ -199,7 +199,7 @@ public final class FilenameUtil {
 
     /**
      * 从完整文件名中获取完整路径。
-     * /Users/kuuga/IdeaProjects/kfang/kuugatool/kuugatool-captcha/src/main/java/cn/kuugatool/captcha/AbstractCaptcha.java
+     * /Users/kuuga/IdeaProjects/kuuga/kuugatool/kuugatool-captcha/src/main/java/cn/kuugatool/captcha/AbstractCaptcha.java
      *
      * @param file 文件
      * @return 完整路径

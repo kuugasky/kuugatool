@@ -6,12 +6,12 @@
 // import cn.kuugatool.core.string.IdUtil;
 // import cn.kuugatool.core.string.StringUtil;
 // import cn.kuugatool.extra.zip.ZipUtil;
-// import com.kfang.common.agent.form.url.UrlForm;
-// import com.kfang.common.agent.form.url.UrlListForm;
-// import com.kfang.common.agent.form.url.UrlZipForm;
+// import com.kuugasky.common.agent.form.url.UrlForm;
+// import com.kuugasky.common.agent.form.url.UrlListForm;
+// import com.kuugasky.common.agent.form.url.UrlZipForm;
 // import io.swagger.annotations.Api;
 // import io.swagger.annotations.ApiOperation;
-// import kfang.infra.feature.aliyun.core.AliyunOss;
+// import kuugasky.infra.feature.aliyun.core.AliyunOss;
 // import org.slf4j.Logger;
 // import org.slf4j.LoggerFactory;
 // import org.springframework.context.annotation.Lazy;

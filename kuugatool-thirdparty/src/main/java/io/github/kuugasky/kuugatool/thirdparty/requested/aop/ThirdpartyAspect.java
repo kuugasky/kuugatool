@@ -27,7 +27,7 @@
 // public class ThirdpartyAspect implements AspectInject {
 //
 //     @Override
-//     @Pointcut("execution(* com.kfang.web.agent.thirdparty.controller.openapi..*.*(..))")
+//     @Pointcut("execution(* com.kuuga.web.agent.thirdparty.controller.openapi..*.*(..))")
 //     public void pointcut() {
 //
 //     }

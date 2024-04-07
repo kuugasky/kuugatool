@@ -34,7 +34,7 @@ public class PropertiesUtilTest {
         Properties filePropertiesInSourceModule = PropertiesUtil.getFilePropertiesInSourceModule("sensitive-words.properties");
         PropertiesUtil.printAllProperty(filePropertiesInSourceModule);
 
-        Properties fileProperties = PropertiesUtil.getFileProperties("/Users/kuuga/IdeaProjects/kfang/agent-micro-services/web-agent-base/src/main/resources/sensitive-words.properties");
+        Properties fileProperties = PropertiesUtil.getFileProperties("/Users/kuuga/IdeaProjects/kuuga/agent-micro-services/web-agent-base/src/main/resources/sensitive-words.properties");
         PropertiesUtil.printAllProperty(fileProperties);
     }
 

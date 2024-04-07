@@ -7,8 +7,8 @@ import java.io.File;
 
 public class FilenameUtilTest {
 
-    public static final File FILE_CLASS = new File("/Users/kuuga/IdeaProjects/kfang/kuugatool/kuugatool-captcha/target/classes/cn/kuugatool/captcha/AbstractCaptcha.class");
-    public static final File FILE_JAVA = new File("/Users/kuuga/IdeaProjects/kfang/kuugatool/kuugatool-captcha/src/main/java/cn/kuugatool/captcha/AbstractCaptcha.java");
+    public static final File FILE_CLASS = new File("/Users/kuuga/IdeaProjects/kuuga/kuugatool/kuugatool-captcha/target/classes/cn/kuugatool/captcha/AbstractCaptcha.class");
+    public static final File FILE_JAVA = new File("/Users/kuuga/IdeaProjects/kuuga/kuugatool/kuugatool-captcha/src/main/java/cn/kuugatool/captcha/AbstractCaptcha.java");
 
     @Test
     public void isClass() {

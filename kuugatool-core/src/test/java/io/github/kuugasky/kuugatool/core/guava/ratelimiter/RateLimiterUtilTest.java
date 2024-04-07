@@ -103,7 +103,7 @@ class RateLimiterUtilTest {
         // 每秒5000个许可
         final RateLimiter rateLimiter = RateLimiter.create(5000.0);
 
-        String fileContent = FileUtil.readFileToString(FileUtil.file("/log/kfang/services/agent/service-agent-house/bootstrap.log"));
+        String fileContent = FileUtil.readFileToString(FileUtil.file("/log/kuuga/services/agent/service-agent-house/bootstrap.log"));
 
         byte[] packet = fileContent.getBytes();
         System.out.println(packet.length);

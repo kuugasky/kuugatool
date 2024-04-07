@@ -73,9 +73,6 @@ public class ImNotifyMessage implements Serializable {
 
     private String propertyUse;
 
-    /**
-     * KFANG（看房）、QFANG（Q房）、LIANJIA（链家）、ZHONGYUAN（中原）、KE（贝壳）、COMMERCIAL（商办）、SPIDER（采集）
-     */
     private String houseSource;
 
     private String jumpLink;

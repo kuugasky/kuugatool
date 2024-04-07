@@ -21,7 +21,7 @@ import java.util.List;
  * @since 2021/7/15
  */
 @Slf4j
-public class KfangActiveDataTask {
+public class KuugaActiveDataTask {
 
     private static final String ftpDirPath = "/data/www/kuuga/downloads";
     private static final String saveDirPath = "/Users/kuuga/fsdownload";

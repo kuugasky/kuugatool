@@ -108,7 +108,7 @@ public class NetworkUtilTest {
         System.out.println(NetworkUtil.getIpByHost("www.baidu.com"));
         System.out.println(NetworkUtil.getIpByHost("http://www.baidu.com"));
         System.out.println(NetworkUtil.getIpByHost("httpsx://www.baidu.com"));
-        System.out.println(NetworkUtil.getIpByHost("kfang.com"));
+        System.out.println(NetworkUtil.getIpByHost("kuuga.com"));
         System.out.println(NetworkUtil.getIpByHost("https://Kuuga.top"));
         System.out.println(NetworkUtil.getIpByHost("https://hyug2a.top"));
     }
