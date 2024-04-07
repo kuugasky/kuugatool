@@ -12,12 +12,12 @@ public class KuugaTest {
 
     @Test
     void isTure() {
-        Kuuga.isTure(true).throwMessage("异常了.");
+        Kuuga.isTure(true).throwException("异常了.");
     }
 
     @Test
     void isFalse() {
-        Kuuga.isFalse(false).throwMessage("异常了.");
+        Kuuga.isFalse(false).throwException("异常了.");
     }
 
     @Test

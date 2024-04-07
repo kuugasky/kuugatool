@@ -16,6 +16,6 @@ public interface ThrowExceptionFunction {
      *
      * @param message 异常信息
      **/
-    void throwMessage(String message);
+    void throwException(String message);
 
 }
