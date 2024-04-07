@@ -3,7 +3,7 @@ package io.github.kuugasky.kuugatool.core.object;
 import io.github.kuugasky.kuugatool.core.random.RandomUtil;
 import org.junit.jupiter.api.Test;
 
-public class TrinocularExpressionUtilTest {
+public class ConditionalOperatorUtilTest {
 
     @Test
     public void judge() {
