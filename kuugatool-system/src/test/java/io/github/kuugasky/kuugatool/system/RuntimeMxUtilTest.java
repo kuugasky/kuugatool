@@ -2,7 +2,7 @@ package io.github.kuugasky.kuugatool.system;
 
 import io.github.kuugasky.kuugatool.core.collection.ListUtil;
 import io.github.kuugasky.kuugatool.core.collection.MapUtil;
-import io.github.kuugasky.kuugatool.core.date.SecondFormatUtil;
+import io.github.kuugasky.kuugatool.core.date.SecondsFormatUtil;
 import io.github.kuugasky.kuugatool.core.string.StringJoinerUtil;
 import io.github.kuugasky.kuugatool.core.string.StringUtil;
 import org.junit.jupiter.api.Test;
@@ -55,11 +55,11 @@ class RuntimeMxUtilTest {
         System.out.println("以毫秒为单位返回Java虚拟机的正常运行时间");
         long uptime = RuntimeMxUtil.getUptime();
         System.out.println(uptime);
-        System.out.println(SecondFormatUtil.getSecondFormat(uptime / 1000, true, true));
+        System.out.println(SecondsFormatUtil.format(uptime / 1000, true, true));
         System.out.println("返回Java虚拟机的开始时间");
         long startTime = RuntimeMxUtil.getStartTime();
         System.out.println(startTime);
-        System.out.println(SecondFormatUtil.getSecondFormat(startTime / 1000, true, true));
+        System.out.println(SecondsFormatUtil.format(startTime / 1000, true, true));
     }
 
     @Test

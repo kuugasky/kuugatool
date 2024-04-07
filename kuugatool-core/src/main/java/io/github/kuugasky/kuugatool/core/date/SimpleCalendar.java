@@ -699,17 +699,17 @@ public class SimpleCalendar {
             df2.setTimeZone(TimeZone.getTimeZone("UTC"));
             Date dayTerm2 = df2.parse(StringUtil.EMPTY + y + "-" + 3 + "-" + term2 + " 00:00:00");// 取得春分的公历日期控件(春分一定出现在3月)
             Lunar lDayTerm2 = new Lunar(dayTerm2); // 取得取得春分农历
-            int lmlen;
+            int lmLen;
             int i = 15;
             if (lDayTerm2.day >= i) // 取得下个月圆的相差天数
             {
-                lmlen = (lDayTerm2.isLeap ? leapDays(y) : monthDays(y, lDayTerm2.month)) - lDayTerm2.day + 15;
+                lmLen = (lDayTerm2.isLeap ? leapDays(y) : monthDays(y, lDayTerm2.month)) - lDayTerm2.day + 15;
             } else {
-                lmlen = 15 - lDayTerm2.day;
+                lmLen = 15 - lDayTerm2.day;
             }
 
             // 一天等于 1000*60*60*24 = 86400000 毫秒
-            Date l15 = new Date(dayTerm2.getTime() + 86400000L * lmlen); // 求出第一次月圆为公历几日
+            Date l15 = new Date(dayTerm2.getTime() + 86400000L * lmLen); // 求出第一次月圆为公历几日
             Date dayEaster = new Date(l15.getTime() + 86400000 * (7 - DateUtil.toLocalDate(l15).getDayOfMonth())); // 求出下个周日
 
             LocalDate dayEasterByLocalDate = DateUtil.toLocalDate(dayEaster);
