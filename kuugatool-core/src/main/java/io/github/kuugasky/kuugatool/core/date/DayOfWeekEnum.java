@@ -11,6 +11,7 @@ import java.time.DayOfWeek;
  * @author kuuga
  * @since 2021-11-01
  */
+@Getter
 @AllArgsConstructor
 public enum DayOfWeekEnum {
 
@@ -54,31 +55,26 @@ public enum DayOfWeekEnum {
     /**
      * 星期几枚举
      */
-    @Getter
     private final DayOfWeek dayOfWeek;
 
     /**
      * 星期几中文
      */
-    @Getter
     private final String xq;
 
     /**
      * 周几中文
      */
-    @Getter
     private final String week;
 
     /**
      * 中国周几下标（周一开始计数）
      */
-    @Getter
     private final int indexOfChina;
 
     /**
      * 国外周几下标（周日开始计数）
      */
-    @Getter
     private final int indexOfForeign;
 
 }

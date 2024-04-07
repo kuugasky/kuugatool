@@ -3,7 +3,7 @@ package io.github.kuugasky;
 /**
  * Main
  *
- * @author hyuga
+ * @author kuuga
  */
 public class Main {
     public static void main(String[] args) {

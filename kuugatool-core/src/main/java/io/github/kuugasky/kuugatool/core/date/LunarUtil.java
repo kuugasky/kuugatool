@@ -5,7 +5,7 @@ import io.github.kuugasky.kuugatool.core.string.StringUtil;
 import java.util.Date;
 
 /**
- * LunarUtil
+ * 农历工具类
  *
  * @author kuuga
  * @since 2021/7/12
@@ -233,6 +233,7 @@ public final class LunarUtil {
         int n = day % 10 == 0 ? 9 : day % 10 - 1;
         int i = 30;
         if (day > i) {
+            // 农历没有31天
             return StringUtil.EMPTY;
         }
         int i1 = 10;

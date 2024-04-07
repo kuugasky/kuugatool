@@ -10,12 +10,12 @@ public class DateUnitTest {
 
     @Test
     void test() {
-        System.out.println(DateUnit.WEEK.getMillis());
-        System.out.println(DateUnit.DAY.getMillis());
-        System.out.println(DateUnit.HOUR.getMillis());
-        System.out.println(DateUnit.MINUTE.getMillis());
-        System.out.println(DateUnit.SECOND.getMillis());
-        System.out.println(DateUnit.MS.getMillis());
+        System.out.println("一周毫秒:" + DateUnit.WEEKS.getMillis());
+        System.out.println("一天毫秒:" + DateUnit.DAYS.getMillis());
+        System.out.println("一小时毫秒:" + DateUnit.HOURS.getMillis());
+        System.out.println("一分钟毫秒:" + DateUnit.MINUTES.getMillis());
+        System.out.println("一秒毫秒:" + DateUnit.SECONDS.getMillis());
+        System.out.println("一毫秒:" + DateUnit.MS.getMillis());
 
         System.out.println(StringUtil.repeatNormal());
 
@@ -29,12 +29,14 @@ public class DateUnitTest {
 
     @Test
     public void toChronoUnit() {
-        ChronoUnit chronoUnit = DateUnit.toChronoUnit(DateUnit.HOUR);
+        // 小时转ChronoUnit小时
+        ChronoUnit chronoUnit = DateUnit.toChronoUnit(DateUnit.HOURS);
         assert chronoUnit != null;
         System.out.println(chronoUnit);
 
-        ChronoUnit chronoUnit1 = DateUnit.HOUR.toChronoUnit();
-        System.out.println(chronoUnit1.getDuration().toSeconds());
+        ChronoUnit chronoUnit1 = DateUnit.HOURS.toChronoUnit();
+        System.out.println("1小时多少秒:" + chronoUnit1.getDuration().toSeconds());
+        System.out.println("1小时多少毫秒:" + chronoUnit1.getDuration().toMillis());
     }
 
     @Test

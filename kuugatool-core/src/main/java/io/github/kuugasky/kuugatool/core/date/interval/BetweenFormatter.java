@@ -83,12 +83,12 @@ public final class BetweenFormatter implements Serializable {
     public String format(Pattern pattern) {
         final StringBuilder sb = new StringBuilder();
         if (betweenMs > 0) {
-            long day = betweenMs / DateUnit.DAY.getMillis();
-            long hour = betweenMs / DateUnit.HOUR.getMillis() - day * 24;
-            long minute = betweenMs / DateUnit.MINUTE.getMillis() - day * 24 * 60 - hour * 60;
+            long day = betweenMs / DateUnit.DAYS.getMillis();
+            long hour = betweenMs / DateUnit.HOURS.getMillis() - day * 24;
+            long minute = betweenMs / DateUnit.MINUTES.getMillis() - day * 24 * 60 - hour * 60;
 
             final long betweenOfSecond = ((day * 24 + hour) * 60 + minute) * 60;
-            long second = betweenMs / DateUnit.SECOND.getMillis() - betweenOfSecond;
+            long second = betweenMs / DateUnit.SECONDS.getMillis() - betweenOfSecond;
             long millisecond = betweenMs - (betweenOfSecond + second) * 1000;
 
             final int level = this.level.ordinal();

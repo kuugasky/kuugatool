@@ -89,7 +89,7 @@ class RSAKeyPairUtilTest {
         RSAKeyPairUtil.RSAKeyPair rsaKeyPair = RSAKeyPairUtil.initRsaKeyPair();
         RSAPublicKey rsaPublicKey = rsaKeyPair.getRsaPublicKey();
         byte[] encoded = rsaPublicKey.getEncoded();
-        RSAKeyPairUtil.saveKeyToFile("/Users/hyuga/Downloads/rsa.pem", encoded);
+        RSAKeyPairUtil.saveKeyToFile("/Users/kuuga/Downloads/rsa.pem", encoded);
     }
 
 }

@@ -121,7 +121,7 @@ public class GroupTimeInterval implements Serializable {
      * @return 从开始到当前的间隔秒数，取绝对值
      */
     public long intervalSecond(String id) {
-        return interval(id, DateUnit.SECOND);
+        return interval(id, DateUnit.SECONDS);
     }
 
     /**
@@ -131,7 +131,7 @@ public class GroupTimeInterval implements Serializable {
      * @return 从开始到当前的间隔分钟数，取绝对值
      */
     public long intervalMinute(String id) {
-        return interval(id, DateUnit.MINUTE);
+        return interval(id, DateUnit.MINUTES);
     }
 
     /**
@@ -141,7 +141,7 @@ public class GroupTimeInterval implements Serializable {
      * @return 从开始到当前的间隔小时数，取绝对值
      */
     public long intervalHour(String id) {
-        return interval(id, DateUnit.HOUR);
+        return interval(id, DateUnit.HOURS);
     }
 
     /**
@@ -151,7 +151,7 @@ public class GroupTimeInterval implements Serializable {
      * @return 从开始到当前的间隔天数，取绝对值
      */
     public long intervalDay(String id) {
-        return interval(id, DateUnit.DAY);
+        return interval(id, DateUnit.DAYS);
     }
 
     /**
@@ -161,7 +161,7 @@ public class GroupTimeInterval implements Serializable {
      * @return 从开始到当前的间隔周数，取绝对值
      */
     public long intervalWeek(String id) {
-        return interval(id, DateUnit.WEEK);
+        return interval(id, DateUnit.WEEKS);
     }
 
     /**

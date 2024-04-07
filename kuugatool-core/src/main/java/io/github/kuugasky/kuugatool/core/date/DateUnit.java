@@ -1,5 +1,7 @@
 package io.github.kuugasky.kuugatool.core.date;
 
+import lombok.Getter;
+
 import java.time.temporal.ChronoUnit;
 
 /**
@@ -7,6 +9,7 @@ import java.time.temporal.ChronoUnit;
  *
  * @author Looly
  */
+@Getter
 public enum DateUnit {
     /**
      * 一毫秒
@@ -15,35 +18,31 @@ public enum DateUnit {
     /**
      * 一秒的毫秒数
      */
-    SECOND(1000),
+    SECONDS(1000),
     /**
      * 一分钟的毫秒数
      */
-    MINUTE(SECOND.getMillis() * 60),
+    MINUTES(SECONDS.getMillis() * 60),
     /**
      * 一小时的毫秒数
      */
-    HOUR(MINUTE.getMillis() * 60),
+    HOURS(MINUTES.getMillis() * 60),
     /**
      * 一天的毫秒数
      */
-    DAY(HOUR.getMillis() * 24),
+    DAYS(HOURS.getMillis() * 24),
     /**
      * 一周的毫秒数
      */
-    WEEK(DAY.getMillis() * 7);
+    WEEKS(DAYS.getMillis() * 7);
 
+    /**
+     * 单位对应的毫秒数
+     */
     private final long millis;
 
     DateUnit(long millis) {
         this.millis = millis;
-    }
-
-    /**
-     * @return 单位对应的毫秒数
-     */
-    public long getMillis() {
-        return this.millis;
     }
 
     /**
@@ -66,11 +65,11 @@ public enum DateUnit {
     public static DateUnit of(ChronoUnit unit) {
         return switch (unit) {
             case MICROS -> DateUnit.MS;
-            case SECONDS -> DateUnit.SECOND;
-            case MINUTES -> DateUnit.MINUTE;
-            case HOURS -> DateUnit.HOUR;
-            case DAYS -> DateUnit.DAY;
-            case WEEKS -> DateUnit.WEEK;
+            case SECONDS -> DateUnit.SECONDS;
+            case MINUTES -> DateUnit.MINUTES;
+            case HOURS -> DateUnit.HOURS;
+            case DAYS -> DateUnit.DAYS;
+            case WEEKS -> DateUnit.WEEKS;
             default -> null;
         };
     }
@@ -85,11 +84,11 @@ public enum DateUnit {
     public static ChronoUnit toChronoUnit(DateUnit unit) {
         return switch (unit) {
             case MS -> ChronoUnit.MICROS;
-            case SECOND -> ChronoUnit.SECONDS;
-            case MINUTE -> ChronoUnit.MINUTES;
-            case HOUR -> ChronoUnit.HOURS;
-            case DAY -> ChronoUnit.DAYS;
-            case WEEK -> ChronoUnit.WEEKS;
+            case SECONDS -> ChronoUnit.SECONDS;
+            case MINUTES -> ChronoUnit.MINUTES;
+            case HOURS -> ChronoUnit.HOURS;
+            case DAYS -> ChronoUnit.DAYS;
+            case WEEKS -> ChronoUnit.WEEKS;
         };
     }
 
