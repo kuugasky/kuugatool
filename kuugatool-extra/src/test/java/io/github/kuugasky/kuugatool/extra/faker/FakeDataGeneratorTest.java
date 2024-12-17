@@ -10,8 +10,8 @@ class FakeDataGeneratorTest {
     @Test
     void generateFakeData() {
         User user = new User();
-        FakeDataGenerator.build().generateFakeData(user);
-        System.out.println(StringUtil.formatString(user));
+        User user1 = FakeDataGenerator.build().generateFakeData(user);
+        System.out.println(StringUtil.formatString(user1));
     }
 
     @Test
