@@ -65,6 +65,13 @@
             <scope>compile</scope>
         </dependency>
 
+        <!-- javafaker -->
+        <dependency>
+            <groupId>com.github.javafaker</groupId>
+            <artifactId>javafaker</artifactId>
+            <version>1.0.2</version>
+        </dependency>
+
         <!-- easyExcel -->
         <dependency>
             <groupId>org.apache.poi</groupId>
