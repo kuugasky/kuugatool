@@ -27,9 +27,9 @@ class DbTableUtilTest {
 
         // String username = "ENC(CeWK0BSMzp+k56dScSvPJA==)";
         // String password = "ENC(mM2j6WzQM4l7AM4ZIP35p2AcTsrb3GdjkN7EbipXGCE=)";
-        String username = "dbname";
-        String password = "lcf13871673157zq";
-        String url = "jdbc:mysql://gz-cynosdbmysql-grp-8dob6c9n.sql.tencentcdb.com:21524/jim?useUnicode=true&characterEncoding=UTF-8&rewriteBatchedStatements=true&useSSL=true";
+        String username = "kuugasky";
+        String password = "kuugaskylcf13871673157zq";
+        String url = "jdbc:mysql://grp-8dob6c9n.sql.tencentcdb.com:3306/jim?useUnicode=true&characterEncoding=UTF-8&rewriteBatchedStatements=true&useSSL=true";
 
         DbConnectParam dbConnectParam = new DbConnectParam(DbType.MYSQL, username, password, url);
         Connection connection = DbConnectionUtil.getConnect(dbConnectParam);
