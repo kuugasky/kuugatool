@@ -9,7 +9,7 @@ package io.github.kuugasky.kuugatool.sql.scheme.entity;
  * @param url      链接地址
  * @author kuuga
  */
-public record DbConnectParam(DbType dbType, String url, String username, String password) {
+public record DbConnectParam(DbType dbType, String username, String password, String url) {
 
     /**
      * @param dbType   数据库类型
@@ -18,6 +18,7 @@ public record DbConnectParam(DbType dbType, String url, String username, String 
      * @param url      数据库连接
      */
     public DbConnectParam {
+
     }
 
     @Override
