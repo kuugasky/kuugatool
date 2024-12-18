@@ -5,6 +5,7 @@ import lombok.Data;
 import org.junit.jupiter.api.Test;
 
 import java.io.Serializable;
+import java.util.Map;
 
 import static io.github.kuugasky.kuugatool.extra.faker.FakerType.ENGLISH;
 
@@ -12,7 +13,7 @@ class FakerDataGeneratorTest {
 
     @Test
     void generateFakerListData() {
-        FakerDataGenerator build = FakerDataGenerator.build().listLoopCount(10);
+        FakerDataGenerator build = FakerDataGenerator.build().listLoopCount(1).englishFields(Map.of("more", 1, "content", 2));
         System.out.println(StringUtil.formatString(build.generateFakeListData(User.class)));
     }
 

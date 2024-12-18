@@ -36,6 +36,24 @@ public class FakerDataGenerator {
     private FakerType fakerType;
     private Faker faker;
     private int listLoopCount = 3;
+    private List<String> englishFields;
+    private Map<String, Integer> englishCountFieldMap;
+
+    /**
+     * 需要使用english.faker的字段集合
+     *
+     * @param englishFields 需要使用english.faker的字段集合
+     * @return this
+     */
+    public FakerDataGenerator englishFields(List<String> englishFields) {
+        this.englishFields = englishFields;
+        return this;
+    }
+
+    public FakerDataGenerator englishFields(Map<String, Integer> englishCountFieldMap) {
+        this.englishCountFieldMap = englishCountFieldMap;
+        return this;
+    }
 
     /**
      * 列表循环次数
@@ -138,25 +156,25 @@ public class FakerDataGenerator {
     private void initFieldFakerList() {
         fieldTypeToSupplierList = ListUtil.newArrayList();
         // name
-        FieldFakerItem<Name> nameFakerMapper = FieldFakerItem.<Name>builder().fieldName(NAME).fakerInternalPropertyObject(this.faker.name()).fieldFaker(Name::fullName).build();
+        FieldFakerItem<Name> nameFakerMapper = FieldFakerItem.<Name>builder().fieldName(NAME.toLowerCase()).fakerInternalPropertyObject(this.faker.name()).fieldFaker(Name::fullName).build();
         fieldTypeToSupplierList.add(nameFakerMapper);
         // address
-        FieldFakerItem<Address> addressFakerMapper = FieldFakerItem.<Address>builder().fieldName(ADDRESS).fakerInternalPropertyObject(this.faker.address()).fieldFaker(Address::fullAddress).build();
+        FieldFakerItem<Address> addressFakerMapper = FieldFakerItem.<Address>builder().fieldName(ADDRESS.toLowerCase()).fakerInternalPropertyObject(this.faker.address()).fieldFaker(Address::fullAddress).build();
         fieldTypeToSupplierList.add(addressFakerMapper);
         // email
         FieldFakerItem<Internet> emailFakerMapper;
         if (fakerType == FakerType.CHINA) {
-            emailFakerMapper = FieldFakerItem.<Internet>builder().fieldName(EMAIL).fakerInternalPropertyObject(new Faker(Locale.ENGLISH).internet()).fieldFaker(Internet::emailAddress).build();
+            emailFakerMapper = FieldFakerItem.<Internet>builder().fieldName(EMAIL.toLowerCase()).fakerInternalPropertyObject(new Faker(Locale.ENGLISH).internet()).fieldFaker(Internet::emailAddress).build();
         } else {
-            emailFakerMapper = FieldFakerItem.<Internet>builder().fieldName(EMAIL).fakerInternalPropertyObject(this.faker.internet()).fieldFaker(Internet::emailAddress).build();
+            emailFakerMapper = FieldFakerItem.<Internet>builder().fieldName(EMAIL.toLowerCase()).fakerInternalPropertyObject(this.faker.internet()).fieldFaker(Internet::emailAddress).build();
         }
         fieldTypeToSupplierList.add(emailFakerMapper);
         // phone
-        FieldFakerItem<PhoneNumber> phoneFakerMapper = FieldFakerItem.<PhoneNumber>builder().fieldName(PHONE).fakerInternalPropertyObject(this.faker.phoneNumber()).fieldFaker(PhoneNumber::phoneNumber).build();
+        FieldFakerItem<PhoneNumber> phoneFakerMapper = FieldFakerItem.<PhoneNumber>builder().fieldName(PHONE.toLowerCase()).fakerInternalPropertyObject(this.faker.phoneNumber()).fieldFaker(PhoneNumber::phoneNumber).build();
         fieldTypeToSupplierList.add(phoneFakerMapper);
         // password
         Function<Number, Object> randomNumber = item -> item.randomNumber() + "";
-        FieldFakerItem<Number> passwordFakerMapper = FieldFakerItem.<Number>builder().fieldName(PASSWORD).fakerInternalPropertyObject(this.faker.number()).fieldFaker(randomNumber).build();
+        FieldFakerItem<Number> passwordFakerMapper = FieldFakerItem.<Number>builder().fieldName(PASSWORD.toLowerCase()).fakerInternalPropertyObject(this.faker.number()).fieldFaker(randomNumber).build();
         fieldTypeToSupplierList.add(passwordFakerMapper);
     }
 
@@ -253,7 +271,6 @@ public class FakerDataGenerator {
             Optional<FieldFakerItem<?>> first = fieldTypeToSupplierList.stream().filter(item -> fieldName.contains(item.fieldName)).findFirst();
             if (first.isPresent()) {
                 FieldFakerItem<?> item = first.get();
-                field.setAccessible(true); // Allow access to private fields
                 try {
                     Function<T, String> fieldFaker = ObjectUtil.cast(item.fieldFaker);
                     T object = ObjectUtil.cast(item.fakerInternalPropertyObject);
@@ -267,7 +284,6 @@ public class FakerDataGenerator {
                     Function<Faker, Object> supplier = fieldTypeToSupplierMap.get(field.getType());
                     if (supplier != null) {
                         Object apply = supplier.apply(faker);
-
                         String targetTypeName = apply.getClass().getTypeName();
                         String fieldTypeName = field.getType().getTypeName();
 
@@ -281,8 +297,17 @@ public class FakerDataGenerator {
                             }
                         }
                     } else if ("java.lang.String".equals(field.getType().getName())) {
-                        if (this.fakerType == FakerType.ENGLISH) {
-                            field.set(obj, this.faker.lorem().sentence(chineseSentences.length));
+                        // 特殊字段特殊处理
+                        boolean isSpecialFieldOfList = ListUtil.optimize(englishFields).contains(fieldName);
+                        boolean isSpecialFieldOfMap = MapUtil.optimize(englishCountFieldMap).containsKey(fieldName);
+
+                        int englishWordCount = chineseSentences.length;
+                        if (isSpecialFieldOfMap) {
+                            englishWordCount = englishCountFieldMap.get(fieldName);
+                        }
+
+                        if (this.fakerType == FakerType.ENGLISH || isSpecialFieldOfList || isSpecialFieldOfMap) {
+                            field.set(obj, StringUtil.removeEnd(this.faker.lorem().sentence(englishWordCount, 0), "."));
                         } else {
                             field.set(obj, chineseSentences[RandomUtil.randomInt(chineseSentences.length)]);
                         }
