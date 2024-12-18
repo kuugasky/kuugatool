@@ -32,7 +32,6 @@ public class FakerDataGenerator {
     private static final String PASSWORD = "password";
     private static final String EMAIL = "email";
     private static final String NAME = "name";
-    // private static final String REMARK = "remark";
 
     private FakerType fakerType;
     private Faker faker;
