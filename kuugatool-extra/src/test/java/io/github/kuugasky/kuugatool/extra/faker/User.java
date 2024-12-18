@@ -19,6 +19,7 @@ public class User {
     private String remark;
     private String content;
     private String more;
+    private String pictureUrl;
     private Integer age;
     private Double balance;
     private Boolean isActive;

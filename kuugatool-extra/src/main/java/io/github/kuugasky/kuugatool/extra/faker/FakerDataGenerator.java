@@ -17,6 +17,7 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.*;
 import java.util.function.Function;
+import java.util.stream.Collectors;
 
 /**
  * FakerDataGenerator
@@ -38,6 +39,7 @@ public class FakerDataGenerator {
     private int listLoopCount = 3;
     private List<String> englishFields;
     private Map<String, Integer> englishCountFieldMap;
+    private List<String> urlFields;
 
     /**
      * 需要使用english.faker的字段集合
@@ -46,12 +48,38 @@ public class FakerDataGenerator {
      * @return this
      */
     public FakerDataGenerator englishFields(List<String> englishFields) {
-        this.englishFields = englishFields;
+        if (ListUtil.isEmpty(englishFields)) {
+            this.englishFields = ListUtil.emptyList();
+            return this;
+        }
+        this.englishFields = englishFields.stream()
+                .map(String::toLowerCase)
+                .collect(Collectors.toList());
         return this;
     }
 
     public FakerDataGenerator englishFields(Map<String, Integer> englishCountFieldMap) {
         this.englishCountFieldMap = englishCountFieldMap;
+        if (MapUtil.isEmpty(englishCountFieldMap)) {
+            this.englishCountFieldMap = MapUtil.emptyMap();
+            return this;
+        }
+        this.englishCountFieldMap = englishCountFieldMap.entrySet().stream()
+                .collect(Collectors.toMap(
+                        entry -> entry.getKey().toLowerCase(),
+                        Map.Entry::getValue
+                ));
+        return this;
+    }
+
+    public FakerDataGenerator urlFields(List<String> urlFields) {
+        if (ListUtil.isEmpty(urlFields)) {
+            this.urlFields = ListUtil.emptyList();
+            return this;
+        }
+        this.urlFields = urlFields.stream()
+                .map(String::toLowerCase)
+                .collect(Collectors.toList());
         return this;
     }
 
@@ -156,25 +184,25 @@ public class FakerDataGenerator {
     private void initFieldFakerList() {
         fieldTypeToSupplierList = ListUtil.newArrayList();
         // name
-        FieldFakerItem<Name> nameFakerMapper = FieldFakerItem.<Name>builder().fieldName(NAME.toLowerCase()).fakerInternalPropertyObject(this.faker.name()).fieldFaker(Name::fullName).build();
+        FieldFakerItem<Name> nameFakerMapper = FieldFakerItem.<Name>builder().fieldName(NAME).fakerInternalPropertyObject(this.faker.name()).fieldFaker(Name::fullName).build();
         fieldTypeToSupplierList.add(nameFakerMapper);
         // address
-        FieldFakerItem<Address> addressFakerMapper = FieldFakerItem.<Address>builder().fieldName(ADDRESS.toLowerCase()).fakerInternalPropertyObject(this.faker.address()).fieldFaker(Address::fullAddress).build();
+        FieldFakerItem<Address> addressFakerMapper = FieldFakerItem.<Address>builder().fieldName(ADDRESS).fakerInternalPropertyObject(this.faker.address()).fieldFaker(Address::fullAddress).build();
         fieldTypeToSupplierList.add(addressFakerMapper);
         // email
         FieldFakerItem<Internet> emailFakerMapper;
         if (fakerType == FakerType.CHINA) {
-            emailFakerMapper = FieldFakerItem.<Internet>builder().fieldName(EMAIL.toLowerCase()).fakerInternalPropertyObject(new Faker(Locale.ENGLISH).internet()).fieldFaker(Internet::emailAddress).build();
+            emailFakerMapper = FieldFakerItem.<Internet>builder().fieldName(EMAIL).fakerInternalPropertyObject(new Faker(Locale.ENGLISH).internet()).fieldFaker(Internet::emailAddress).build();
         } else {
-            emailFakerMapper = FieldFakerItem.<Internet>builder().fieldName(EMAIL.toLowerCase()).fakerInternalPropertyObject(this.faker.internet()).fieldFaker(Internet::emailAddress).build();
+            emailFakerMapper = FieldFakerItem.<Internet>builder().fieldName(EMAIL).fakerInternalPropertyObject(this.faker.internet()).fieldFaker(Internet::emailAddress).build();
         }
         fieldTypeToSupplierList.add(emailFakerMapper);
         // phone
-        FieldFakerItem<PhoneNumber> phoneFakerMapper = FieldFakerItem.<PhoneNumber>builder().fieldName(PHONE.toLowerCase()).fakerInternalPropertyObject(this.faker.phoneNumber()).fieldFaker(PhoneNumber::phoneNumber).build();
+        FieldFakerItem<PhoneNumber> phoneFakerMapper = FieldFakerItem.<PhoneNumber>builder().fieldName(PHONE).fakerInternalPropertyObject(this.faker.phoneNumber()).fieldFaker(PhoneNumber::phoneNumber).build();
         fieldTypeToSupplierList.add(phoneFakerMapper);
         // password
         Function<Number, Object> randomNumber = item -> item.randomNumber() + "";
-        FieldFakerItem<Number> passwordFakerMapper = FieldFakerItem.<Number>builder().fieldName(PASSWORD.toLowerCase()).fakerInternalPropertyObject(this.faker.number()).fieldFaker(randomNumber).build();
+        FieldFakerItem<Number> passwordFakerMapper = FieldFakerItem.<Number>builder().fieldName(PASSWORD).fakerInternalPropertyObject(this.faker.number()).fieldFaker(randomNumber).build();
         fieldTypeToSupplierList.add(passwordFakerMapper);
     }
 
@@ -248,6 +276,8 @@ public class FakerDataGenerator {
         Class<?> clazz = obj.getClass();
         // 获取填充对象所有字段
         Field[] fields = clazz.getDeclaredFields();
+        // 移除序列化字段
+        fields = Arrays.stream(fields).filter(field -> !"serialVersionUID".equals(field.getName())).toArray(Field[]::new);
 
         for (Field field : fields) {
             if ("java.util.List".equals(field.getType().getName())) {
@@ -281,25 +311,21 @@ public class FakerDataGenerator {
             } else {
                 try {
                     // Check the field type and assign appropriate fake data
-                    Function<Faker, Object> supplier = fieldTypeToSupplierMap.get(field.getType());
-                    if (supplier != null) {
+                    boolean containsKey = fieldTypeToSupplierMap.containsKey(field.getType());
+                    if (containsKey) {
+                        Function<Faker, Object> supplier = fieldTypeToSupplierMap.get(field.getType());
                         Object apply = supplier.apply(faker);
-                        String targetTypeName = apply.getClass().getTypeName();
-                        String fieldTypeName = field.getType().getTypeName();
-
-                        if (targetTypeName.equals(fieldTypeName)) {
-                            field.set(obj, apply);
-                        } else {
-                            switch (fieldTypeName) {
-                                case "java.time.LocalDateTime" -> field.set(obj, LocalDateTime.now());
-                                case "java.time.LocalDate" -> field.set(obj, LocalDate.now());
-                                case "java.time.LocalTime" -> field.set(obj, LocalTime.now());
-                            }
-                        }
+                        field.set(obj, apply);
                     } else if ("java.lang.String".equals(field.getType().getName())) {
                         // 特殊字段特殊处理
-                        boolean isSpecialFieldOfList = ListUtil.optimize(englishFields).contains(fieldName);
-                        boolean isSpecialFieldOfMap = MapUtil.optimize(englishCountFieldMap).containsKey(fieldName);
+                        boolean isSpecialFieldOfUrl = ListUtil.optimize(urlFields).stream().anyMatch(s -> s.equalsIgnoreCase(fieldName));
+                        boolean isSpecialFieldOfList = ListUtil.optimize(englishFields).stream().anyMatch(s -> s.equalsIgnoreCase(fieldName));
+                        boolean isSpecialFieldOfMap = MapUtil.optimize(englishCountFieldMap).keySet().stream().anyMatch(s -> s.equalsIgnoreCase(fieldName));
+
+                        if (isSpecialFieldOfUrl) {
+                            field.set(obj, faker.internet().url());
+                            continue;
+                        }
 
                         int englishWordCount = chineseSentences.length;
                         if (isSpecialFieldOfMap) {
@@ -310,6 +336,13 @@ public class FakerDataGenerator {
                             field.set(obj, StringUtil.removeEnd(this.faker.lorem().sentence(englishWordCount, 0), "."));
                         } else {
                             field.set(obj, chineseSentences[RandomUtil.randomInt(chineseSentences.length)]);
+                        }
+                    } else {
+                        String fieldTypeName = field.getType().getTypeName();
+                        switch (fieldTypeName) {
+                            case "java.time.LocalDateTime" -> field.set(obj, LocalDateTime.now());
+                            case "java.time.LocalDate" -> field.set(obj, LocalDate.now());
+                            case "java.time.LocalTime" -> field.set(obj, LocalTime.now());
                         }
                     }
                 } catch (IllegalAccessException e) {

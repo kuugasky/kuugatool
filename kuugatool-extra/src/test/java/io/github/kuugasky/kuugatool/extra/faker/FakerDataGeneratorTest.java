@@ -5,15 +5,23 @@ import lombok.Data;
 import org.junit.jupiter.api.Test;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.Map;
 
 import static io.github.kuugasky.kuugatool.extra.faker.FakerType.ENGLISH;
 
 class FakerDataGeneratorTest {
 
+    // public static void main(String[] args) {
+    //     System.out.println(new Faker().internet().url());
+    // }
+
     @Test
     void generateFakerListData() {
-        FakerDataGenerator build = FakerDataGenerator.build().listLoopCount(1).englishFields(Map.of("more", 1, "content", 2));
+        FakerDataGenerator build = FakerDataGenerator.build().listLoopCount(1)
+                .englishFields(List.of("remark"))
+                .englishFields(Map.of("more", 1, "content", 2))
+                .urlFields(List.of("pictureUrl"));
         System.out.println(StringUtil.formatString(build.generateFakeListData(User.class)));
     }
 
