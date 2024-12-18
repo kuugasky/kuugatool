@@ -6,7 +6,7 @@ package io.github.kuugasky.kuugatool.extra.faker;
  * @author kuuga
  * @since 2024/12/17
  */
-public enum FakeType {
+public enum FakerType {
     CHINA,
     ENGLISH
 }
